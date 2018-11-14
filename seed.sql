@@ -17,35 +17,35 @@ values
 
 insert into reminders
 
-    (user_id, reminder, is_public)
+    (user_id, reminder, is_public, location_id)
 
 values
 
-    (2, 'buy the special burrito', true
+    (2, 'buy the special burrito', true, 2
 ),
-    (4, 'call my mom', false
+    (4, 'call my mom', false, 4
 ),
-    (5, 'remind captain kirk of his awesomeness', true
+    (5, 'remind captain kirk of his awesomeness', true, 5
 ),
-    (2, 'buy skin moisturizer', false
+    (2, 'buy skin moisturizer', false, 2
 ),
-    (4, 'check for a sale on earrings', true
+    (4, 'check for a sale on earrings', true, 4
 )
 
 
 insert into locations
 
-    (latitude, longitude, reminder_id)
+    (latitude, longitude)
 
 values
 
-    (33.83, -84.39, 2
+    (33.83, -84.39 
 ),
-    (33.86, -84.40, 4
+    (33.86, -84.40 
 ),
-    (33.85, -84.43, 5
+    (33.85, -84.43 
 ),
-    (33.80, -84.41, 2
+    (33.80, -84.41 
 ),
-    (33.81, -84.42, 4
+    (33.81, -84.42
 )
