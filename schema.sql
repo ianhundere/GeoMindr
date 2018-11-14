@@ -1,7 +1,8 @@
 
 -- USERs
--- username
 -- name
+-- username
+-- password
 -- phone #s
 -- avatar (maybe?)
 
@@ -9,6 +10,7 @@ create table users
 (
     id serial primary key,
     name text,
+    password text,
     username varchar(200) unique not null,
     phone_number varchar(20) unique not null,
 );
@@ -35,4 +37,5 @@ create table locations
     id serial primary key,
     latitude integer,
     longitude integer,
+    reminder_id integer references reminders (id) on delete cascade
 );
