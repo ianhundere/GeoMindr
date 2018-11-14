@@ -30,7 +30,7 @@ create table locations
 -- reminder
 -- public/priv
 
-create table remind_init
+create table init_reminders
 (
     id serial primary key,
     phone text,

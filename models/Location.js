@@ -1,17 +1,18 @@
 const db = require('./db');
 
 class Location {
-    constructor(id, latitude, longitude, reminder_id) {
+    constructor(id, latitude, longitude) {
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.reminder_id = reminder_id;
     }
 }
 // CREATE
 
 // RETRIEVE
 
-// UPDA
+// UPDATE
 
 // DELETE
+
+module.exports = Location;

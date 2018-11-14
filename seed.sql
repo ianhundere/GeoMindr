@@ -34,7 +34,7 @@ values
     (33.81, -84.42
 );
 
-insert into remind_init
+insert into init_reminders
 
     (phone, lat, lon, time_stamp)
 
