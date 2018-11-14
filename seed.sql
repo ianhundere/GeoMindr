@@ -1,3 +1,5 @@
+-- dummy data
+
 insert into users
 
     (name, username, password, phone_number)
