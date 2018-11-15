@@ -66,7 +66,6 @@ app.get('/phone/:phone_number', (req, res) => {
         res.send(name);
     });
 });
-
 // ========================================================
 
 // ========================================================
@@ -89,6 +88,31 @@ app.get('/myreminders/', (req, res) => {
 });
 // ========================================================
 
+// ========================================================
+// Delete Reminder by ID
+// ========================================================
+
+app.delete('/reminders/:id(\\d+)', (req, res) => {
+    Reminder.getById(req.params.id).then(theReminder => {
+        theReminder.deleteById(req.params.id).then(delReminderByID => {
+            res.send(delReminderByID);
+        });
+    });
+});
+
+// ========================================================
+
+// ========================================================
+// Testing Area
+// ========================================================
+
+app.put('/reminders/:id(\\d+)', (req, res) => {
+    Reminder.getById(req.params.id).then(theReminder => {
+        theReminder.updateReminder().then(reminderUpdated => {
+            res.send(reminderUpdated);
+        });
+    });
+});
 // ========================================================
 app.listen(3000, () => {
     console.log('express app is ready.');

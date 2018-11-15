@@ -45,16 +45,14 @@ class Reminder {
                 [id]
             )
             .then(result => {
-                console.log(result.id);
-                new Reminder(
+                const create = new Reminder(
                     result.id,
                     result.reminder,
                     result.is_public,
                     result.location_id,
-                    result.user_id,
-                    result.remind_init_id
+                    result.user_id
                 );
-                return result.reminder;
+                return create;
             });
     }
     static getAll() {
@@ -83,7 +81,7 @@ class Reminder {
     }
 
     // === ===  DELETE  === ===
-    static deleteById(id) {
+    deleteById(id) {
         return db.result(
             `delete from reminders
             where id = $1`,
