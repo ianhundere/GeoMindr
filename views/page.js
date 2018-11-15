@@ -9,7 +9,7 @@ function page() {
         <title>Document</title>
     </head>
     <body>
-    
+    <p>GeoMindr Launch</p>
     </body>
     </html>
     `;

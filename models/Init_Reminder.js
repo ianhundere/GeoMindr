@@ -8,14 +8,19 @@ class Init_Reminder {
         this.lon = lon;
         this.time_stamp = time_stamp;
     }
+
+    // DELETE AFTER 2 MIN
+    static deleteAfterNoResponse(id) {
+        setTimeout(
+            () =>
+                db.result(
+                    `delete from init_reminders
+        where id = $1`,
+                    [id]
+                ),
+            300
+        );
+    }
 }
-
-// CREATE
-
-// RETRIEVE
-
-// UPDATE
-
-// DELETE
 
 module.exports = Init_Reminder;
