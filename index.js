@@ -4,6 +4,11 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+
+const page = require('./views/page');
+const loginForm = require('./views/loginForm');
+const registrationForm = require('./views/registrationForm');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const db = require('./models/db');
@@ -31,27 +36,31 @@ app.get('/', (req, res) => {
 // ========================================================
 app.post('/createreminder', (req, res) => {
     console.log(req.body);
-    let reminderObj = {};
-    Location.createLocation(req.body.latitude, req.body.longitude).then(
-        result => {
-            reminderObj.locationID = result;
-            User.getByPhone(req.body.phone_number).then(r => {
-                reminderObj.userID = Number(r);
-                console.log('hoo boo', r);
-            });
+    
+    Location.createLocation(req.body.latitude, req.body.longitude)
+    .then(result => {
+        return {locationID : result};
+    })
+    .then(result => {
+        User.getByPhone(req.body.phone_number)
+        .then(r => {
+            result.userID = Number(r);
+            return result;
+        })
+        .then(reslt => {
+            console.log(reslt);
             const newReminder = req.body.reminder;
-            console.log(`look here ${reminderObj.userID}`); // ---
-            Reminder.createReminder(
-                newReminder,
-                true,
-                reminderObj.locationID,
-                reminderObj.userID
-            ).then(reminder => {
-                res.send(reminder);
+            console.log(`look here ${reslt.userID}`);
+            Reminder.createReminder(newReminder, true, reslt.locationID, reslt.userID)
+            .then(reminder => {
+                // console.log(reminder);
+                // res.send(reminder);
+                res.redirect(`/`);
             });
-        }
-    );
+        })
+    });
 });
+
 app.get('/phone/:phone_number', (req, res) => {
     User.getByPhone(req.params.phone_number).then(name => {
         res.send(name);
@@ -108,3 +117,4 @@ app.put('/reminders/:id(\\d+)', (req, res) => {
 app.listen(3000, () => {
     console.log('express app is ready.');
 });
+
