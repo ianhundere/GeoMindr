@@ -84,8 +84,8 @@ app.get('/myreminders/', (req, res) => {
 // ========================================================
 
 app.delete('/reminders/:id(\\d+)', (req, res) => {
-    Reminder.getById(req.params.id).then(result => {
-        result.deleteById(req.params.id).then(delReminderByID => {
+    Reminder.getById(req.params.id).then(theReminder => {
+        theReminder.deleteById(req.params.id).then(delReminderByID => {
             res.send(delReminderByID);
         });
     });
@@ -97,16 +97,13 @@ app.delete('/reminders/:id(\\d+)', (req, res) => {
 // Testing Area
 // ========================================================
 
-app.delete('/reminders/:id(\\d+)', (req, res) => {
-    Reminder.getById(req.params.id).then(result => {
-        result.deleteById(req.params.id).then(delReminderByID => {
-            res.send(delReminderByID);
+app.put('/reminders/:id(\\d+)', (req, res) => {
+    Reminder.getById(req.params.id).then(theReminder => {
+        theReminder.updateReminder().then(reminderUpdated => {
+            res.send(reminderUpdated);
         });
     });
 });
-
-// app.post('/reminders/:id(\\d+');
-
 // ========================================================
 app.listen(3000, () => {
     console.log('express app is ready.');

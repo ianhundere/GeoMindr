@@ -45,7 +45,6 @@ class Reminder {
                 [id]
             )
             .then(result => {
-                console.log(result.id, '!!!!!');
                 const create = new Reminder(
                     result.id,
                     result.reminder,
