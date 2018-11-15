@@ -47,5 +47,4 @@ create table reminders
     is_public boolean,
     location_id integer references locations (id) on delete cascade,
     user_id integer references users (id) on delete cascade,
-    remind_init_id integer references remind_init (id)
 );

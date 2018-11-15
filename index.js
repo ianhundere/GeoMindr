@@ -1,5 +1,3 @@
-
-
 require('dotenv').config();
 
 // Required Modules
@@ -30,36 +28,43 @@ app.get('/', (req, res) => {
 // ========================================================
 // Create Reminders
 // ========================================================
-// app.post('/createReminders'),
-//     (req, res) => {
-//         console.log(req);
-//         // console.log(req.body);
-//         // res.send("ok");
-//         const newReminder = req.body.reminder;
-//         User.add(newReminder).then(reminder => {
-//             res.send(reminder);
-//         });
-//     };
+app.post('/createreminder'),
+    (req, res) => {
+        console.log(req.body);
+        const newLocation = {
+            latitude: req.body.latitude,
+            longitude: req.body.longitude
+        };
+        Location.createLocation(newLocation)
+            .then(result => {
+                res.send(result);
+            })
+            .then(result => {
+                res.send(result);
+                const newReminder = req.body.reminder;
+                Reminder.add(newReminder).then(reminder => {
+                    res.send(reminder);
+                });
+            });
+    };
 // ========================================================
 
 // ========================================================
-// View My Reminders
+// View My Reminders (working)
 // ========================================================
-app.get('/myReminders', (req, res) => {});
+app.get('/myreminders/:id([0-9]+)', (req, res) => {
+    Reminder.getById(req.params.id).then(remind => {
+        res.send(remind);
+    });
+});
 // ========================================================
 
 // ========================================================
-// View All Reminders
+// View All Reminders (working)
 // ========================================================
-app.get('/allReminders', (req, res) => {
-    User.getAll().then(allUsers => {
-        // res.send(allUsers);
-        const usersUL = userList(allUsers);
-        const thePage = page(usersUL);
-        console.log(thePage);
-        res.send(thePage);
-
-        // res.send(page(userList(allUsers)));
+app.get('/myreminders/', (req, res) => {
+    Reminder.getAll(req.params.id).then(remind => {
+        res.send(remind);
     });
 });
 // ========================================================
