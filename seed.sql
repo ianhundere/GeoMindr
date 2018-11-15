@@ -53,17 +53,17 @@ values
 
 insert into reminders
 
-    (reminder, is_public, location_id, user_id, remind_init_id)
+    (reminder, is_public, location_id, user_id)
 
 values
 
-    ('buy the special burrito', true, 1, 1, 1
+    ('buy the special burrito', true, 1, 1
 ),
-    ('call my mom', false, 2, 2, 2
+    ('call my mom', false, 2, 2
 ),
-    ('remind captain kirk of his awesomeness', true, 3, 3, 3
+    ('remind captain kirk of his awesomeness', true, 3, 3
 ),
-    ('buy skin moisturizer', false, 4, 4, 4
+    ('buy skin moisturizer', false, 4, 4
 ),
-    ('check for a sale on earrings', true, 5, 5, 5
+    ('check for a sale on earrings', true, 5, 5
 );

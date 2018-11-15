@@ -14,12 +14,12 @@ class Location {
                 `insert into locations
             (latitude, longitude)
         values
-            ($1, $2)`,
+            ($1, $2)
+                returning id`,
                 [latitude, longitude]
             )
             .then(data => {
-                const nL = new Location(data.id, data.latitude, data.longitude);
-                return nL;
+                return data.id;
             });
     }
 
