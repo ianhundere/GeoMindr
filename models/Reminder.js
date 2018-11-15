@@ -18,11 +18,11 @@ class Reminder {
             (reminder, is_public,location_id, user_id)
         values
             ($1, $2, $3, $4)
-        returning id`,
+        returning id, reminder, is_public, location_id, user_id`,
                 [reminder, is_public, location_id, user_id]
             )
-            .then()
             .then(result => {
+                console.log(`blah blah ${result}`);
                 const create = new Reminder(
                     result.id,
                     result.reminder,
@@ -45,16 +45,15 @@ class Reminder {
                 [id]
             )
             .then(result => {
-                console.log(result.id);
-                new Reminder(
+                console.log(result.id, '!!!!!');
+                const create = new Reminder(
                     result.id,
                     result.reminder,
                     result.is_public,
                     result.location_id,
-                    result.user_id,
-                    result.remind_init_id
+                    result.user_id
                 );
-                return result.reminder;
+                return create;
             });
     }
     static getAll() {
@@ -86,8 +85,7 @@ class Reminder {
     deleteById(id) {
         return db.result(
             `delete from reminders
-            where id = $1
-            returning id`,
+            where id = $1`,
             [id]
         );
     }

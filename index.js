@@ -80,12 +80,28 @@ app.get('/myreminders/', (req, res) => {
 // ========================================================
 
 // ========================================================
+// Delete Reminder by ID
+// ========================================================
+
+app.delete('/reminders/:id(\\d+)', (req, res) => {
+    Reminder.getById(req.params.id).then(result => {
+        result.deleteById(req.params.id).then(delReminderByID => {
+            res.send(delReminderByID);
+        });
+    });
+});
+
+// ========================================================
+
+// ========================================================
 // Testing Area
 // ========================================================
+
 app.delete('/reminders/:id(\\d+)', (req, res) => {
-    // console.log(req.params.id);
-    Reminder.deleteById(req.params.id).then(delReminderByID => {
-        res.send(delReminderByID);
+    Reminder.getById(req.params.id).then(result => {
+        result.deleteById(req.params.id).then(delReminderByID => {
+            res.send(delReminderByID);
+        });
     });
 });
 
