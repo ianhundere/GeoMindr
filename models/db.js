@@ -1,12 +1,12 @@
 // ============================================
-// Database Connection 
+// Database Connection
 const pgp = require('pg-promise')({
     // - ONLY GOOD FOR DEBUGGING
-    query: e => {      
+    query: e => {
         console.log('QUERY: ', e.query);
         if (e.params) {
             console.log('PARAMS:', e.params);
-        }       
+        }
     }
 });
 // console.log(process.env.DB_NAME);
@@ -15,7 +15,7 @@ const pgp = require('pg-promise')({
 const db = pgp({
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    database: process.env.DB_NAME,
+    database: process.env.DB_NAME
 });
 // ============================================
 

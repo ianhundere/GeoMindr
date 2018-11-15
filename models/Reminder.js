@@ -1,25 +1,25 @@
 const db = require('./db');
 
 class Reminder {
-    constructor(id, reminder, is_public, location_id, user_id, remind_init_id) {
+    constructor(id, reminder, is_public, location_id, user_id) {
         this.id = id;
         this.reminder = reminder;
         this.is_public = is_public;
         this.location_id = location_id;
         this.user_id = user_id;
-        this.remind_init_id = remind_init_id;
     }
 
     // === ===  CREATE  === ===
-    static createReminder(reminder, is_public, user_id) {
+    static createReminder(reminder, is_public, location_id, user_id) {
+        console.log('!!!!!!!!', user_id);
         return db
             .one(
                 `insert into reminders
-            (reminder, is_public, user_id)
+            (reminder, is_public,location_id, user_id)
         values
-            ($1, $2, $3)
+            ($1, $2, $3, $4)
         returning id`,
-                [reminder, is_public, user_id]
+                [reminder, is_public, location_id, user_id]
             )
             .then()
             .then(result => {
@@ -57,7 +57,6 @@ class Reminder {
                 return result.reminder;
             });
     }
-
     static getAll() {
         return db.any(`select * from reminders`);
     }
@@ -69,7 +68,6 @@ class Reminder {
             [reminder]
         );
     }
-
     // === ===  UPDATE  === ===
     updateReminder(reminder) {
         return db

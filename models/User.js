@@ -37,6 +37,14 @@ class User {
             return instanceArray;
         });
     }
+    static getByPhone(phone_number) {
+        return db
+            .one('select * from users where phone_number = $1', [phone_number])
+            .then(result => {
+                // console.log('look at my', result.id);
+                return result.id;
+            });
+    }
 
     static getById(id) {
         return db

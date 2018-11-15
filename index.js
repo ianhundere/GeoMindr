@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const db = require('./models/db');
 
@@ -28,25 +29,37 @@ app.get('/', (req, res) => {
 // ========================================================
 // Create Reminders
 // ========================================================
-app.post('/createreminder'),
-    (req, res) => {
-        console.log(req.body);
-        const newLocation = {
-            latitude: req.body.latitude,
-            longitude: req.body.longitude
-        };
-        Location.createLocation(newLocation)
-            .then(result => {
-                res.send(result);
-            })
-            .then(result => {
-                res.send(result);
-                const newReminder = req.body.reminder;
-                Reminder.add(newReminder).then(reminder => {
-                    res.send(reminder);
-                });
+app.post('/createreminder', (req, res) => {
+    console.log(req.body);
+    let reminderObj = {};
+    Location.createLocation(req.body.latitude, req.body.longitude).then(
+        result => {
+            reminderObj.locationID = result;
+            User.getByPhone(req.body.phone_number)
+                .then(r => {
+                    reminderObj.userID = Number(r);
+                    console.log('hoo boo', r);
+                })
+                .then();
+            const newReminder = req.body.reminder;
+            console.log(`look here ${reminderObj.userID}`); // ---
+            Reminder.createReminder(
+                newReminder,
+                true,
+                reminderObj.locationID,
+                reminderObj.userID
+            ).then(reminder => {
+                res.send(reminder);
             });
-    };
+        }
+    );
+});
+app.get('/phone/:phone_number', (req, res) => {
+    User.getByPhone(req.params.phone_number).then(name => {
+        res.send(name);
+    });
+});
+
 // ========================================================
 
 // ========================================================
