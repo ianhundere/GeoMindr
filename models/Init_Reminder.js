@@ -15,7 +15,7 @@ class Init_Reminder {
             () =>
                 db.result(
                     `delete from init_reminders
-        where id = $1`,
+                        where id = $1`,
                     [id]
                 ),
             300

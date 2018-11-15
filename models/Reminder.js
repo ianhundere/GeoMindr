@@ -83,10 +83,11 @@ class Reminder {
     }
 
     // === ===  DELETE  === ===
-    static deleteById(id) {
+    deleteById(id) {
         return db.result(
             `delete from reminders
-            where id = $1`,
+            where id = $1
+            returning id`,
             [id]
         );
     }

@@ -35,12 +35,10 @@ app.post('/createreminder', (req, res) => {
     Location.createLocation(req.body.latitude, req.body.longitude).then(
         result => {
             reminderObj.locationID = result;
-            User.getByPhone(req.body.phone_number)
-                .then(r => {
-                    reminderObj.userID = Number(r);
-                    console.log('hoo boo', r);
-                })
-                .then();
+            User.getByPhone(req.body.phone_number).then(r => {
+                reminderObj.userID = Number(r);
+                console.log('hoo boo', r);
+            });
             const newReminder = req.body.reminder;
             console.log(`look here ${reminderObj.userID}`); // ---
             Reminder.createReminder(
@@ -59,7 +57,6 @@ app.get('/phone/:phone_number', (req, res) => {
         res.send(name);
     });
 });
-
 // ========================================================
 
 // ========================================================
@@ -81,6 +78,18 @@ app.get('/myreminders/', (req, res) => {
     });
 });
 // ========================================================
+
+// ========================================================
+// Testing Area
+// ========================================================
+app.delete('/reminders/:id(\\d+)', (req, res) => {
+    // console.log(req.params.id);
+    Reminder.deleteById(req.params.id).then(delReminderByID => {
+        res.send(delReminderByID);
+    });
+});
+
+// app.post('/reminders/:id(\\d+');
 
 // ========================================================
 app.listen(3000, () => {
