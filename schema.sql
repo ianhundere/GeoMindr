@@ -21,14 +21,24 @@ create table users
 create table locations
 (
     id serial primary key,
-    latitude integer,
-    longitude integer
+    latitude decimal,
+    longitude decimal
 );
 
 -- REMINDERS
 -- user_id
 -- reminder
 -- public/priv
+
+create table init_reminders
+(
+    id serial primary key,
+    phone text,
+    lat decimal,
+    lon decimal,
+    time_stamp text
+);
+
 
 create table reminders
 (

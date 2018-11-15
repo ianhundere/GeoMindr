@@ -17,7 +17,7 @@ function page() {
     <section class='main'>
         <div class='headerbar'>
             <header>
-                GeoMindr
+                <h1>GeoMindr</h1>
             </header>
         </div>
     </section>
