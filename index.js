@@ -4,6 +4,11 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+
+const page = require('./views/page');
+const loginForm = require('./views/loginForm');
+const registrationForm = require('./views/registrationForm');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const db = require('./models/db');
@@ -86,3 +91,4 @@ app.get('/myreminders/', (req, res) => {
 app.listen(3000, () => {
     console.log('express app is ready.');
 });
+
