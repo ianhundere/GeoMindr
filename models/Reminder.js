@@ -1,6 +1,6 @@
 const db = require('./db');
 
-class Reminders {
+class Reminder {
     constructor(id, reminder, is_public) {
         this.id = id, 
         this.reminder = reminder, 
@@ -8,43 +8,57 @@ class Reminders {
     }
 
     // === ===  CREATE  === ===
-    static createReminder(reminder, is_public) {
-        return db.one(
-            `insert into reminders
-                (reminder, is_public)
-            values
-                ($1, $2)
-            returning id`, [reminder, is_public])
-            .then(result => {
-                const create = new Reminders(result.id, reminder, is_public);
-                return create;
-            });
+    static createReminder(reminder, is_public, /* user_id */) {
+        return db.one(`insert into reminder
+            (reminder, is_public, user_id)
+        values
+            ($1, $2, $3)
+        returning id`, [reminder, is_public, /* user_id */])
+        .then(result => {
+            const create = new Reminder(result.id, reminder, is_public);
+            return create;
+        });
     }
     
+    // NOTE: For createReminder, would a user_id need to be assigned??? 
+
     // === ===  RETRIEVE  === ===
     static getById(id) {
-        return db.one(
-            `select * from reminders
-                where (id) = $1`, [id])
-            .then(result => {
-                const thisId = new Reminders(result);
-                return thisId; 
-            });
+        return db.one(`select * from reminder
+            where (id) = $1`, [id])
+        .then(result => {
+            const thisId = new Reminder(result);
+            return thisId; 
+        });
     }
 
     static getAll() {
-        return db.any(
-            `select * from reminders`);
+        return db.any(`select * from reminder`);
     }
 
+    static getByReminder(reminder) {
+        return db.one(`select * from reminder
+            where reminder ilike '%$1:raw%'`, [reminder])
+    }
 
     // === ===  UPDATE  === ===
-
+    updateReminder(reminder) {
+        return db.results(`update reminder
+            set reminder = $2
+        where id = $1`, [this.id, reminder])
+        .then(result => {
+            return result.rowCount === 1;
+        })
+    }
 
     // === ===  DELETE  === ===
-
+    static deleteById(id) {
+        return db.restul(`delete from reminders
+            where id = $1`, [id]);
+    }
 
 
 
 }
 
+module.exports = Reminder;
