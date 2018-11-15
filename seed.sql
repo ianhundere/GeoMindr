@@ -34,19 +34,36 @@ values
     (33.81, -84.42
 );
 
-insert into reminders
+insert into init_reminders
 
-    (reminder, is_public, location_id, user_id)
+    (phone, lat, lon, time_stamp)
 
 values
 
-    ('buy the special burrito', true, 1, 1
+    (5555555555, 33.8485718, -84.3732238, 'November 14, 2018 at 02:01PM'
 ),
-    ('call my mom', false, 2, 2
+    (1234567890, 38.8485718, -100.3732238, 'November 11, 2018 at 01:01AM'
 ),
-    ('remind captain kirk of his awesomeness', true, 3, 3
+    (8374928749, 60.8485718, -60.3732238, 'November 16, 2018 at 10:01PM'
 ),
-    ('buy skin moisturizer', false, 4, 4
+    (2839473629, 39.8485718, -30.3732238, 'November 13, 2018 at 07:09PM'
 ),
-    ('check for a sale on earrings', true, 5, 5
+    (2839473629, 39.8485718, -30.3732238, 'November 13, 2018 at 07:09PM')
+;
+
+insert into reminders
+
+    (reminder, is_public, location_id, user_id, remind_init_id)
+
+values
+
+    ('buy the special burrito', true, 1, 1, 1
+),
+    ('call my mom', false, 2, 2, 2
+),
+    ('remind captain kirk of his awesomeness', true, 3, 3, 3
+),
+    ('buy skin moisturizer', false, 4, 4, 4
+),
+    ('check for a sale on earrings', true, 5, 5, 5
 );

@@ -21,8 +21,8 @@ create table users
 create table locations
 (
     id serial primary key,
-    latitude integer,
-    longitude integer
+    latitude decimal,
+    longitude decimal
 );
 
 -- REMINDERS
@@ -30,11 +30,22 @@ create table locations
 -- reminder
 -- public/priv
 
+create table init_reminders
+(
+    id serial primary key,
+    phone text,
+    lat decimal,
+    lon decimal,
+    time_stamp text
+);
+
+
 create table reminders
 (
     id serial primary key,
     reminder text,
     is_public boolean,
     location_id integer references locations (id) on delete cascade,
-    user_id integer references users (id) on delete cascade
+    user_id integer references users (id) on delete cascade,
+    remind_init_id integer references remind_init (id)
 );
