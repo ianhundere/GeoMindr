@@ -18,11 +18,11 @@ class Reminder {
             (reminder, is_public,location_id, user_id)
         values
             ($1, $2, $3, $4)
-        returning id`,
+        returning id, reminder, is_public, location_id, user_id`,
                 [reminder, is_public, location_id, user_id]
             )
-            .then()
             .then(result => {
+                console.log(`blah blah ${result}`);
                 const create = new Reminder(
                     result.id,
                     result.reminder,
