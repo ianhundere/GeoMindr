@@ -49,7 +49,7 @@ app.post('/createreminder', (req, res) => {
                 .then(reslt => {
                     console.log(reslt);
                     const newReminder = req.body.reminder;
-                    console.log(`look here ${reslt.userID}`);
+                    // console.log(`look here ${reslt.userID}`);
                     Reminder.createReminder(
                         newReminder,
                         true,
@@ -85,8 +85,8 @@ app.get('/myreminders/:id([0-9]+)', (req, res) => {
 // View All Reminders (working)
 // ========================================================
 app.get('/myreminders/', (req, res) => {
-    Reminder.getAll(req.params.id).then(remind => {
-        res.send(remind);
+    Reminder.getAll(req.params.id).then(allReminders => {
+        res.send(allReminders);
     });
 });
 // ========================================================
@@ -95,13 +95,13 @@ app.get('/myreminders/', (req, res) => {
 // Delete Reminder by ID (working)
 // ========================================================
 
-// app.delete('/reminders/:id(\\d+)', (req, res) => {
-//     Reminder.getById(req.params.id).then(theReminder => {
-//         theReminder.deleteById(req.params.id).then(delReminderByID => {
-//             res.send(delReminderByID);
-//         });
-//     });
-// });
+app.delete('/reminders/:id(\\d+)', (req, res) => {
+    Reminder.getById(req.params.id).then(theReminder => {
+        theReminder.deleteById(req.params.id).then(delReminderByID => {
+            res.send(delReminderByID);
+        });
+    });
+});
 
 // ========================================================
 
@@ -123,7 +123,7 @@ app.put('/reminders/:id(\\d+)', (req, res) => {
 // Delete Init_Reminder after 5min (working)
 // ========================================================
 
-app.delete('/reminders/:id(\\d+)', (req, res) => {
+app.delete('/init_reminders/:id(\\d+)', (req, res) => {
     Init_Reminder.deleteAfterNoResponse(req.params.id, () => {
         res.send('there was no response.');
     });
@@ -154,9 +154,26 @@ app.delete('/locations/:id(\\d+)', (req, res) => {
 // ========================================================
 
 // ========================================================
+// Create User
+// ========================================================
+
+// ========================================================
+
+// ========================================================
 // Testing Area
 // ========================================================
 
+app.post('/users', (req, res) => {
+    console.log(req.body);
+    User.createUser(
+        req.body.name,
+        req.body.username,
+        req.body.password,
+        req.body.phone_number
+    ).then(result => {
+        return {};
+    });
+});
 // ========================================================
 app.listen(3000, () => {
     console.log('express app is ready.');

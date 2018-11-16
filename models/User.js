@@ -10,7 +10,7 @@ class User {
     }
 
     // CREATE
-    static add(name, username, password, phone_number) {
+    static createUser(name, username, password, phone_number) {
         return db
             .one(
                 `

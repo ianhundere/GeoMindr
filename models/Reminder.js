@@ -59,7 +59,13 @@ class Reminder {
             });
     }
     static getAll() {
-        return db.any(`select * from reminders`);
+        return db.any(`select * from reminders`).then(reminderArray => {
+            const getAllArray = reminderArray.map(reminderObj => {
+                const r = new Reminder(reminderObj.id, reminderObj.reminder);
+                return r;
+            });
+            return getAllArray;
+        });
     }
     // === ===  UPDATE  === === (working)
     updateReminder(reminder) {
