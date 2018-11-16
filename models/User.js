@@ -55,7 +55,7 @@ class User {
         return db
             .one('select * from users where id = $1', [id])
             .then(result => {
-                const u = new User(result.id, result.name);
+                const u = new User(result.id, result.name, result.username);
                 return u;
             });
     }
@@ -71,18 +71,13 @@ class User {
             )
             .then(result => {
                 console.log(result);
-                return new User(
-                    result.id,
-                    result.name,
-                    result.username,
-                    result.password
-                );
+                return new User(result.id, result.name, result.username);
             });
     }
 
     getReminders() {
         return db.any(
-            `select * from reminders
+            `select reminder from reminders
         where user_id = $1`,
             [this.id]
         );
