@@ -42,6 +42,11 @@ class Reminder {
             where id = $1`,
                 [id]
             )
+            .catch(err => {
+                return {
+                    name: 'no reminder found.'
+                };
+            })
             .then(result => {
                 const create = new Reminder(
                     result.id,

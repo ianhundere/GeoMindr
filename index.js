@@ -120,14 +120,12 @@ app.put('/reminders/:id(\\d+)', (req, res) => {
 // ========================================================
 
 // ========================================================
-// Delete Init_Reminder after 5min (not working)
+// Delete Init_Reminder after 5min (working)
 // ========================================================
 
 app.delete('/reminders/:id(\\d+)', (req, res) => {
-    Reminder.getById(req.params.id).then(theReminder => {
-        theReminder.deleteAfterNoResponse(req.params.id).then(delNoReponse => {
-            res.send(delNoReponse);
-        });
+    Init_Reminder.deleteAfterNoResponse(req.params.id, () => {
+        res.send('there was no response.');
     });
 });
 

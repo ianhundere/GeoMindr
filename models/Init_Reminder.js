@@ -9,17 +9,19 @@ class Init_Reminder {
         this.time_stamp = time_stamp;
     }
 
-    // DELETE AFTER 5 MIN
-    static deleteAfterNoResponse(id) {
+    // DELETE AFTER 5 MIN (working)
+    static deleteAfterNoResponse(id, callback) {
         console.log('delete me!!');
         setTimeout(
             () =>
-                db.result(
-                    `delete from init_reminders
+                db
+                    .result(
+                        `delete from init_reminders
                         where id = $1`,
-                    [id]
-                ),
-            10
+                        [id]
+                    )
+                    .then(callback),
+            300000
         );
     }
 }
