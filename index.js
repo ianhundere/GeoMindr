@@ -126,7 +126,13 @@ app.post('/sms', (req, res) => {
         console.log(bod);
         twiml.message({to: `${bod.phone}`}, `${bod.task} GeoMindr for phone # ${bod.phone} at lat/lon ${bod.lat}/${bod.lon}.\nWhat is your GeoMindr?`);
 
-        // TODO: NEED TO INSERT RECORD IN remind_init FOR THIS NEW REQEST
+        // TODO: NEED TO INSERT RECORD IN init_reminders FOR THIS NEW REQEST
+        Init_Reminder.createInit(bod.phone, bod.lat, bod.lon, bod.time_stamp)
+            .then(init_rem => {
+            console.log('INSERTED: ', init_rem);
+            // res.send(reminder);
+            // res.redirect(`/`);
+        });
 
     } else {
         // reply message received with Geomindr body
