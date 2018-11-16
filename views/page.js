@@ -1,4 +1,4 @@
-const tempView  = require('./helper');
+const tempView = require('./helper');
 
 function page() {
     return `

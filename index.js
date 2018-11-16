@@ -13,7 +13,6 @@ const loginForm = require('./views/loginForm');
 const registrationForm = require('./views/registrationForm');
 const db = require('./models/db');
 
-
 // Model Variables
 const User = require('./models/User');
 const Location = require('./models/Location');
@@ -113,20 +112,23 @@ app.put('/reminders/:id(\\d+)', (req, res) => {
 });
 
 app.post('/sms', (req, res) => {
-
     const twiml = new MessagingResponse();
     console.log(req.body.Body);
-  
+
     // check if this is the initial message or a reply message
     if (req.body.Body.startsWith('{"task":"')) {
         // initial message from IFTTT
         // Body will be a JSON obj in a string
-        let bod = JSON.parse(req.body.Body);      // bod is an object of key/val pairs
+        let bod = JSON.parse(req.body.Body); // bod is an object of key/val pairs
         console.log(bod);
-        twiml.message({to: `${bod.phone}`}, `${bod.task} GeoMindr for phone # ${bod.phone} at lat/lon ${bod.lat}/${bod.lon}.\nWhat is your GeoMindr?`);
+        twiml.message(
+            { to: `${bod.phone}` },
+            `${bod.task} GeoMindr for phone # ${bod.phone} at lat/lon ${
+                bod.lat
+            }/${bod.lon}.\nWhat is your GeoMindr?`
+        );
 
         // TODO: NEED TO INSERT RECORD IN remind_init FOR THIS NEW REQEST
-
     } else {
         // reply message received with Geomindr body
         twiml.message(`New GeoMindr recorded: ${req.body.Body}`);
@@ -137,10 +139,10 @@ app.post('/sms', (req, res) => {
         // reply telling user to click the IFTTT button to trigger new request.
     }
 
-  console.log("================");
-  console.log(twiml.toString());
-  res.writeHead(200, {'Content-Type': 'text/xml'});
-  res.end(twiml.toString());
+    console.log('================');
+    console.log(twiml.toString());
+    res.writeHead(200, { 'Content-Type': 'text/xml' });
+    res.end(twiml.toString());
 });
 
 // ========================================================
