@@ -35,8 +35,9 @@ app.get('/', (req, res) => {
 // ========================================================
 app.post('/createreminder', (req, res) => {
     console.log(req.body);
-
-    Location.createLocation(req.body.latitude, req.body.longitude)
+    const newLatitude = req.body.latitude;
+    const newLongitude = req.body.longitude;
+    Location.createLocation(newLatitude, newLongitude)
         .then(result => {
             return { locationID: result };
         })
@@ -157,22 +158,42 @@ app.delete('/locations/:id(\\d+)', (req, res) => {
 // Create User
 // ========================================================
 
+app.post('/register', (req, res) => {
+    console.log(req.body);
+    const newName = req.body.name;
+    const newUsername = req.body.username;
+    /*const newPassword = req.body.password;*/
+    const newPhone = req.body.phone_number;
+    User.createUser(newName, newUsername, /*newPassword,*/ newPhone)
+        .catch(err => {
+            console.log(err);
+            res.redirect('/register');
+        })
+        .then(newUser => {
+            res.send(newUser);
+        });
+});
+
 // ========================================================
 
 // ========================================================
 // Testing Area
 // ========================================================
 
-app.post('/users', (req, res) => {
+app.post('/register', (req, res) => {
     console.log(req.body);
-    User.createUser(
-        req.body.name,
-        req.body.username,
-        req.body.password,
-        req.body.phone_number
-    ).then(result => {
-        return {};
-    });
+    const newName = req.body.name;
+    const newUsername = req.body.username;
+    /*const newPassword = req.body.password;*/
+    const newPhone = req.body.phone_number;
+    User.createUser(newName, newUsername, /*newPassword,*/ newPhone)
+        .catch(err => {
+            console.log(err);
+            res.redirect('/register');
+        })
+        .then(newUser => {
+            res.send(newUser);
+        });
 });
 // ========================================================
 app.listen(3000, () => {
