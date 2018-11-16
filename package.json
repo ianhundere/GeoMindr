@@ -1,5 +1,4 @@
-{
-  "name": "GeoMindr",
+{ "name": "GeoMindr",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -27,6 +26,7 @@
     "body-parser": "^1.18.3",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
-    "pg-promise": "^8.5.2"
+    "pg-promise": "^8.5.2",
+    "twilio": "^3.23.2"
   }
 }
