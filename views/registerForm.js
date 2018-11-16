@@ -8,21 +8,15 @@ function registerForm() {
                 </div>
             </div>
             <div class=placeholder>
-                <label>Email</label>
+                <label>Username</label>
                 <div class='form-row'>
-                    <input  type="text" name="email">
+                    <input  type="text" name="username">
                 </div>
             </div>
             <div class=placeholder>
-                <label>Password</label>
+                <label>Phone Number</label>
                 <div class='form-row'>
-                    <input  type="password" name="password">
-                </div>
-            </div>
-            <div class=placeholder>
-                <label>Re-enter Password</label>
-                <div class='form-row'>
-                    <input  type="password" name="password">
+                    <input  type="text" name="phone_number">
                 </div>
             </div>
             <div class='login'>
@@ -34,6 +28,5 @@ function registerForm() {
         </form>
     `;
 }
-
 
 module.exports = registerForm;
