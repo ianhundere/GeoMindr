@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Views and CSS
+app.use(express.static('public'));
 //const page = require('./views/page');
 //const helper = require('./views/helper');
 const loginForm = require('./views/loginForm');
@@ -21,7 +23,7 @@ const Reminder = require('./models/Reminder');
 
 // Route Variables
 // const createReminders = require('./createReminders');
-// const myReminders = require('./myReminders');
+// const myReminders = require('.pwd/myReminders');
 // const allReminders = require('./allReminders');
 
 app.get('/', (req, res) => {
