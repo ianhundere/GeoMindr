@@ -9,10 +9,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Views and CSS
 app.use(express.static('public'));
-//const page = require('./views/page');
+const page = require('./views/page');
 //const helper = require('./views/helper');
 const loginForm = require('./views/loginForm');
-const registrationForm = require('./views/registrationForm');
+const registerForm = require('./views/registerForm');
 const db = require('./models/db');
 
 // Model Variables
@@ -23,14 +23,23 @@ const Reminder = require('./models/Reminder');
 
 // Route Variables
 // const createReminders = require('./createReminders');
-// const myReminders = require('.pwd/myReminders');
+// const myReminders = require('./myReminders');
 // const allReminders = require('./allReminders');
+
 
 app.get('/', (req, res) => {
     const thePage = page();
     res.send(thePage);
 });
 
+// ========================================================
+// Register 
+// ========================================================
+app.get('/register', (req, res) => {
+    const theForm = registerForm();
+    const thePage = page(theForm);
+    res.send(thePage);
+});
 // ========================================================
 // Create Reminders (working)
 // ========================================================
