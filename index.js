@@ -5,9 +5,12 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
+// Views and CSS
 const page = require('./views/page');
 const loginForm = require('./views/loginForm');
 const registrationForm = require('./views/registrationForm');
+
+app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -21,10 +24,9 @@ const Reminder = require('./models/Reminder');
 
 // Route Variables
 // const createReminders = require('./createReminders');
-// const myReminders = require('./myReminders');
+// const myReminders = require('.pwd/myReminders');
 // const allReminders = require('./allReminders');
 
-const page = require('./views/page');
 
 app.get('/', (req, res) => {
     const thePage = page();
