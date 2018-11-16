@@ -9,19 +9,17 @@ class Reminder {
         this.user_id = user_id;
     }
 
-    // === ===  CREATE  === ===
+    // === ===  CREATE  === === (working)
     static createReminder(reminder, is_public, location_id, user_id) {
-        console.log('!!!!!!!!', user_id);
         return db
             .one(
                 `insert into reminders
             (reminder, is_public,location_id, user_id)
         values
             ($1, $2, $3, $4)
-        returning id`,
+        returning id, reminder, is_public, location_id, user_id`,
                 [reminder, is_public, location_id, user_id]
             )
-            .then()
             .then(result => {
                 const create = new Reminder(
                     result.id,
@@ -34,44 +32,43 @@ class Reminder {
             });
     }
 
-    // NOTE: For createReminder, would a user_id need to be assigned???
-
-    // === ===  RETRIEVE  === ===
+    // === ===  RETRIEVE  === === (working)
     static getById(id) {
         return db
             .one(
                 `select * from reminders
-            where (id) = $1`,
+            where id = $1`,
                 [id]
             )
+            .catch(err => {
+                return {
+                    name: 'no reminder found.'
+                };
+            })
             .then(result => {
-                console.log(result.id);
-                new Reminder(
+                const create = new Reminder(
                     result.id,
                     result.reminder,
                     result.is_public,
                     result.location_id,
-                    result.user_id,
-                    result.remind_init_id
+                    result.user_id
                 );
-                return result.reminder;
+                return create;
             });
     }
     static getAll() {
-        return db.any(`select * from reminders`);
+        return db.any(`select * from reminders`).then(reminderArray => {
+            const getAllArray = reminderArray.map(reminderObj => {
+                const r = new Reminder(reminderObj.id, reminderObj.reminder);
+                return r;
+            });
+            return getAllArray;
+        });
     }
-
-    static getByReminder(reminder) {
-        return db.one(
-            `select * from reminders
-            where reminder ilike '%$1:raw%'`,
-            [reminder]
-        );
-    }
-    // === ===  UPDATE  === ===
+    // === ===  UPDATE  === === (working)
     updateReminder(reminder) {
         return db
-            .results(
+            .result(
                 `update reminders
             set reminder = $2
         where id = $1`,
@@ -82,8 +79,8 @@ class Reminder {
             });
     }
 
-    // === ===  DELETE  === ===
-    static deleteById(id) {
+    // === ===  DELETE  === === (working)
+    deleteById(id) {
         return db.result(
             `delete from reminders
             where id = $1`,

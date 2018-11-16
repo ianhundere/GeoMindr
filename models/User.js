@@ -1,33 +1,38 @@
 const db = require('./db');
 
 class User {
-    constructor(id, name, username, password, phone_number) {
+    constructor(id, name, username, /*password,*/ phone_number) {
         this.id = id;
         this.name = name;
         this.username = username;
-        this.password = password;
+        /*this.password = password;*/
         this.phone_number = phone_number;
     }
 
-    // CREATE
-    static add(name, username, password, phone_number) {
+    // === ===  CREATE  === === (working)
+    static createUser(name, username, phone_number) {
         return db
             .one(
                 `
             insert into users 
-                (name, username, password, phone_number)
+                (name, username, phone_number)
             values 
-                ($1, $2, $3, $4)
-                returning id`,
-                [name, username, password, phone_number]
+                ($1, $2, $3)
+                returning id, name, username, phone_number`,
+                [name, username, phone_number]
             )
             .then(data => {
-                const u = new User(data.id, name, username, phone_number);
+                const u = new User(
+                    data.id,
+                    data.name,
+                    data.username,
+                    data.phone_number
+                );
                 return u;
             });
     }
 
-    // RETRIEVE
+    // RETRIEVE (working)
     static getAll() {
         return db.any(`select * from users`).then(userArray => {
             const instanceArray = userArray.map(userObj => {
@@ -50,7 +55,7 @@ class User {
         return db
             .one('select * from users where id = $1', [id])
             .then(result => {
-                const u = new User(result.id, result.name);
+                const u = new User(result.id, result.name, result.username);
                 return u;
             });
     }
@@ -66,24 +71,19 @@ class User {
             )
             .then(result => {
                 console.log(result);
-                return new User(
-                    result.id,
-                    result.name,
-                    result.username,
-                    result.password
-                );
+                return new User(result.id, result.name, result.username);
             });
     }
 
     getReminders() {
         return db.any(
-            `select * from reminders
+            `select reminder from reminders
         where user_id = $1`,
             [this.id]
         );
     }
 
-    // UPDATE
+    // UPDATE (working)
     updateName(name) {
         this.name = name;
         return db
@@ -98,7 +98,7 @@ class User {
             });
     }
 
-    // DELETE
+    // DELETE (working)
     delete() {
         return db.result(
             `delete from users
