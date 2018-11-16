@@ -6,24 +6,6 @@ function header() {
     `;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = {
     header
 };
