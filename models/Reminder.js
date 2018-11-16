@@ -9,9 +9,8 @@ class Reminder {
         this.user_id = user_id;
     }
 
-    // === ===  CREATE  === ===
+    // === ===  CREATE  === === (working)
     static createReminder(reminder, is_public, location_id, user_id) {
-        console.log('!!!!!!!!', user_id);
         return db
             .one(
                 `insert into reminders
@@ -22,7 +21,6 @@ class Reminder {
                 [reminder, is_public, location_id, user_id]
             )
             .then(result => {
-                console.log(`blah blah ${result}`);
                 const create = new Reminder(
                     result.id,
                     result.reminder,
@@ -36,12 +34,12 @@ class Reminder {
 
     // NOTE: For createReminder, would a user_id need to be assigned???
 
-    // === ===  RETRIEVE  === ===
+    // === ===  RETRIEVE  === === (working)
     static getById(id) {
         return db
             .one(
                 `select * from reminders
-            where (id) = $1`,
+            where id = $1`,
                 [id]
             )
             .then(result => {
@@ -58,7 +56,7 @@ class Reminder {
     static getAll() {
         return db.any(`select * from reminders`);
     }
-    // === ===  UPDATE  === ===
+    // === ===  UPDATE  === === (working)
     updateReminder(reminder) {
         return db
             .result(
@@ -72,7 +70,7 @@ class Reminder {
             });
     }
 
-    // === ===  DELETE  === ===
+    // === ===  DELETE  === === (working)
     deleteById(id) {
         return db.result(
             `delete from reminders

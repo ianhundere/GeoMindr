@@ -72,7 +72,7 @@ app.get('/phone/:phone_number', (req, res) => {
 // ========================================================
 
 // ========================================================
-// View My Reminders (working)
+// View Reminder by ID (working)
 // ========================================================
 app.get('/myreminders/:id([0-9]+)', (req, res) => {
     Reminder.getById(req.params.id).then(remind => {
@@ -95,13 +95,13 @@ app.get('/myreminders/', (req, res) => {
 // Delete Reminder by ID (working)
 // ========================================================
 
-app.delete('/reminders/:id(\\d+)', (req, res) => {
-    Reminder.getById(req.params.id).then(theReminder => {
-        theReminder.deleteById(req.params.id).then(delReminderByID => {
-            res.send(delReminderByID);
-        });
-    });
-});
+// app.delete('/reminders/:id(\\d+)', (req, res) => {
+//     Reminder.getById(req.params.id).then(theReminder => {
+//         theReminder.deleteById(req.params.id).then(delReminderByID => {
+//             res.send(delReminderByID);
+//         });
+//     });
+// });
 
 // ========================================================
 
@@ -120,16 +120,45 @@ app.put('/reminders/:id(\\d+)', (req, res) => {
 // ========================================================
 
 // ========================================================
-// Testing Area
+// Delete Init_Reminder after 5min (not working)
 // ========================================================
 
-app.put('/reminders/:id(\\d+)', (req, res) => {
+app.delete('/reminders/:id(\\d+)', (req, res) => {
     Reminder.getById(req.params.id).then(theReminder => {
-        theReminder.updateReminder(req.body.reminder).then(reminderUpdated => {
-            res.send(reminderUpdated);
+        theReminder.deleteAfterNoResponse(req.params.id).then(delNoReponse => {
+            res.send(delNoReponse);
         });
     });
 });
+
+// ========================================================
+
+// ========================================================
+// View Location by ID (working)
+// ========================================================
+app.get('/locations/:id([0-9]+)', (req, res) => {
+    Location.getById(req.params.id).then(location => {
+        res.send(location);
+    });
+});
+// ========================================================
+
+// ========================================================
+// Delete Location by ID (working)
+// ========================================================
+app.delete('/locations/:id(\\d+)', (req, res) => {
+    Location.getById(req.params.id).then(theLocation => {
+        theLocation.deleteById(req.params.id).then(delLocationByID => {
+            res.send(delLocationByID);
+        });
+    });
+});
+// ========================================================
+
+// ========================================================
+// Testing Area
+// ========================================================
+
 // ========================================================
 app.listen(3000, () => {
     console.log('express app is ready.');

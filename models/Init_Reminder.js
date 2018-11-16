@@ -9,8 +9,9 @@ class Init_Reminder {
         this.time_stamp = time_stamp;
     }
 
-    // DELETE AFTER 2 MIN
+    // DELETE AFTER 5 MIN
     static deleteAfterNoResponse(id) {
+        console.log('delete me!!');
         setTimeout(
             () =>
                 db.result(
@@ -18,7 +19,7 @@ class Init_Reminder {
                         where id = $1`,
                     [id]
                 ),
-            300
+            10
         );
     }
 }

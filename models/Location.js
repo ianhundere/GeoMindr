@@ -7,7 +7,7 @@ class Location {
         this.longitude = longitude;
     }
 
-    // CREATE
+    // CREATE (working)
     static createLocation(latitude, longitude) {
         return db
             .one(
@@ -23,22 +23,26 @@ class Location {
             });
     }
 
-    // RETRIEVE
+    // RETRIEVE (working)
     static getById(id) {
         return db
             .one(
                 `select * from locations
-            where = $1`,
+            where id = $1`,
                 [id]
             )
-            .then(data => {
-                const resultId = new Location(data.id);
-                return resultId;
+            .then(result => {
+                const create = new Location(
+                    result.id,
+                    result.latitude,
+                    result.longitude
+                );
+                return create;
             });
     }
 
-    // DELETE
-    static deleteById(id) {
+    // DELETE (working)
+    deleteById(id) {
         return db.result(
             `delete from locations
             where id = $1`,
