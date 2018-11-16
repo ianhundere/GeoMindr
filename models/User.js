@@ -98,7 +98,7 @@ class User {
             });
     }
 
-    // DELETE
+    // DELETE (working)
     delete() {
         return db.result(
             `delete from users
