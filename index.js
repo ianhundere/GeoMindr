@@ -6,6 +6,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const page = require('./views/page');
+const helper = require('./views/helper');
 const loginForm = require('./views/loginForm');
 const registrationForm = require('./views/registrationForm');
 
@@ -24,8 +25,6 @@ const Reminder = require('./models/Reminder');
 // const myReminders = require('./myReminders');
 // const allReminders = require('./allReminders');
 
-const page = require('./views/page');
-
 app.get('/', (req, res) => {
     const thePage = page();
     res.send(thePage);
@@ -36,29 +35,33 @@ app.get('/', (req, res) => {
 // ========================================================
 app.post('/createreminder', (req, res) => {
     console.log(req.body);
-    
+
     Location.createLocation(req.body.latitude, req.body.longitude)
-    .then(result => {
-        return {locationID : result};
-    })
-    .then(result => {
-        User.getByPhone(req.body.phone_number)
-        .then(r => {
-            result.userID = Number(r);
-            return result;
+        .then(result => {
+            return { locationID: result };
         })
-        .then(reslt => {
-            console.log(reslt);
-            const newReminder = req.body.reminder;
-            console.log(`look here ${reslt.userID}`);
-            Reminder.createReminder(newReminder, true, reslt.locationID, reslt.userID)
-            .then(reminder => {
-                // console.log(reminder);
-                // res.send(reminder);
-                res.redirect(`/`);
-            });
-        })
-    });
+        .then(result => {
+            User.getByPhone(req.body.phone_number)
+                .then(r => {
+                    result.userID = Number(r);
+                    return result;
+                })
+                .then(reslt => {
+                    console.log(reslt);
+                    const newReminder = req.body.reminder;
+                    console.log(`look here ${reslt.userID}`);
+                    Reminder.createReminder(
+                        newReminder,
+                        true,
+                        reslt.locationID,
+                        reslt.userID
+                    ).then(reminder => {
+                        // console.log(reminder);
+                        // res.send(reminder);
+                        res.redirect(`/`);
+                    });
+                });
+        });
 });
 
 app.get('/phone/:phone_number', (req, res) => {
@@ -89,7 +92,7 @@ app.get('/myreminders/', (req, res) => {
 // ========================================================
 
 // ========================================================
-// Delete Reminder by ID
+// Delete Reminder by ID (working)
 // ========================================================
 
 app.delete('/reminders/:id(\\d+)', (req, res) => {
@@ -103,12 +106,26 @@ app.delete('/reminders/:id(\\d+)', (req, res) => {
 // ========================================================
 
 // ========================================================
+// Update Reminder by ID (working)
+// ========================================================
+
+app.put('/reminders/:id(\\d+)', (req, res) => {
+    Reminder.getById(req.params.id).then(theReminder => {
+        theReminder.updateReminder(req.body.reminder).then(reminderUpdated => {
+            res.send(reminderUpdated);
+        });
+    });
+});
+
+// ========================================================
+
+// ========================================================
 // Testing Area
 // ========================================================
 
 app.put('/reminders/:id(\\d+)', (req, res) => {
     Reminder.getById(req.params.id).then(theReminder => {
-        theReminder.updateReminder().then(reminderUpdated => {
+        theReminder.updateReminder(req.body.reminder).then(reminderUpdated => {
             res.send(reminderUpdated);
         });
     });
@@ -117,4 +134,3 @@ app.put('/reminders/:id(\\d+)', (req, res) => {
 app.listen(3000, () => {
     console.log('express app is ready.');
 });
-

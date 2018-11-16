@@ -37,8 +37,6 @@ class Location {
             });
     }
 
-    // UPDATE
-
     // DELETE
     static deleteById(id) {
         return db.result(

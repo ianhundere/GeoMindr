@@ -58,18 +58,10 @@ class Reminder {
     static getAll() {
         return db.any(`select * from reminders`);
     }
-
-    static getByReminder(reminder) {
-        return db.one(
-            `select * from reminders
-            where reminder ilike '%$1:raw%'`,
-            [reminder]
-        );
-    }
     // === ===  UPDATE  === ===
     updateReminder(reminder) {
         return db
-            .results(
+            .result(
                 `update reminders
             set reminder = $2
         where id = $1`,
