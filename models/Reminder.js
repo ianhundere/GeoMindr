@@ -9,9 +9,8 @@ class Reminder {
         this.user_id = user_id;
     }
 
-    // === ===  CREATE  === ===
+    // === ===  CREATE  === === (working)
     static createReminder(reminder, is_public, location_id, user_id) {
-        console.log('!!!!!!!!', user_id);
         return db
             .one(
                 `insert into reminders
@@ -22,7 +21,6 @@ class Reminder {
                 [reminder, is_public, location_id, user_id]
             )
             .then(result => {
-                console.log(`blah blah ${result}`);
                 const create = new Reminder(
                     result.id,
                     result.reminder,
@@ -34,16 +32,19 @@ class Reminder {
             });
     }
 
-    // NOTE: For createReminder, would a user_id need to be assigned???
-
-    // === ===  RETRIEVE  === ===
+    // === ===  RETRIEVE  === === (working)
     static getById(id) {
         return db
             .one(
                 `select * from reminders
-            where (id) = $1`,
+            where id = $1`,
                 [id]
             )
+            .catch(err => {
+                return {
+                    name: 'no reminder found.'
+                };
+            })
             .then(result => {
                 const create = new Reminder(
                     result.id,
@@ -56,20 +57,18 @@ class Reminder {
             });
     }
     static getAll() {
-        return db.any(`select * from reminders`);
+        return db.any(`select * from reminders`).then(reminderArray => {
+            const getAllArray = reminderArray.map(reminderObj => {
+                const r = new Reminder(reminderObj.id, reminderObj.reminder);
+                return r;
+            });
+            return getAllArray;
+        });
     }
-
-    static getByReminder(reminder) {
-        return db.one(
-            `select * from reminders
-            where reminder ilike '%$1:raw%'`,
-            [reminder]
-        );
-    }
-    // === ===  UPDATE  === ===
+    // === ===  UPDATE  === === (working)
     updateReminder(reminder) {
         return db
-            .results(
+            .result(
                 `update reminders
             set reminder = $2
         where id = $1`,
@@ -80,7 +79,7 @@ class Reminder {
             });
     }
 
-    // === ===  DELETE  === ===
+    // === ===  DELETE  === === (working)
     deleteById(id) {
         return db.result(
             `delete from reminders
