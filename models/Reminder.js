@@ -32,8 +32,6 @@ class Reminder {
             });
     }
 
-    // NOTE: For createReminder, would a user_id need to be assigned???
-
     // === ===  RETRIEVE  === === (working)
     static getById(id) {
         return db
