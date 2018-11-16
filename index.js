@@ -219,7 +219,7 @@ app.get('/users/:username', (req, res) => {
 // ========================================================
 
 // ========================================================
-// Get User's Reminders
+// Get User's Reminders (working)
 // ========================================================
 app.get('/users/reminders/:id(\\d+)', (req, res) => {
     User.getById(req.params.id).then(userReminders => {
@@ -233,6 +233,14 @@ app.get('/users/reminders/:id(\\d+)', (req, res) => {
 // ========================================================
 // Update User's Name
 // ========================================================
+
+app.put('/users/:id(\\d+)', (req, res) => {
+    User.getById(req.params.id).then(theUser => {
+        theUser.updateName(req.body.name).then(nameUpdated => {
+            res.send(nameUpdated);
+        });
+    });
+});
 
 // ========================================================
 

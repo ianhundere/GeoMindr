@@ -32,7 +32,7 @@ class User {
             });
     }
 
-    // RETRIEVE
+    // RETRIEVE (working)
     static getAll() {
         return db.any(`select * from users`).then(userArray => {
             const instanceArray = userArray.map(userObj => {
@@ -83,7 +83,7 @@ class User {
         );
     }
 
-    // UPDATE
+    // UPDATE (working)
     updateName(name) {
         this.name = name;
         return db
