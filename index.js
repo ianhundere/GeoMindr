@@ -13,9 +13,10 @@ const page = require('./views/page');
 //const helper = require('./views/helper');
 const loginForm = require('./views/loginForm');
 const registerForm = require('./views/registerForm');
-const db = require('./models/db');
+const homePage = require('./views/home');
 
 // Model Variables
+const db = require('./models/db');
 const User = require('./models/User');
 const Location = require('./models/Location');
 const Init_Reminder = require('./models/Init_Reminder');
@@ -26,20 +27,34 @@ const Reminder = require('./models/Reminder');
 // const myReminders = require('./myReminders');
 // const allReminders = require('./allReminders');
 
-
 app.get('/', (req, res) => {
     const thePage = page();
     res.send(thePage);
 });
 
 // ========================================================
-// Register 
+// Register
 // ========================================================
 app.get('/register', (req, res) => {
     const theForm = registerForm();
     const thePage = page(theForm);
     res.send(thePage);
 });
+
+app.post('/register', (req, res) => {
+    const newName = req.body.name;
+    const newUsername = req.body.username;
+    const newPhone = req.body.phone_number;
+
+    User.createUser(newName, newUsername, newPhone).then(newUser => {
+        res.redirect('/home');
+    });
+});
+
+app.get('/home', (req, res) => {
+    res.send(page(homePage));
+});
+
 // ========================================================
 // Create Reminders (working)
 // ========================================================
@@ -123,20 +138,23 @@ app.put('/reminders/:id(\\d+)', (req, res) => {
 });
 
 app.post('/sms', (req, res) => {
-
     const twiml = new MessagingResponse();
     console.log(req.body.Body);
-  
+
     // check if this is the initial message or a reply message
     if (req.body.Body.startsWith('{"task":"')) {
         // initial message from IFTTT
         // Body will be a JSON obj in a string
-        let bod = JSON.parse(req.body.Body);      // bod is an object of key/val pairs
+        let bod = JSON.parse(req.body.Body); // bod is an object of key/val pairs
         console.log(bod);
-        twiml.message({to: `${bod.phone}`}, `${bod.task} GeoMindr for phone # ${bod.phone} at lat/lon ${bod.lat}/${bod.lon}.\nWhat is your GeoMindr?`);
+        twiml.message(
+            { to: `${bod.phone}` },
+            `${bod.task} GeoMindr for phone # ${bod.phone} at lat/lon ${
+                bod.lat
+            }/${bod.lon}.\nWhat is your GeoMindr?`
+        );
 
         // TODO: NEED TO INSERT RECORD IN remind_init FOR THIS NEW REQEST
-
     } else {
         // reply message received with Geomindr body
         twiml.message(`New GeoMindr recorded: ${req.body.Body}`);
@@ -147,10 +165,10 @@ app.post('/sms', (req, res) => {
         // reply telling user to click the IFTTT button to trigger new request.
     }
 
-  console.log("================");
-  console.log(twiml.toString());
-  res.writeHead(200, {'Content-Type': 'text/xml'});
-  res.end(twiml.toString());
+    console.log('================');
+    console.log(twiml.toString());
+    res.writeHead(200, { 'Content-Type': 'text/xml' });
+    res.end(twiml.toString());
 });
 
 // ========================================================

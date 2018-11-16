@@ -1,4 +1,4 @@
-const {header}  = require('./helper');
+const { header } = require('./helper');
 
 function page(content) {
     return `
