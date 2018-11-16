@@ -155,7 +155,7 @@ app.delete('/locations/:id(\\d+)', (req, res) => {
 // ========================================================
 
 // ========================================================
-// Create User
+// Create User (working)
 // ========================================================
 
 app.post('/register', (req, res) => {
@@ -172,6 +172,18 @@ app.post('/register', (req, res) => {
         .then(newUser => {
             res.send(newUser);
         });
+});
+
+// ========================================================
+
+// ========================================================
+// Get All Users (working)
+// ========================================================
+
+app.get('/users', (req, res) => {
+    User.getAll().then(allUsers => {
+        res.send(allUsers);
+    });
 });
 
 // ========================================================
@@ -180,21 +192,6 @@ app.post('/register', (req, res) => {
 // Testing Area
 // ========================================================
 
-app.post('/register', (req, res) => {
-    console.log(req.body);
-    const newName = req.body.name;
-    const newUsername = req.body.username;
-    /*const newPassword = req.body.password;*/
-    const newPhone = req.body.phone_number;
-    User.createUser(newName, newUsername, /*newPassword,*/ newPhone)
-        .catch(err => {
-            console.log(err);
-            res.redirect('/register');
-        })
-        .then(newUser => {
-            res.send(newUser);
-        });
-});
 // ========================================================
 app.listen(3000, () => {
     console.log('express app is ready.');

@@ -9,7 +9,7 @@ class User {
         this.phone_number = phone_number;
     }
 
-    // CREATE
+    // === ===  CREATE  === === (working)
     static createUser(name, username, phone_number) {
         return db
             .one(
