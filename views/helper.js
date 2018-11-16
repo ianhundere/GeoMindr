@@ -1,7 +1,7 @@
 function header() {
     return `
         <header>
-            <h1>GeoMindr</h1>
+            <h1>Geo Mindr</h1>
         </header>
     `;
 }
@@ -24,4 +24,8 @@ function header() {
 
 
 
-// // module.exports = helper;
+module.exports = {
+    header
+};
+
+// module.exports = helper;
