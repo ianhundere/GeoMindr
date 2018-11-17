@@ -4,28 +4,57 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// const session = require('express-session');
+// const pgSession = require('connect-pg-simple')(session);
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
+const db = require('./models/db');
+
+// app.use(
+//     session({
+//         store: new pgSession({
+//             pgPromise: db
+//         }),
+//         secret: 'bingbong0987654321234567890',
+//         saveUninitialized: false,
+//         cookie: {
+//             maxAge: 30 * 24 * 60 * 60 * 1000
+//         }
+//     })
+// );
 
 // Views and CSS
 app.use(express.static('public'));
 const page = require('./views/page');
-//const helper = require('./views/helper');
+const helper = require('./views/helper');
 const loginForm = require('./views/loginForm');
 const registerForm = require('./views/registerForm');
 const homePage = require('./views/home');
+const addReminder = require('./views/addReminder');
 
 // Model Variables
-const db = require('./models/db');
 const User = require('./models/User');
 const Location = require('./models/Location');
 const Init_Reminder = require('./models/Init_Reminder');
 const Reminder = require('./models/Reminder');
 
-// Route Variables
-// const createReminders = require('./createReminders');
-// const myReminders = require('./myReminders');
-// const allReminders = require('./allReminders');
+// function protectRoute(req, res, next) {
+//     let isLoggedIn = req.session.user ? true : false;
+//     if (isLoggedIn) {
+//         next();
+//     } else {
+//         res.redirect('/login');
+//     }
+// }
+
+// app.use((req, res, next) => {
+//     let isLoggedIn = req.session.user ? true : false;
+//     console.log(req.session.user);
+//     console.log(`On ${req.path}, is a user logged in? ${isLoggedIn}`);
+
+//     next();
+// });
 
 app.get('/', (req, res) => {
     const thePage = page();
@@ -53,9 +82,7 @@ app.post('/register', (req, res) => {
             res.redirect('/register');
         })
         .then(newUser => {
-            res.send(newUser => {
-                res.redirect('/home');
-            });
+            res.redirect('/home');
         });
 });
 
@@ -96,6 +123,10 @@ app.post('/createreminder', (req, res) => {
                     });
                 });
         });
+});
+
+app.get('/createreminder', (req, res) => {
+    res.send(page(addReminder));
 });
 // ========================================================
 
@@ -279,21 +310,21 @@ app.delete('/locations/:id(\\d+)', (req, res) => {
 // Create User (working)
 // ========================================================
 
-app.post('/register', (req, res) => {
-    console.log(req.body);
-    const newName = req.body.name;
-    const newUsername = req.body.username;
-    /*const newPassword = req.body.password;*/
-    const newPhone = req.body.phone_number;
-    User.createUser(newName, newUsername, /*newPassword,*/ newPhone)
-        .catch(err => {
-            console.log(err);
-            res.redirect('/register');
-        })
-        .then(newUser => {
-            res.send(newUser);
-        });
-});
+// app.post('/register', (req, res) => {
+//     console.log(req.body);
+//     const newName = req.body.name;
+//     const newUsername = req.body.username;
+//     /*const newPassword = req.body.password;*/
+//     const newPhone = req.body.phone_number;
+//     User.createUser(newName, newUsername, /*newPassword,*/ newPhone)
+//         .catch(err => {
+//             console.log(err);
+//             res.redirect('/register');
+//         })
+//         .then(newUser => {
+//             res.send(newUser);
+//         });
+// });
 
 // ========================================================
 

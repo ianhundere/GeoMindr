@@ -20,7 +20,7 @@ function registerForm() {
                 </div>
             </div>
             <div class='login'>
-                <input type="submit" value="Create your GeoMindr account">
+                <button>Create your GeoMindr account</button>
             </div>
             <div class='member'>
                 <a class='accnt' href="#"><p>Already have an account? SignIn</p></a>

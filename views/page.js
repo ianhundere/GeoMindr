@@ -19,8 +19,8 @@ function page(content) {
         <div class='mainContainer'>
             <div class='headerTitle'>
                 ${header()}
-                ${content}
             </div>
+            ${content}
         </div>
     </div>
 </body>

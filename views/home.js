@@ -9,7 +9,7 @@ function home() {
             <div class="mainBody">
                 <section class='body'>
                     <div class=body-row>
-                        <a href="#"><h2><i class="fas fa-plus"></i> Add Reminder</h2></a>
+                        <a href="/createreminder"><h2><i class="fas fa-plus"></i> Add Reminder</h2></a>
                     </div>
                     <div class=body-row>
                         <a href="#"><h2><i class="fas fa-folder-open"></i> Open Reminders</h2></a>

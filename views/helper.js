@@ -9,5 +9,3 @@ function header() {
 module.exports = {
     header
 };
-
-// module.exports = helper;
