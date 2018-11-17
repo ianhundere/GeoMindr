@@ -91,6 +91,17 @@ app.get('/home', (req, res) => {
     const thePage = page(theHome);
     res.send(thePage);
 });
+// ========================================================
+// Create Reminders (working)
+// ========================================================
+
+app.get('/login', (req, res) => {
+    // Send them the login form
+    const theLogin = loginForm();
+    const thePage = page(theLogin);
+    res.send(thePage);
+});
+// ========================================================
 
 // ========================================================
 // Create Reminders (working)
