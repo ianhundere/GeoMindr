@@ -60,6 +60,9 @@ class Init_Reminder {
                     result.time_stamp
                 );
                 return create;
+            })
+            .catch(err => {
+                return {id: "not initiated"};
             });
     }
 
