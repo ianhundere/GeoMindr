@@ -53,10 +53,9 @@ app.post('/register', (req, res) => {
             res.redirect('/register');
         })
         .then(newUser => {
-            res.send(newUser => {
-                res.redirect('/home');
-            });
+            res.redirect('/home');
         });
+});
 });
 
 app.get('/home', (req, res) => {
