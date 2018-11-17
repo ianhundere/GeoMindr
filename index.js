@@ -9,13 +9,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Views and CSS
 app.use(express.static('public'));
-//const page = require('./views/page');
+const page = require('./views/page');
 //const helper = require('./views/helper');
 const loginForm = require('./views/loginForm');
-const registrationForm = require('./views/registrationForm');
-const db = require('./models/db');
+const registerForm = require('./views/registerForm');
+const homePage = require('./views/home');
 
 // Model Variables
+const db = require('./models/db');
 const User = require('./models/User');
 const Location = require('./models/Location');
 const Init_Reminder = require('./models/Init_Reminder');
@@ -23,12 +24,35 @@ const Reminder = require('./models/Reminder');
 
 // Route Variables
 // const createReminders = require('./createReminders');
-// const myReminders = require('.pwd/myReminders');
+// const myReminders = require('./myReminders');
 // const allReminders = require('./allReminders');
 
 app.get('/', (req, res) => {
     const thePage = page();
     res.send(thePage);
+});
+
+// ========================================================
+// Register
+// ========================================================
+app.get('/register', (req, res) => {
+    const theForm = registerForm();
+    const thePage = page(theForm);
+    res.send(thePage);
+});
+
+app.post('/register', (req, res) => {
+    const newName = req.body.name;
+    const newUsername = req.body.username;
+    const newPhone = req.body.phone_number;
+
+    User.createUser(newName, newUsername, newPhone).then(newUser => {
+        res.redirect('/home');
+    });
+});
+
+app.get('/home', (req, res) => {
+    res.send(page(homePage));
 });
 
 // ========================================================
@@ -115,12 +139,22 @@ app.put('/reminders/:id(\\d+)', (req, res) => {
 
 app.post('/sms', (req, res) => {
     const twiml = new MessagingResponse();
+<<<<<<< HEAD
     console.log(req.body.Body);
 
     // check if this is the initial message or a reply message
     if (req.body.Body.startsWith('{"task":"')) {
         // initial message from IFTTT
         // Body will be a JSON obj in a string
+=======
+
+    console.log("===body.BODY=== :", req.body.Body);
+  
+    // check if this is the initial message or a reply message
+    if (req.body.Body.startsWith('{"task":"')) {
+        // initial message from IFTTT
+        // Body will be a JSON obj in a string, so need to parse it
+>>>>>>> 3237077a8bd6b7b9fe0a0d0332f48068bd6ec326
         let bod = JSON.parse(req.body.Body); // bod is an object of key/val pairs
         console.log(bod);
         twiml.message(
@@ -129,6 +163,7 @@ app.post('/sms', (req, res) => {
                 bod.lat
             }/${bod.lon}.\nWhat is your GeoMindr?`
         );
+<<<<<<< HEAD
 
         // TODO: NEED TO INSERT RECORD IN remind_init FOR THIS NEW REQEST
     } else {
@@ -145,6 +180,71 @@ app.post('/sms', (req, res) => {
     console.log(twiml.toString());
     res.writeHead(200, { 'Content-Type': 'text/xml' });
     res.end(twiml.toString());
+=======
+        // TODO: CHECK IF THE PHONE NUMBER ALREADY EXISTS IN init_reminders. IF IT DOES
+        // THEN DELETE IT BEFORE PROCEEDING (MAY NEED TO RESET ITS TIMEOUT ALSO) SINCE NO
+        // PHONE SHOULD HAVE MULTIPLE INITIATED REMINDERS
+
+        // insert the new request in init_reminders while awaiting the reminder text
+        Init_Reminder.createInit(bod.phone, bod.lat, bod.lon, bod.time_stamp)
+            .then(init_rem => {
+                //console.log('INSERTED: ', init_rem);
+                console.log("=======TWIML=========");
+                console.log(twiml.toString());
+                res.writeHead(200, {'Content-Type': 'text/xml'});
+                res.end(twiml.toString());
+
+                // TODO: CALL deleteAfterNoResponse() TO SET AN EXPIRATION TIMER
+            });
+
+    } else {
+        // This is a reply message.
+        // Search for the phone number in init_reminders.
+        // If it exists, then append the geomindr text to that info and insert in reminders table.
+        // If it doesn't exist, then reply telling user to click the IFTTT button to trigger new request.
+        const phone = req.body.From.replace('+1', '');      //need to correct this to handle intl phones
+        Init_Reminder.getByPhone(phone)
+            .then(result => {
+                // check if phone number was not found
+                if (result.id === "not initiated") {
+                    // IFTTT button wasn't pressed or it timed out
+                    twiml.message(`Request expired or does not exist - Please tap the IFTTT Button to restart`);
+                    res.writeHead(200, {'Content-Type': 'text/xml'});
+                    res.end(twiml.toString());
+                    
+                } else {
+                    //phone exists in init_reminders, so insert the new Geomindr into the reminders table
+                    Location.createLocation(result.lat, result.lon)
+                        .then(a => {
+                            return { locationID: a };
+                        })
+                        .then(b => {
+                            User.getByPhone(phone)
+                                .then(c => {
+                                    b.userID = Number(c);
+                                    return b;
+                                })
+                                .then(d => {
+                                    //console.log(d);
+                                    const newReminder = req.body.Body;
+                                    Reminder.createReminder(
+                                        newReminder,
+                                        true,
+                                        d.locationID,
+                                        d.userID
+                                    ).then(geomindr => {
+                                        console.log("+++GEOMINDR+++: ", geomindr.reminder);
+                                        // reply message received with Geomindr body
+                                        twiml.message(`New GeoMindr recorded: ${geomindr.reminder}`);
+                                        res.writeHead(200, {'Content-Type': 'text/xml'});
+                                        res.end(twiml.toString());
+                                    });
+                                });
+                        });
+                }
+            });
+    } 
+>>>>>>> 3237077a8bd6b7b9fe0a0d0332f48068bd6ec326
 });
 
 // ========================================================
