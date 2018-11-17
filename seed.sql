@@ -6,15 +6,15 @@ insert into users
 
 values
 
-    ('holly hunter', 'hhunter', '323-555-5555'
+    ('holly hunter', 'hhunter', '3235555555'
 ),
-    ('benjamin button', 'bbutton', '229-555-5555'
+    ('benjamin button', 'bbutton', '2295555555'
 ),
-    ('john travolta', 'jtravolta', '999-555-5555'
+    ('john travolta', 'jtravolta', '9995555555'
 ),
-    ('cindy crawford', 'ccrawford', '333-555-5555'
+    ('cindy crawford', 'ccrawford', '3335555555'
 ),
-    ('leonard nimoy', 'lnimoy', '111-555-5555'
+    ('leonard nimoy', 'lnimoy', '1115555555'
 );
 
 insert into locations
