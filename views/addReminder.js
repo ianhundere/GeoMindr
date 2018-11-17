@@ -1,7 +1,7 @@
 function addReminder() {
-    `
+    return `
     <div class="formTitle"><h1>Create a Reminder</h1></div>
-        <form class="form" action="/createreminder" method="POST">
+        <form class="form" action="/create" method="POST">
             <div class="placeholder">
                 <label>Reminder</label>
                 <div class="form-row">

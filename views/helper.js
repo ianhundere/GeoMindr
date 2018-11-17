@@ -6,6 +6,15 @@ function header() {
     `;
 }
 
+function footer() {
+    return `
+    <footer>
+        <p>&copy; 2000 GeoMindr</p>
+    </footer>
+    `;
+}
+
 module.exports = {
-    header
+    header,
+    footer
 };

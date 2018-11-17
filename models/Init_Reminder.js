@@ -50,7 +50,9 @@ class Init_Reminder {
 
     static getByPhone(phone_number) {
         return db
-            .one('select * from init_reminders where phone = $1', [phone_number])
+            .one('select * from init_reminders where phone = $1', [
+                phone_number
+            ])
             .then(result => {
                 const create = new Init_Reminder(
                     result.id,
@@ -62,10 +64,9 @@ class Init_Reminder {
                 return create;
             })
             .catch(err => {
-                return {id: "not initiated"};
+                return { id: 'not initiated' };
             });
     }
-
 }
 
 module.exports = Init_Reminder;

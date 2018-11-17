@@ -87,7 +87,9 @@ app.post('/register', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-    res.send(page(homePage));
+    const theHome = homePage();
+    const thePage = page(theHome);
+    res.send(thePage);
 });
 
 // ========================================================
@@ -125,8 +127,8 @@ app.post('/createreminder', (req, res) => {
         });
 });
 
-app.get('/createreminder', (req, res) => {
-    res.send(page(addReminder));
+app.get('/create', (req, res) => {
+    res.send(page(addReminder()));
 });
 // ========================================================
 
