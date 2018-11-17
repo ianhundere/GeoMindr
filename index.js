@@ -9,13 +9,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Views and CSS
 app.use(express.static('public'));
-//const page = require('./views/page');
+const page = require('./views/page');
 //const helper = require('./views/helper');
 const loginForm = require('./views/loginForm');
-const registrationForm = require('./views/registrationForm');
-const db = require('./models/db');
+const registerForm = require('./views/registerForm');
+const homePage = require('./views/home');
 
 // Model Variables
+const db = require('./models/db');
 const User = require('./models/User');
 const Location = require('./models/Location');
 const Init_Reminder = require('./models/Init_Reminder');
@@ -23,12 +24,35 @@ const Reminder = require('./models/Reminder');
 
 // Route Variables
 // const createReminders = require('./createReminders');
-// const myReminders = require('.pwd/myReminders');
+// const myReminders = require('./myReminders');
 // const allReminders = require('./allReminders');
 
 app.get('/', (req, res) => {
     const thePage = page();
     res.send(thePage);
+});
+
+// ========================================================
+// Register
+// ========================================================
+app.get('/register', (req, res) => {
+    const theForm = registerForm();
+    const thePage = page(theForm);
+    res.send(thePage);
+});
+
+app.post('/register', (req, res) => {
+    const newName = req.body.name;
+    const newUsername = req.body.username;
+    const newPhone = req.body.phone_number;
+
+    User.createUser(newName, newUsername, newPhone).then(newUser => {
+        res.redirect('/home');
+    });
+});
+
+app.get('/home', (req, res) => {
+    res.send(page(homePage));
 });
 
 // ========================================================
@@ -114,18 +138,22 @@ app.put('/reminders/:id(\\d+)', (req, res) => {
 });
 
 app.post('/sms', (req, res) => {
-
     const twiml = new MessagingResponse();
+
     console.log("===body.BODY=== :", req.body.Body);
   
     // check if this is the initial message or a reply message
     if (req.body.Body.startsWith('{"task":"')) {
         // initial message from IFTTT
         // Body will be a JSON obj in a string
-        let bod = JSON.parse(req.body.Body);      // bod is an object of key/val pairs
+        let bod = JSON.parse(req.body.Body); // bod is an object of key/val pairs
         console.log(bod);
-        twiml.message({to: `${bod.phone}`}, `${bod.task} GeoMindr for phone # ${bod.phone} at lat/lon ${bod.lat}/${bod.lon}.\nWhat is your GeoMindr?`);
-
+        twiml.message(
+            { to: `${bod.phone}` },
+            `${bod.task} GeoMindr for phone # ${bod.phone} at lat/lon ${
+                bod.lat
+            }/${bod.lon}.\nWhat is your GeoMindr?`
+        );
         // TODO: CHECK IF THE PHONE NUMBER ALREADY EXISTS IN init_reminders. IF IT DOES
         // THEN DELETE IT BEFORE PROCEEDING (MAY NEED TO RESET ITS TIMEOUT ALSO) SINCE NO
         // PHONE SHOULD HAVE MULTIPLE INITIATED REMINDERS
@@ -142,6 +170,13 @@ app.post('/sms', (req, res) => {
 
                 // TODO: CALL deleteAfterNoResponse() TO SET AN EXPIRATION TIMER
             });
+         // ==================================================================
+        // TODO: NEED TO INSERT RECORD IN remind_init FOR THIS NEW REQEST === 
+       // conflict not sure about removing, commenting out for now
+    //} else {
+        // reply message received with Geomindr body
+        //twiml.message(`New GeoMindr recorded: ${req.body.Body}`);
+      // ==================================================================
 
     } else {
         // TODO: SEARCH FOR PHONE NUMBER IN remind_init
@@ -181,8 +216,7 @@ app.post('/sms', (req, res) => {
                             });
                     });
             });
-    }
-    
+    } 
 //   console.log("================");
 //   console.log(twiml.toString());
 //   res.writeHead(200, {'Content-Type': 'text/xml'});
