@@ -12,12 +12,19 @@
 <body>
     <!-- ===== HOME PAGE ===== -->
     <div class='main'>
-        <div class='mainContainer'>
-            <div class='mainTitle'>
+        <div class='nav'>
+            <div class='logoTitle'>
                 <div class='title'>
                     <h1>Geo Mindr</h1>
                 </div>
             </div>
+            <div class='navIcons'>
+                <div class='icons'>
+                    <a href="#"><i class="fas fa-sign-out-alt"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class='mainContainer'>
             <div class="mainBody">
                 <section class='body'>
                     <div class=body-row>
@@ -84,52 +91,78 @@
 
     <div class='divider'></div>
 
-
     <!--  ===== =====  SIGN-IN  ===== ===== -->
     <div class='loginMain'>
-            <div class='loginContainer'>
-                <div class='logTitle'>
-                    <h2>Geo Mindr</h2>
+        <div class='loginContainer'>
+            <div class='logTitle'>
+                <h2>Geo Mindr</h2>
+            </div>
+            <div class='logForm'>
+                <div class=formTitle>
+                    <h1>Sign in</h1>
                 </div>
-                <div class='logForm'>
-                    <div class=formTitle>
-                        <h1>Sign in</h1>
-                    </div>
-                    <form class='form' action="/login" method="POST">
-                        <!-- <div class=placeholder>
-                            <label>Name</label> 
-                            <div class='form-row'>
-                                <input  type="text" name="name">
-                            </div>
-                        </div> -->
-                        <div class=placeholder>
-                            <label>Email</label>
-                            <div class='form-row'>
-                                <input  type="text" name="email">
-                            </div>
+                <form class='form' action="/login" method="POST">
+                    <!-- <div class=placeholder>
+                        <label>Name</label> 
+                        <div class='form-row'>
+                            <input  type="text" name="name">
                         </div>
-                        <div class=placeholder>
-                            <label>Password</label>
+                    </div> -->
+                    <div class=placeholder>
+                        <label>Email</label>
+                        <div class='form-row'>
+                            <input  type="text" name="email">
+                        </div>
+                    </div>
+                    <div class=placeholder>
+                        <label>Password</label>
+                        <div class='form-row'>
+                            <input  type="password" name="password">
+                        </div>
+                    </div>
+                    <!-- <div class=placeholder>
+                            <label>Re-enter Password</label>
                             <div class='form-row'>
                                 <input  type="password" name="password">
                             </div>
+                        </div> -->
+                    <div class='login'>
+                        <input type="submit" value="Sign in">
+                    </div>
+                    <div class='member'>
+                    <a class='accnt' href="#"><p>Create an account</p></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class='divider'></div>
+
+    <!-- ===== =====  REMINDERS-PAGE  ===== ===== -->
+    <div class='remindMain'>
+        <div class='remindContainer'>
+            <div class='remindTitle'>
+                <h1>My Reminders</h1>
+            </div>
+            <div class='columnContainer'>
+                <div class='columnLeft'>
+                    <div class='left'>
+                        <div class='menuColumn'>
                         </div>
-                        <!-- <div class=placeholder>
-                                <label>Re-enter Password</label>
-                                <div class='form-row'>
-                                    <input  type="password" name="password">
-                                </div>
-                            </div> -->
-                        <div class='login'>
-                            <input type="submit" value="Sign in">
-                        </div>
-                        <div class='member'>
-                        <a class='accnt' href="#"><p>Create an account</p></a>
-                        </div>
-                    </form>
+                    </div>
+                </div>
+                <div class='columnRight'>
+                    <div class='tabContainer'>
+                        <div></div>
+                        <!-- Will have to see how to populate these 
+                            tabs for reminders. Or perhaps set a container
+                            and have the tabs set as bullet points. -->
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
 </body>
 </html>
