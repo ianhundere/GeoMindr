@@ -105,7 +105,7 @@ app.get('/home', protectRoute, (req, res) => {
 // ========================================================
 
 app.get('/login', (req, res) => {
-    // Send them the login form
+    // Send login form
     const theLogin = loginForm();
     const thePage = page(theLogin);
     res.send(thePage);
@@ -126,7 +126,6 @@ app.post('/login/', (req, res) => {
             } else {
                 res.redirect('/login');
             }
-            res.redirect('/home');
         });
 });
 // ========================================================

@@ -26,12 +26,7 @@ class User {
                 [name, username, hash, phone_number]
             )
             .then(data => {
-                const u = new User(
-                    data.id,
-                    data.name,
-                    data.username,
-                    data.phone_number
-                );
+                const u = new User(data.id, name, username, phone_number);
                 return u;
             });
     }
@@ -75,7 +70,12 @@ class User {
             )
             .then(result => {
                 console.log(result);
-                return new User(result.id, result.name, result.username);
+                return new User(
+                    result.id,
+                    result.name,
+                    result.username,
+                    result.pwhash
+                );
             });
     }
 

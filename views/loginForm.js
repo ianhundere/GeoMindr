@@ -19,11 +19,7 @@ function loginForm() {
                                 </label>
                             </div>
                         </div>
-                        <div class="login">
                             <button>Sign in<button/>
-                        </div>
-                        <div class="member">
-                        </div>
                     </form>
                 </div>
                 <div class='member'>
