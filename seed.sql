@@ -2,19 +2,19 @@
 
 insert into users
 
-    (name, username, /*password*/ phone_number)
+    (name, username, pwhash, phone_number)
 
 values
 
-    ('holly hunter', 'hhunter', '3235555555'
+    ('holly hunter', 'hhunter', 'G2LziGNPj043WGSPOizsPOZZeNDyA8h5aeKYcAqCq04OeanhC1TbG', '3235555555'
 ),
-    ('benjamin button', 'bbutton', '2295555555'
+    ('benjamin button', 'bbutton', 'G2LziGNPj043WGSPOizsPOZZeNDyA8h5aeKYcAqCq04OeanhC1TbG', '2295555555'
 ),
-    ('john travolta', 'jtravolta', '9995555555'
+    ('john travolta', 'jtravolta', 'G2LziGNPj043WGSPOizsPOZZeNDyA8h5aeKYcAqCq04OeanhC1TbG', '9995555555'
 ),
-    ('cindy crawford', 'ccrawford', '3335555555'
+    ('cindy crawford', 'ccrawford', 'G2LziGNPj043WGSPOizsPOZZeNDyA8h5aeKYcAqCq04OeanhC1TbG', '3335555555'
 ),
-    ('leonard nimoy', 'lnimoy', '1115555555'
+    ('leonard nimoy', 'lnimoy', 'G2LziGNPj043WGSPOizsPOZZeNDyA8h5aeKYcAqCq04OeanhC1TbG', '1115555555'
 );
 
 insert into locations

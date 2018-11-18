@@ -1,19 +1,22 @@
 /* ===== =====  GLOBAL-STYLING  ===== ===== */
 html {
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: inherit;
 }
-html, body {
-    margin: 0; 
-    padding: 0; 
-    width: 100%; 
-    height: 100%; 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .divider {
-    background-color: lightpink; 
+    background-color: lightpink;
     height: 100px;
     width: 100%;
 }
@@ -23,7 +26,7 @@ html, body {
     background-color: rgba(235, 235, 235, 0.952);
     justify-content: center;
     height: 100%;
-    display: flex; 
+    display: flex;
     align-items: center;
 }
 .mainContainer {
@@ -58,7 +61,7 @@ html, body {
     /* background-color: lightskyblue; */
     display: flex;
     /* align-items: center; */
-    justify-content: center;  
+    justify-content: center;
     height: 400px;
     width: 500px;
     /* margin-top: 20px; */
@@ -72,7 +75,7 @@ html, body {
 }
 .body-row {
     background-color: lightskyblue;
-    display: flex; 
+    display: flex;
     height: 80px;
     width: 400px;
     margin: 10px;
@@ -160,7 +163,7 @@ a {
 }
 
 /*  ===== =====  CREATE-SIGN IN ===== ===== */
-.form{
+.form {
     display: flex;
     justify-content: center;
     /* align-content: center; */
@@ -172,7 +175,6 @@ a {
     justify-content: center;
     /* align-content: center; */
     flex-direction: column;
-    
 }
 .form-row {
     display: flex;
@@ -182,14 +184,13 @@ a {
 label {
     font-size: 14px;
     padding-left: 2px;
-
 }
 .form-row input {
     width: 280px;
     border-radius: 5px;
     background-color: lightgoldenrodyellow;
 }
-.login input{
+.login input {
     font-size: 12px;
     margin-left: 10px;
     width: 280px;
@@ -202,7 +203,4 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
-
-

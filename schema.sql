@@ -10,7 +10,7 @@ create table users
     id serial primary key,
     name text,
     username varchar(200) unique not null,
-    -- password text,
+    pwhash varchar (60) not null,
     phone_number varchar(20) unique not null
 );
 
