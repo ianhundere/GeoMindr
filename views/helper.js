@@ -9,7 +9,7 @@ function header() {
 function footer() {
     return `
     <footer>
-        <p>&copy; 2000 GeoMindr</p>
+        <p>&copy; 2018 GeoMindr</p>
     </footer>
     `;
 }
