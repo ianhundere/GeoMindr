@@ -21,7 +21,7 @@ class User {
             insert into users 
                 (name, username, pwhash, phone_number)
             values 
-                ($1, $2, $3)
+                ($1, $2, $3, $4)
                 returning id`,
                 [name, username, hash, phone_number]
             )
