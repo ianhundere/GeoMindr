@@ -144,26 +144,19 @@ app.post('/createreminder', (req, res) => {
             return { locationID: result };
         })
         .then(result => {
-            User.getByPhone(req.body.phone_number)
-                .then(r => {
-                    result.userID = Number(r);
-                    return result;
-                })
-                .then(reslt => {
-                    console.log(reslt);
-                    const newReminder = req.body.reminder;
-                    // console.log(`look here ${reslt.userID}`);
-                    Reminder.createReminder(
-                        newReminder,
-                        true,
-                        reslt.locationID,
-                        reslt.userID
-                    ).then(reminder => {
-                        // console.log(reminder);
-                        // res.send(reminder);
-                        res.redirect(`/list`);
-                    });
-                });
+            console.log(User.from);
+            const r = User.from(req.session.user);
+            console.log(r);
+            const newReminder = req.body.reminder;
+            const locationID = result.locationID;
+            const userID = r.id;
+            Reminder.createReminder(newReminder, true, locationID, userID).then(
+                reminder => {
+                    // console.log(reminder);
+                    // res.send(reminder);
+                    res.redirect(`/list`);
+                }
+            );
         });
 });
 
@@ -248,17 +241,18 @@ app.post('/sms', (req, res) => {
                 bod.lat
             }/${bod.lon}.\nWhat is your GeoMindr?`
         );
-        
+
         let timeStamp = new Date().getTime();
         // insert the new request in init_reminders while awaiting the reminder text
-        Init_Reminder.createInit(bod.phone, bod.lat, bod.lon, timeStamp)
-        .then(init_rem => {
-            //console.log('INSERTED: ', init_rem);
-            console.log('=======TWIML=========');
-            console.log(twiml.toString());
-            res.writeHead(200, { 'Content-Type': 'text/xml' });
-            res.end(twiml.toString());
-        });
+        Init_Reminder.createInit(bod.phone, bod.lat, bod.lon, timeStamp).then(
+            init_rem => {
+                //console.log('INSERTED: ', init_rem);
+                console.log('=======TWIML=========');
+                console.log(twiml.toString());
+                res.writeHead(200, { 'Content-Type': 'text/xml' });
+                res.end(twiml.toString());
+            }
+        );
     } else {
         // This is a reply message.
         // Search for the phone number in init_reminders.
@@ -268,7 +262,10 @@ app.post('/sms', (req, res) => {
         Init_Reminder.getByPhone(phone).then(result => {
             // check if phone number was not found or entry is expired
             let minTimeStamp = new Date().getTime() - 300000;
-            if (result.id === 'not initiated' || result.time_stamp < minTimeStamp) {
+            if (
+                result.id === 'not initiated' ||
+                result.time_stamp < minTimeStamp
+            ) {
                 // IFTTT button wasn't pressed or it timed out
                 twiml.message(
                     `Request expired or does not exist - Please tap the IFTTT Button to restart`
