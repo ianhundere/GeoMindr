@@ -1,0 +1,313 @@
+/* ===== =====  GLOBAL-STYLING  ===== ===== */
+html {
+    box-sizing: border-box; 
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+html, body {
+    margin: 0; 
+    padding: 0; 
+    width: 100%; 
+    height: 100%; 
+}
+
+.divider {
+    background-color: lightpink; 
+    height: 100px;
+    width: 100%;
+}
+
+/* ===== =====  HOME-PAGE  ===== ===== */
+.main {
+    background-color: rgba(235, 235, 235, 0.952);
+    /* outline: solid 1px black; */
+    /* justify-content: center; */
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+.nav {
+    display: flex;
+    background-color: white;
+    height: 50px;
+    width: 100%;
+    /* justify-content: space-evenly; */
+}
+.logoTitle {
+    /* background-color: rgba(235, 235, 235, 0.952); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 30px;
+    flex: 1
+}
+.title {
+    letter-spacing: 3px;
+    font-size: 14px;
+    color: lightskyblue;
+}
+h1 { 
+    margin: 0px;
+}
+.navRight {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+
+}
+.signout {
+    padding-right: 30px; 
+    text-decoration: none;   
+}
+
+/* =====  BODY  ===== */
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* outline: solid 1px red; */
+    height: 500px;
+    width: 550px;
+    margin-top: 30px;
+}
+.mainBody {
+    /* background-color: lightskyblue; */
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;  
+    height: 400px;
+    width: 500px;
+    /* margin-top: 20px; */
+}
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.body-row {
+    background-color: lightskyblue;
+    display: flex; 
+    height: 114px;
+    width: 400px;
+    margin: 10px;
+    border-radius: 15px;
+}
+.icons {
+    justify-content: center;
+    align-items : center;
+    text-decoration: none;
+    width: 400px;
+    display: flex;
+}
+
+/* ===== =====  REGISTER  ===== ===== */
+.registerMain {
+    background-color: rgba(235, 235, 235, 0.952);
+    /* background-color: white; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+.registerContainer {
+    /* background-color: lightgoldenrodyellow; */
+    /* width: 770px; */
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.regTitle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.regForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    outline: solid 1px black;
+    height: 400px;
+    width: 300px;
+}
+.formTitle {
+    display: flex;
+    font-size: 12px;
+    padding-left: 10px;
+    /* padding-bottom: 20px; */
+}
+
+/* ===== =====  LOGIN  ===== ===== */
+
+.loginMain {
+    /* background-color: rgba(235, 235, 235, 0.952); */
+    background-color: white;
+    height: 100%;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+.loginContainer {
+    /* background-color: lightgoldenrodyellow; */
+    /* width: 770px; */
+    width: 100%;
+    height: 400px;
+    display: flex;
+    /* justify-content: flex-start; */
+    align-items: center;
+    flex-direction: column;
+}
+.logTitle {
+    display: flex;
+    justify-content: center;
+}
+.logForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    outline: solid 1px black;
+    height: 400px;
+    width: 300px;
+}
+
+/*  ===== =====  CREATE / SIGN IN ===== ===== */
+.form{
+    display: flex;
+    justify-content: center;
+    /* align-content: center; */
+    flex-direction: column;
+}
+.placeholder {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    /* align-content: center; */
+    flex-direction: column;
+    
+}
+.form-row {
+    display: flex;
+    /* padding: 5px; */
+    /* margin: 5px; */
+}
+label {
+    font-size: 14px;
+    padding-left: 2px;
+
+}
+.form-row input {
+    width: 280px;
+    border-radius: 5px;
+    background-color: lightgoldenrodyellow;
+}
+.login input{
+    font-size: 12px;
+    margin-left: 10px;
+    width: 280px;
+}
+.member {
+    font-size: 14px;
+    padding-left: 5px;
+}
+.accnt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== =====  MY-REMINDERDS  ===== ===== */
+.remindMain {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+.remindNav {
+    display: flex;
+    background-color: lightgoldenrodyellow;
+}
+.remindContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    margin-left: 100px;
+    /* width: 100%; */
+    flex: 7;
+}
+/* .remindTitle {
+
+} */
+.navHome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100px; */
+    flex: 1;
+}
+.columnContainer {
+    /* outline: solid 1px black; */
+    background-color: lightgoldenrodyellow;
+    height: 500px;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.columnL {
+    outline: solid 1px black;
+    background-color: white;
+    height: 450px;
+    width: 400px;
+}
+.columnR {
+    outline: solid 1px black;
+    background-color: white;
+    height: 300px;
+    width: 400px;
+}
+
+/* ===== =====  MAPS  ===== ===== */
+.mapMain {
+     background-color: rgba(235, 235, 235, 0.952);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+.mapNav {
+    background-color: whitesmoke;
+    display: flex;  
+    height: 60px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.navHome {
+    justify-content: flex-end;
+    margin-right: 30px;  
+}
+.mapContainer2 {
+    background-color: white;
+    height: 400px;
+    width: 600px;
+}
+
+
+
+
+
+
