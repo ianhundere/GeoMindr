@@ -26,7 +26,7 @@ class User {
                 [name, username, hash, phone_number]
             )
             .then(data => {
-                const u = new User(data.id, name, username, phone_number);
+                const u = new User(data.id, name, username, hash, phone_number);
                 return u;
             });
     }
