@@ -276,7 +276,10 @@ app.post('/sms', (req, res) => {
                 res.writeHead(200, { 'Content-Type': 'text/xml' });
                 res.end(twiml.toString());
             } else {
-                //phone exists in init_reminders, so insert the new Geomindr into the reminders table
+                //phone exists in init_reminders, so delete the entry from init_reminders
+                result.deleteInit();
+
+                // then, insert the new Geomindr into the reminders table
                 Location.createLocation(result.lat, result.lon)
                     .then(a => {
                         return { locationID: a };

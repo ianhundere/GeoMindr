@@ -41,22 +41,7 @@ class Init_Reminder {
                 });
     }
 
-    // DELETE AFTER 5 MIN (working)
-    static deleteAfterNoResponse(id, callback) {
-        console.log('delete me!!');
-        setTimeout(
-            () =>
-                db
-                    .result(
-                        `delete from init_reminders
-                        where id = $1`,
-                        [id]
-                    )
-                    .then(callback),
-            300000
-        );
-    }
-
+    // === ===  RETRIEVE  === === (working)
     static getByPhone(phone_number) {
         return db
             .one('select * from init_reminders where phone = $1', [
@@ -76,6 +61,14 @@ class Init_Reminder {
                 return { id: 'not initiated' };
             });
     }
+
+    // === === DELETE === === (working)
+    deleteInit() {
+        //console.log('delete me!!');
+        db.result(`delete from init_reminders
+                    where phone = $1`,
+                    [this.phone]
+        )};
 }
 
 module.exports = Init_Reminder;
