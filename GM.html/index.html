@@ -49,42 +49,46 @@
             <div class="regTitle"><h2>Geo Mindr</h2></div>
             <div class="regForm">
                 <div class="formTitle"><h1>Create account</h1></div>
-                <form class="form" action="/login" method="POST">
+                <form class="form" action="/register" method="POST">
                     <div class="placeholder">
                         <label>Name</label>
                         <div class="form-row">
-                            <input type="text" name="name" />
+                            <input type="text" name="name">
                         </div>
                     </div>
                     <div class="placeholder">
-                        <label>Username</label>
+                        <label>Email</label>
                         <div class="form-row">
-                            <input type="text" name="username" />
+                            <input type="text" name="email">
                         </div>
                     </div>
                     <div class="placeholder">
-                        <label>Phone Number</label>
+                        <label>Password</label>
                         <div class="form-row">
-                            <input type="text" name="phone_number" />
+                            <input type="password" name="password">
                         </div>
                     </div>
                     <div class="placeholder">
                         <label>Re-enter Password</label>
                         <div class="form-row">
-                            <input type="password" name="password" />
+                            <input type="password" name="password">
                         </div>
                     </div>
                     <div class="login">
-                        <button>Create your GeoMindr account</button>
-                        <!-- <input
+                        <input
                             type="submit"
                             value="Create your GeoMindr account"
-                        /> -->
+                        />
                     </div>
-                    <div class="member">
-                        <p>Already have an account? SignIn</p>
-                        <a class="accnt" href="/login"></a>
+                    <div class='member'>
+                        <p class='accnt'>Already have an account?</p>
+                            <a class='accnt' href="/login"><p>Sign In</p></a>
                     </div>
+                    <!-- <div class="member">
+                        <a class="accnt" href="#"
+                            ><p>Already have an account? SignIn</p></a
+                        >
+                    </div> -->
                 </form>
             </div>
         </div>
@@ -101,12 +105,6 @@
                     <h1>Sign in</h1>
                 </div>
                 <form class='form' action="/login" method="POST">
-                    <!-- <div class=placeholder>
-                        <label>Name</label> 
-                        <div class='form-row'>
-                            <input  type="text" name="name">
-                        </div>
-                    </div> -->
                     <div class=placeholder>
                         <label>Email</label>
                         <div class='form-row'>
@@ -119,12 +117,6 @@
                             <input  type="password" name="password">
                         </div>
                     </div>
-                    <!-- <div class=placeholder>
-                            <label>Re-enter Password</label>
-                            <div class='form-row'>
-                                <input  type="password" name="password">
-                            </div>
-                        </div> -->
                     <div class='login'>
                         <input type="submit" value="Sign in">
                     </div>
