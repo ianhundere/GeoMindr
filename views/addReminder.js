@@ -5,12 +5,12 @@ function addReminder() {
             <div class="placeholder">
                 <label>Latitude: 
                 <div class="form-row">
-                    <input type="text" name="latitude"/>
+                    <input type="text" name="latitude" data-lat/>
                 </div>
                 </label>
                 <label>Longitude:
                 <div class="form-row">
-                    <input type="text" name="longitude"/>
+                    <input type="text" name="longitude" data-lon/>
                 </div>
                 </label>
                 <label>Reminder: 
@@ -22,7 +22,21 @@ function addReminder() {
             </div>
         </form>
         <a href ="/list"> List of GeoMindrs</a><br>
-        <a href ="/home"> Go to GeoMindr Menu</a>`;
+        <a href ="/home"> Go to GeoMindr Menu</a>
+        <script>
+            let lats;
+            let longs;
+            if (navigator.geolocation) {       
+                navigator.geolocation.getCurrentPosition(function(location) {
+                    lats = location.coords.latitude;
+                    longs = location.coords.longitude;
+                    console.log("Your Lat/Lon: " + lats + "/" + longs);
+                    document.querySelector('[data-lat]').value = lats;
+                    document.querySelector('[data-lon]').value = longs;
+                })}
+        </script>
+        
+        `;
 }
 
 module.exports = addReminder;
