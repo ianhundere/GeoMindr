@@ -7,10 +7,10 @@ function home() {
                         <a href="/create"><h2><i class="fas fa-plus"></i> Add Reminder</h2></a>
                     </div>
                     <div class=body-row>
-                        <a href="/list"><h2><i class="fas fa-folder-open"></i> Open Reminders</h2></a>
+                        <a href="/mylist"><h2><i class="fas fa-folder-open"></i> Open Reminders</h2></a>
                     </div>
                     <div class=body-row>
-                        <a href="#"><h2><i class="fas fa-map-marked-alt"></i> Map</h2></a>
+                        <a href="publiclist"><h2><i class="fas fa-map-marked-alt"></i> Map</h2></a>
                     </div>
                 </section>
             </div>

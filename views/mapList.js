@@ -1,18 +1,20 @@
 function reminderToItem(reminderObject) {
     return `
         <li>
-            ${reminderObject.reminder}
-        </li>
+            ${reminderObject.username}<br>
+            ${reminderObject.reminder}<br>
+            ${reminderObject.latitude}
+            ${reminderObject.longitude}<br>
+        </li><br>
     `;
 }
 
-function reminderList(arrayOfReminders) {
+function mapList(arrayOfReminders) {
     const reminderItems = arrayOfReminders.map(reminderToItem).join('');
     return `
         <ul>
             ${reminderItems}
         </ul>
-    <a href ="/create"> Add another Reminder</a><br>
         <a href ="/home"> Go to GeoMindr Menu</a>`;
 }
-module.exports = reminderList;
+module.exports = mapList;
