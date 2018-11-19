@@ -31,6 +31,14 @@ class User {
             });
     }
 
+    static from(userObj) {
+        const id = userObj.id;
+        const name = userObj.name;
+        const username = userObj.iusernamed;
+        const pwhash = userObj.pwhash;
+        return new User(id, name, username, pwhash);
+    }
+
     // RETRIEVE (working)
     static getAll() {
         return db.any(`select * from users`).then(userArray => {
