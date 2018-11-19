@@ -79,11 +79,10 @@ class Reminder {
     getRemindersPublic() {
         return db.any(
             `
-            select * from reminders 
+            select username, reminder, latitude, longitude, is_public from reminders 
             Inner Join locations on reminders.location_id=locations.id
             Inner Join users on reminders.user_id=users.id
-            values ($1, $2, $3, $4)
-            returning username, reminder, latitude, longitude
+
             `,
             [this.username, this.reminder, this.latitude, this.longitude]
         );
