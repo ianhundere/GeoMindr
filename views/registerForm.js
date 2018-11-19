@@ -19,6 +19,12 @@ function registerForm() {
                             </div>
                         </div>
                         <div class=placeholder>
+                            <label>Password</label>
+                            <div class='form-row'>
+                                <input  type="text" name="password">
+                            </div>
+                        </div>
+                        <div class=placeholder>
                             <label>Phone Number</label>
                             <div class='form-row'>
                                 <input  type="text" name="phone_number">

@@ -24,14 +24,18 @@ function loginForm() {
                                 </label>
                             </div>
                         </div>
-                        <div class="login">
                             <button>Sign in<button/>
+
                         </div>
                         <div class="member">
                             <a class='accnt' href="/register"><p>Create an account</p></a>
                         </div>
                     </form>  
                 </div>
+                <div class='member'>
+                    <p class='accnt'>Don't have an account?</p>
+                    <a href="/register"><p>Sign up</p></a>
+            </div>
             </div>
         </div>     
     `;

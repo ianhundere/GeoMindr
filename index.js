@@ -6,23 +6,23 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// const session = require('express-session');
-// const pgSession = require('connect-pg-simple')(session);
+const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const db = require('./models/db');
 
-// app.use(
-//     session({
-//         store: new pgSession({
-//             pgPromise: db
-//         }),
-//         secret: 'bingbong0987654321234567890',
-//         saveUninitialized: false,
-//         cookie: {
-//             maxAge: 30 * 24 * 60 * 60 * 1000
-//         }
-//     })
-// );
+app.use(
+    session({
+        store: new pgSession({
+            pgPromise: db
+        }),
+        secret: 'bingbong0987654321234567890',
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 30 * 24 * 60 * 60 * 1000
+        }
+    })
+);
 
 // Views and CSS
 app.use(express.static('public'));
@@ -39,22 +39,22 @@ const Location = require('./models/Location');
 const Init_Reminder = require('./models/Init_Reminder');
 const Reminder = require('./models/Reminder');
 
-// function protectRoute(req, res, next) {
-//     let isLoggedIn = req.session.user ? true : false;
-//     if (isLoggedIn) {
-//         next();
-//     } else {
-//         res.redirect('/login');
-//     }
-// }
+function protectRoute(req, res, next) {
+    let isLoggedIn = req.session.user ? true : false;
+    if (isLoggedIn) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+}
 
-// app.use((req, res, next) => {
-//     let isLoggedIn = req.session.user ? true : false;
-//     console.log(req.session.user);
-//     console.log(`On ${req.path}, is a user logged in? ${isLoggedIn}`);
+app.use((req, res, next) => {
+    let isLoggedIn = req.session.user ? true : false;
+    console.log(req.session.user);
+    console.log(`On ${req.path}, is a user logged in? ${isLoggedIn}`);
 
-//     next();
-// });
+    next();
+});
 
 app.get('/', (req, res) => {
     const thePage = page(`
@@ -83,32 +83,51 @@ app.post('/register', (req, res) => {
     console.log(req.body);
     const newName = req.body.name;
     const newUsername = req.body.username;
-    /*const newPassword = req.body.password;*/
+    const newPassword = req.body.password;
     const newPhone = req.body.phone_number;
-    User.createUser(newName, newUsername, /*newPassword,*/ newPhone)
+    User.createUser(newName, newUsername, newPassword, newPhone)
         .catch(err => {
             console.log(err);
             res.redirect('/register');
         })
         .then(newUser => {
+            req.session.user = newUser;
             res.redirect('/home');
         });
 });
 
-app.get('/home', (req, res) => {
+app.get('/home', protectRoute, (req, res) => {
     const theHome = homePage();
     const thePage = page(theHome);
     res.send(thePage);
 });
 // ========================================================
-// Create Reminders (working)
+// Login (working)
 // ========================================================
 
 app.get('/login', (req, res) => {
-    // Send them the login form
+    // Send login form
     const theLogin = loginForm();
     const thePage = page(theLogin);
     res.send(thePage);
+});
+
+app.post('/login/', (req, res) => {
+    const theUserName = req.body.username;
+    const thePassword = req.body.password;
+    User.getByUserName(theUserName)
+        .catch(err => {
+            console.log(err);
+            res.redirect('/login');
+        })
+        .then(theUser => {
+            if (theUser.passwordDoesMatch(thePassword)) {
+                req.session.user = theUser;
+                res.redirect('/home');
+            } else {
+                res.redirect('/login');
+            }
+        });
 });
 // ========================================================
 
