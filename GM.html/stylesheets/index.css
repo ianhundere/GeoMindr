@@ -1,22 +1,19 @@
 /* ===== =====  GLOBAL-STYLING  ===== ===== */
 html {
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
-*,
-*:before,
-*:after {
+*, *:before, *:after {
     box-sizing: inherit;
 }
-html,
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+html, body {
+    margin: 0; 
+    padding: 0; 
+    width: 100%; 
+    height: 100%; 
 }
 
 .divider {
-    background-color: lightpink;
+    background-color: lightpink; 
     height: 100px;
     width: 100%;
 }
@@ -81,7 +78,7 @@ h1 {
     /* background-color: lightskyblue; */
     display: flex;
     /* align-items: center; */
-    justify-content: center;
+    justify-content: center;  
     height: 400px;
     width: 500px;
     /* margin-top: 20px; */
@@ -111,15 +108,15 @@ h1 {
 
 /* ===== =====  REGISTER  ===== ===== */
 .registerMain {
-    /* background-color: rgba(235, 235, 235, 0.952); */
-    background-color: white;
+    background-color: rgba(235, 235, 235, 0.952);
+    /* background-color: white; */
     height: 100%;
     display: flex;
     align-items: center;
     /* justify-content: center; */
 }
 .registerContainer {
-    /* background-color: lightgoldenrodyellow; */
+    background-color: rgba(235, 235, 235, 0.952);
     /* width: 770px; */
     width: 100%;
     height: 500px;
@@ -131,6 +128,7 @@ h1 {
 .regTitle {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 .regForm {
     display: flex;
@@ -138,6 +136,7 @@ h1 {
     flex-direction: column;
     align-items: flex-start;
     outline: solid 1px black;
+    background-color: white;
     height: 400px;
     width: 300px;
 }
@@ -151,8 +150,7 @@ h1 {
 /* ===== =====  LOGIN  ===== ===== */
 
 .loginMain {
-    /* background-color: rgba(235, 235, 235, 0.952); */
-    background-color: white;
+    background-color: rgba(235, 235, 235, 0.952);
     height: 100%;
     display: flex;
     /* align-items: center; */
@@ -178,10 +176,10 @@ h1 {
     flex-direction: column;
     align-items: flex-start;
     outline: solid 1px black;
+    background-color: white;
     height: 400px;
     width: 300px;
 }
-
 
 /*  ===== =====  CREATE / SIGN IN ===== ===== */
 .form{
@@ -196,6 +194,7 @@ h1 {
     justify-content: center;
     /* align-content: center; */
     flex-direction: column;
+    
 }
 .form-row {
     display: flex;
@@ -205,13 +204,14 @@ h1 {
 label {
     font-size: 14px;
     padding-left: 2px;
+
 }
 .form-row input {
     width: 280px;
     border-radius: 5px;
     background-color: lightgoldenrodyellow;
 }
-.login input {
+.login input{
     font-size: 12px;
     margin-left: 10px;
     width: 280px;
@@ -306,3 +306,9 @@ label {
     height: 400px;
     width: 600px;
 }
+
+
+
+
+
+

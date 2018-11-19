@@ -1,6 +1,6 @@
 function addReminder() {
     return `
-    <div class="formTitle"><h1>Create a Reminder</h1></div>
+        <div class="formTitle"><h1>Create a Reminder</h1></div>
         <form class="form" action="/create" method="POST">
             <div class="placeholder">
                 <label>Reminder</label>
@@ -10,6 +10,7 @@ function addReminder() {
                 </div>
             </div>
         </form>
-        `;
+    `;
 }
+
 module.exports = addReminder;

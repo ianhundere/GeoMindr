@@ -57,15 +57,16 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    const thePage = page(`<h1>Welcome to GeoMindr</h1>
-    <div class="member">
-                            <a class="accnt" href="/register">
-                                <input
-                                    type="submit"
-                                    value="Create your GeoMindr account"
-                                />
-                            </a>
-                        </div>`);
+    const thePage = page(`
+        <h1>Welcome to GeoMindr</h1>
+        <div class="member">
+            <a class="accnt" href="/register">
+                <input
+                    type="submit"
+                    value="Create your GeoMindr account"
+                />
+            </a>
+        </div>`);
     res.send(thePage);
 });
 
@@ -216,6 +217,12 @@ app.put('/reminders/:id(\\d+)', (req, res) => {
     });
 });
 
+// ========================================================
+
+// ========================================================
+// Initiate and Receive Reminders via SMS (IFTTT & Twilio)
+// ========================================================
+
 app.post('/sms', (req, res) => {
     const twiml = new MessagingResponse();
 
@@ -233,34 +240,27 @@ app.post('/sms', (req, res) => {
                 bod.lat
             }/${bod.lon}.\nWhat is your GeoMindr?`
         );
-        // TODO: CHECK IF THE PHONE NUMBER ALREADY EXISTS IN init_reminders. IF IT DOES
-        // THEN DELETE IT BEFORE PROCEEDING (MAY NEED TO RESET ITS TIMEOUT ALSO) SINCE NO
-        // PHONE SHOULD HAVE MULTIPLE INITIATED REMINDERS
-
+        
+        let timeStamp = new Date().getTime();
         // insert the new request in init_reminders while awaiting the reminder text
-        Init_Reminder.createInit(
-            bod.phone,
-            bod.lat,
-            bod.lon,
-            bod.time_stamp
-        ).then(init_rem => {
+        Init_Reminder.createInit(bod.phone, bod.lat, bod.lon, timeStamp)
+        .then(init_rem => {
             //console.log('INSERTED: ', init_rem);
             console.log('=======TWIML=========');
             console.log(twiml.toString());
             res.writeHead(200, { 'Content-Type': 'text/xml' });
             res.end(twiml.toString());
-
-            // TODO: CALL deleteAfterNoResponse() TO SET AN EXPIRATION TIMER
         });
     } else {
         // This is a reply message.
         // Search for the phone number in init_reminders.
-        // If it exists, then append the geomindr text to that info and insert in reminders table.
+        // If it exists and hasn't expired, then append the geomindr text to that info and insert in reminders table.
         // If it doesn't exist, then reply telling user to click the IFTTT button to trigger new request.
         const phone = req.body.From.replace('+1', ''); //need to correct this to handle intl phones
         Init_Reminder.getByPhone(phone).then(result => {
-            // check if phone number was not found
-            if (result.id === 'not initiated') {
+            // check if phone number was not found or entry is expired
+            let minTimeStamp = new Date().getTime() - 300000;
+            if (result.id === 'not initiated' || result.time_stamp < minTimeStamp) {
                 // IFTTT button wasn't pressed or it timed out
                 twiml.message(
                     `Request expired or does not exist - Please tap the IFTTT Button to restart`
