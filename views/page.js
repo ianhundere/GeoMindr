@@ -18,13 +18,11 @@ function page(content) {
     <div class='main'>
         <div class='mainContainer'>
             <div class='headerTitle'>
-            
+                ${header()}
             </div>
-                ${content} 
+                ${content}
+                ${footer()}
         </div>
-    </div>
-    <div>
-        ${footer()}
     </div>
 </body>
 </html>
