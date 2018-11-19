@@ -83,10 +83,7 @@ class Reminder {
             Inner Join locations on reminders.location_id=locations.id
             Inner Join users on reminders.user_id=users.id
             where reminders.is_public=true
-            values ($1, $2, $3, $4)
-            returning username, reminder, latitude, longitude
-            `,
-            [this.username, this.reminder, this.latitude, this.longitude]
+            `
         );
     }
     // === ===  UPDATE  === === (working)

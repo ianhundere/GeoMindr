@@ -177,10 +177,11 @@ app.get('/mylist', protectRoute, (req, res) => {
 // ========================================================
 
 // ========================================================
-// List Public Reminders (not working)
+// List Public Reminders (working)
 // ========================================================
 app.get('/publiclist', protectRoute, (req, res) => {
     const publicList = Reminder.getRemindersPublic();
+    // console.log('look at me!', publicList);
     publicList.then(PublicReminders => {
         res.send(page(mapList(PublicReminders)));
     });

@@ -1,8 +1,11 @@
 function reminderToItem(reminderObject) {
     return `
         <li>
-            ${reminderObject.reminder}
-        </li>
+            ${reminderObject.username}<br>
+            ${reminderObject.reminder}<br>
+            ${reminderObject.latitude}
+            ${reminderObject.longitude}<br>
+        </li><br>
     `;
 }
 
