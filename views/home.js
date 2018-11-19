@@ -9,7 +9,7 @@ function home() {
                 </div>
                 <div class='navRight'>
                     <!-- <div class='signout'> -->
-                        <a class='signout' href="#">Sign out</a>
+                        <a class='signout' href="/home">Sign out</a>
                     <!-- </div> -->
                 </div>
             </div>

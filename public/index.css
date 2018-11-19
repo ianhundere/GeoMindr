@@ -21,7 +21,7 @@ html, body {
 /* ===== =====  HOME-PAGE  ===== ===== */
 .main {
     background-color: rgba(235, 235, 235, 0.952);
-    outline: solid 1px black;
+    /* outline: solid 1px black; */
     /* justify-content: center; */
     height: 100%;
     display: flex;
@@ -33,15 +33,14 @@ html, body {
     background-color: white;
     height: 50px;
     width: 100%;
-    justify-content: space-between;
+    /* justify-content: space-evenly; */
 }
 .logoTitle {
-    /* background-color: lightsteelblue; */
     /* background-color: rgba(235, 235, 235, 0.952); */
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 15px;
+    margin-left: 30px;
     flex: 1
 }
 .title {
@@ -60,7 +59,7 @@ h1 {
 
 }
 .signout {
-    padding-right: 20px; 
+    padding-right: 30px; 
     text-decoration: none;   
 }
 
@@ -234,20 +233,30 @@ label {
 }
 .remindNav {
     display: flex;
+    background-color: lightgoldenrodyellow;
 }
 .remindContainer {
-    background-color: lightslategray;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 60px;
-    width: 100%;
+    margin-left: 100px;
+    /* width: 100%; */
+    flex: 7;
 }
 /* .remindTitle {
 
 } */
+.navHome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100px; */
+    flex: 1;
+}
 .columnContainer {
-    outline: solid 1px black;
+    /* outline: solid 1px black; */
+    background-color: lightgoldenrodyellow;
     height: 500px;
     width: 100%;
     margin-top: 20px;
@@ -258,14 +267,44 @@ label {
 }
 .columnL {
     outline: solid 1px black;
+    background-color: white;
     height: 450px;
     width: 400px;
 }
 .columnR {
     outline: solid 1px black;
+    background-color: white;
     height: 300px;
     width: 400px;
 }
+
+/* ===== =====  MAPS  ===== ===== */
+.mapMain {
+     background-color: rgba(235, 235, 235, 0.952);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+.mapNav {
+    background-color: whitesmoke;
+    display: flex;  
+    height: 60px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.navHome {
+    justify-content: flex-end;
+    margin-right: 30px;  
+}
+.mapContainer2 {
+    background-color: white;
+    height: 400px;
+    width: 600px;
+}
+
 
 
 
