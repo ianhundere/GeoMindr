@@ -3,6 +3,9 @@ function addReminder() {
     <div class="formTitle"><h1>Create a Reminder</h1></div>
         <form class="form" action="/createreminder" method="POST">
             <div class="placeholder">
+                <label>Public:
+                <input type="checkbox" name="is_public" checked="true"/>
+                </label>
                 <label>Latitude: 
                 <div class="form-row">
                     <input type="text" name="latitude" data-lat/>

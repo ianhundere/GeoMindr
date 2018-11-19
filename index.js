@@ -148,15 +148,19 @@ app.post('/createreminder', (req, res) => {
             const r = User.from(req.session.user);
             console.log(r);
             const newReminder = req.body.reminder;
+            const isPublic = Object.keys(req.body).includes('is_public');
             const locationID = result.locationID;
             const userID = r.id;
-            Reminder.createReminder(newReminder, true, locationID, userID).then(
-                reminder => {
-                    // console.log(reminder);
-                    // res.send(reminder);
-                    res.redirect(`/list`);
-                }
-            );
+            Reminder.createReminder(
+                newReminder,
+                isPublic,
+                locationID,
+                userID
+            ).then(reminder => {
+                // console.log(reminder);
+                // res.send(reminder);
+                res.redirect(`/list`);
+            });
         });
 });
 
