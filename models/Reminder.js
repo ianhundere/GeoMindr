@@ -76,13 +76,15 @@ class Reminder {
         );
     }
 
-    getRemindersPublic() {
+    static getRemindersPublic() {
         return db.any(
             `
-            select username, reminder, latitude, longitude, is_public from reminders 
+            select users.username, reminders.reminder, locations.latitude, locations.longitude from reminders 
             Inner Join locations on reminders.location_id=locations.id
             Inner Join users on reminders.user_id=users.id
-
+            where reminders.is_public=true
+            values ($1, $2, $3, $4)
+            returning username, reminder, latitude, longitude
             `,
             [this.username, this.reminder, this.latitude, this.longitude]
         );
