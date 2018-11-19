@@ -24,8 +24,10 @@ function addReminder() {
                 <button>Submit</button>
             </div>
         </form>
+        <div id="map"></div>
         <a href ="/list"> List of GeoMindrs</a><br>
         <a href ="/home"> Go to GeoMindr Menu</a>
+        <!--
         <script>
             let lats;
             let longs;
@@ -38,6 +40,10 @@ function addReminder() {
                     document.querySelector('[data-lon]').value = longs;
                 })}
         </script>
+        -->
+        <script src="scripts.js"></script>
+        <script async defer 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATg8I-7sRcc4jlqUhTAxWDOv8gHanaLXA&callback=initMap"></script>
         
         `;
 }
