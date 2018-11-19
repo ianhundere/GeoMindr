@@ -12,7 +12,7 @@ function reminderList(arrayOfReminders) {
         <ul>
             ${reminderItems}
         </ul>
-    <a href ="/create"> Add another Reminder</a><br>
-        <a href ="/home"> Go to GeoMindr Menu</a>`;
+    <button method="/create"> Add another Reminder</button><br>
+        <button method="/home"> Go to GeoMindr Menu</button>`;
 }
 module.exports = reminderList;

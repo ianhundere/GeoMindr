@@ -2,28 +2,32 @@ function registerForm() {
     return `
         <form class='registerContainer' action="/register" method="POST">
             <div>
-                <label>Name</label> 
+                <label>Name
                 <div class='form-row'>
                     <input  type="text" name="name">
                 </div>
+                </label> 
             </div>
             <div>
-                <label>Username</label>
+                <label>Username
                 <div class='form-row'>
                     <input  type="text" name="username">
                 </div>
+                </label>
             </div>
             <div>
-                <label>Password</label>
+                <label>Password
                 <div class='form-row'>
                     <input  type="text" name="password">
                 </div>
+                </label>
             </div>
             <div>
-                <label>Phone Number</label>
+                <label>Phone Number
                 <div class='form-row'>
                     <input  type="text" name="phone_number">
                 </div>
+                </label>
             </div>
             <div class='login'><br>
                 <button>Create your GeoMindr account</button>
