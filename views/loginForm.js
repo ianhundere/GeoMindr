@@ -1,22 +1,15 @@
 function loginForm() {
     return `
-        <div class='loginMain'>
-            <div class='loginContainer'>
-                <div class='logTitle'>
-                    <h2>Geo Mindr</h2>
-                </div>
-                <div class='logForm'>
-                    <div class=formTitle>
-                        <h1>Sign in</h1>
-                    </div>
-                    <form class="form" action="/login" method="POST">
-                        <div class=placeholder>
-                            <div class='form-row'>
-                                <label>Username:
-                                    <input type="text" name="username"> <br>
-                                </label>
+                <div class="logForm">
+                    <div class="formTitle"><h2>Sign in</h2></div>
+                    <form class="form, loginContainer" action="/login" method="POST">
+                            <div class=placeholder>
+                                <div class='form-row'>
+                                    <label>Username:
+                                        <input type="text" name="username"> <br>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
                         <div class="placeholder">
                             <div class="form-row">
                                 <label>Password
@@ -25,20 +18,12 @@ function loginForm() {
                             </div>
                         </div>
                             <button>Sign in<button/>
-
-                        </div>
-                        <div class="member">
-                            <a class='accnt' href="/register"><p>Create an account</p></a>
-                        </div>
-                    </form>  
+                    </form>
                 </div>
                 <div class='member'>
                     <p class='accnt'>Don't have an account?</p>
                     <a href="/register"><p>Sign up</p></a>
-            </div>
-            </div>
-        </div>     
+                </div>
     `;
 }
-
 module.exports = loginForm;
