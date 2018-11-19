@@ -65,6 +65,16 @@ class Reminder {
             return getAllArray;
         });
     }
+
+    getReminders() {
+        return db.any(
+            `
+            select * from reminders
+                where user_id = $1
+        `,
+            [this.id]
+        );
+    }
     // === ===  UPDATE  === === (working)
     updateReminder(reminder) {
         return db

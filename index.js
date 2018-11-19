@@ -32,6 +32,7 @@ const loginForm = require('./views/loginForm');
 const registerForm = require('./views/registerForm');
 const homePage = require('./views/home');
 const addReminder = require('./views/addReminder');
+const reminderList = require('./views/reminderList');
 
 // Model Variables
 const User = require('./models/User');
@@ -59,13 +60,12 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
     const thePage = page(`<h1>Welcome to GeoMindr</h1>
     <div class="member">
-                            <a class="accnt" href="/register">
-                                <input
-                                    type="submit"
-                                    value="Create your GeoMindr account"
-                                />
-                            </a>
-                        </div>`);
+        <a class="accnt" href="/register">
+            <input
+            type="submit"
+            value="Create your GeoMindr account"/>
+        </a>
+    </div>`);
     res.send(thePage);
 });
 
@@ -105,6 +105,7 @@ app.get('/home', protectRoute, (req, res) => {
 // ========================================================
 
 app.get('/login', (req, res) => {
+    console.log(req.session.user);
     // Send login form
     const theLogin = loginForm();
     const thePage = page(theLogin);
@@ -134,6 +135,7 @@ app.post('/login/', (req, res) => {
 // Create Reminders (working)
 // ========================================================
 app.post('/createreminder', (req, res) => {
+    console.log(req.session.user);
     console.log(req.body);
     const newLatitude = req.body.latitude;
     const newLongitude = req.body.longitude;
@@ -159,10 +161,17 @@ app.post('/createreminder', (req, res) => {
                     ).then(reminder => {
                         // console.log(reminder);
                         // res.send(reminder);
-                        res.redirect(`/`);
+                        res.redirect(`/list`);
                     });
                 });
         });
+});
+
+app.get('/list', protectRoute, (req, res) => {
+    const theUser = User.from(req.session.user);
+    theUser.getReminders().then(allReminders => {
+        res.send(page(reminderList(allReminders)));
+    });
 });
 
 app.get('/create', (req, res) => {
