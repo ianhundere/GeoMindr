@@ -57,15 +57,16 @@ const Reminder = require('./models/Reminder');
 // });
 
 app.get('/', (req, res) => {
-    const thePage = page(`<h1>Welcome to GeoMindr</h1>
-    <div class="member">
-                            <a class="accnt" href="/register">
-                                <input
-                                    type="submit"
-                                    value="Create your GeoMindr account"
-                                />
-                            </a>
-                        </div>`);
+    const thePage = page(`
+        <h1>Welcome to GeoMindr</h1>
+        <div class="member">
+            <a class="accnt" href="/register">
+                <input
+                    type="submit"
+                    value="Create your GeoMindr account"
+                />
+            </a>
+        </div>`);
     res.send(thePage);
 });
 

@@ -1,10 +1,10 @@
-function header() {
-    return `
-        <header>
-            <h1>Geo Mindr</h1>
-        </header>
-    `;
-}
+// function header() {
+//     return `
+//         <header>
+//             <h1>Geo Mindr</h1>
+//         </header>
+//     `;
+// }
 
 function footer() {
     return `
@@ -15,6 +15,6 @@ function footer() {
 }
 
 module.exports = {
-    header,
+    // header,
     footer
 };
