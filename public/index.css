@@ -21,11 +21,50 @@ html, body {
 /* ===== =====  HOME-PAGE  ===== ===== */
 .main {
     background-color: rgba(235, 235, 235, 0.952);
-    justify-content: center;
+    outline: solid 1px black;
+    /* justify-content: center; */
     height: 100%;
-    display: flex; 
+    display: flex;
+    flex-direction: column; 
     align-items: center;
 }
+.nav {
+    display: flex;
+    background-color: white;
+    height: 50px;
+    width: 100%;
+    justify-content: space-between;
+}
+.logoTitle {
+    /* background-color: lightsteelblue; */
+    /* background-color: rgba(235, 235, 235, 0.952); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 15px;
+    flex: 1
+}
+.title {
+    letter-spacing: 3px;
+    font-size: 14px;
+    color: lightskyblue;
+}
+h1 { 
+    margin: 0px;
+}
+.navRight {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+
+}
+.signout {
+    padding-right: 20px; 
+    text-decoration: none;   
+}
+
+/* =====  BODY  ===== */
 .mainContainer {
     display: flex;
     justify-content: center;
@@ -34,26 +73,8 @@ html, body {
     /* outline: solid 1px red; */
     height: 500px;
     width: 550px;
+    margin-top: 30px;
 }
-
-/* =====  TITLE  ==== */
-.mainTitle {
-    /* background-color: lightsteelblue; */
-    background-color: rgba(235, 235, 235, 0.952);
-    display: flex;
-    height: 100px;
-    width: 550px;
-    margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
-}
-.title {
-    letter-spacing: 3px;
-    font-size: 28px;
-    color: white;
-}
-
-/* =====  BODY  ===== */
 .mainBody {
     /* background-color: lightskyblue; */
     display: flex;
@@ -73,17 +94,17 @@ html, body {
 .body-row {
     background-color: lightskyblue;
     display: flex; 
-    height: 80px;
+    height: 114px;
     width: 400px;
     margin: 10px;
     border-radius: 15px;
 }
-a {
+.icons {
+    justify-content: center;
+    align-items : center;
     text-decoration: none;
     width: 400px;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* ===== =====  REGISTER  ===== ===== */
@@ -120,9 +141,9 @@ a {
 }
 .formTitle {
     display: flex;
-    align-content: flex-start;
     font-size: 12px;
     padding-left: 10px;
+    /* padding-bottom: 20px; */
 }
 
 /* ===== =====  LOGIN  ===== ===== */
@@ -159,7 +180,7 @@ a {
     width: 300px;
 }
 
-/*  ===== =====  CREATE-SIGN IN ===== ===== */
+/*  ===== =====  CREATE / SIGN IN ===== ===== */
 .form{
     display: flex;
     justify-content: center;
@@ -202,7 +223,49 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
+
+/* ===== =====  MY-REMINDERDS  ===== ===== */
+.remindMain {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+.remindNav {
+    display: flex;
+}
+.remindContainer {
+    background-color: lightslategray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+}
+/* .remindTitle {
+
+} */
+.columnContainer {
+    outline: solid 1px black;
+    height: 500px;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.columnL {
+    outline: solid 1px black;
+    height: 450px;
+    width: 400px;
+}
+.columnR {
+    outline: solid 1px black;
+    height: 300px;
+    width: 400px;
+}
+
 
 

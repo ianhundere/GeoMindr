@@ -11,83 +11,84 @@
 </head>
 <body>
     <!-- ===== HOME PAGE ===== -->
-    <div class='main'>
+    <div class='main' id='home'>
         <div class='nav'>
             <div class='logoTitle'>
                 <div class='title'>
                     <h1>Geo Mindr</h1>
                 </div>
             </div>
-            <div class='navIcons'>
-                <div class='icons'>
-                    <a href="#"><i class="fas fa-sign-out-alt"></i></a>
-                </div>
+            <div class='navRight'>
+                <!-- <div class='signout'> -->
+                    <a class='signout' href="#">Sign out</a>
+                <!-- </div> -->
             </div>
         </div>
         <div class='mainContainer'>
             <div class="mainBody">
                 <section class='body'>
                     <div class=body-row>
-                        <a href="#"><h2><i class="fas fa-plus"></i> Add Reminder</h2></a>
+                        <a class='icons' href="#"><h2><i class="fas fa-plus"></i> Add Reminder</h2></a>
                     </div>
                     <div class=body-row>
-                        <a href="#"><h2><i class="fas fa-folder-open"></i> Open Reminders</h2></a>
+                        <a class='icons' href="#"><h2><i class="fas fa-folder-open"></i> Open Reminders</h2></a>
                     </div>
                     <div class=body-row>
-                        <a href="#"><h2><i class="fas fa-map-marked-alt"></i> Map</h2></a>
+                        <a class='icons' href="#"><h2><i class="fas fa-map-marked-alt"></i> Map</h2></a>
                     </div>
                 </section>
             </div>
         </div>
+    </div>
+    
+    <div class="divider"></div>
 
-        <div class="divider"></div>
-
-        <!-- ===== =====  REGISTRATION-FORM  ===== ===== -->
-        <div class="registerMain">
-            <div class="registerContainer">
-                <div class="regTitle"><h2>Geo Mindr</h2></div>
-                <div class="regForm">
-                    <div class="formTitle"><h1>Create account</h1></div>
-                    <form class="form" action="/login" method="POST">
-                        <div class="placeholder">
-                            <label>Name</label>
-                            <div class="form-row">
-                                <input type="text" name="name" />
-                            </div>
+    <!-- ===== =====  REGISTRATION-FORM  ===== ===== -->
+    <div class="registerMain">
+        <div class="registerContainer">
+            <div class="regTitle"><h2>Geo Mindr</h2></div>
+            <div class="regForm">
+                <div class="formTitle"><h1>Create account</h1></div>
+                <form class="form" action="/login" method="POST">
+                    <div class="placeholder">
+                        <label>Name</label>
+                        <div class="form-row">
+                            <input type="text" name="name" />
                         </div>
-                        <div class="placeholder">
-                            <label>Email</label>
-                            <div class="form-row">
-                                <input type="text" name="email" />
-                            </div>
+                    </div>
+                    <div class="placeholder">
+                        <label>Email</label>
+                        <div class="form-row">
+                            <input type="text" name="email" />
                         </div>
-                        <div class="placeholder">
-                            <label>Password</label>
-                            <div class="form-row">
-                                <input type="password" name="password" />
-                            </div>
+                    </div>
+                    <div class="placeholder">
+                        <label>Password</label>
+                        <div class="form-row">
+                            <input type="password" name="password" />
                         </div>
-                        <div class="placeholder">
-                            <label>Re-enter Password</label>
-                            <div class="form-row">
-                                <input type="password" name="password" />
-                            </div>
+                    </div>
+                    <div class="placeholder">
+                        <label>Re-enter Password</label>
+                        <div class="form-row">
+                            <input type="password" name="password" />
                         </div>
-                        <div class="login">
-                            <input
-                                type="submit"
-                                value="Create your GeoMindr account"
-                            />
-                        </div>
-                        <div class="member">
-                            <a class="accnt" href="#"
-                                ><p>Already have an account? SignIn</p></a
-                            >
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="login">
+                        <input
+                            type="submit"
+                            value="Create your GeoMindr account"
+                        />
+                    </div>
+                    <div class="member">
+                        <a class="accnt" href="#"
+                            ><p>Already have an account? SignIn</p></a
+                        >
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 
     <!--  ===== =====  SIGN-IN  ===== ===== -->
     <div class='loginMain'>
@@ -139,32 +140,34 @@
 
     <!-- ===== =====  REMINDERS-PAGE  ===== ===== -->
     <div class='remindMain'>
-        <div class='remindContainer'>
-            <div class='remindTitle'>
-                <h1>My Reminders</h1>
-            </div>
-            <div class='columnContainer'>
-                <div class='columnLeft'>
-                    <div class='left'>
-                        <div class='menuColumn'>
-                        </div>
-                    </div>
+        <div class='remindNav'>
+            <div class='remindContainer'>
+                <div class='remindTitle'>
+                    <h1>My Reminders</h1>
                 </div>
-                <div class='columnRight'>
-                    <div class='tabContainer'>
-                        <div></div>
-                        <!-- Will have to see how to populate these 
-                            tabs for reminders. Or perhaps set a container
-                            and have the tabs set as bullet points. -->
-                    </div>
+            </div>
+            <div class='navHome'>
+                <a href="#"><i class="fas fa-home"></i></a>
+            </div>
+        </div>
+        <div class='columnContainer'>
+            <div class='columnL'>
+                <div class='tabContainer'>
+                    <div></div>
+                    <!-- Will have to see how to populate these 
+                        tabs for reminders. Or perhaps set a container
+                        and have the tabs set as bullet points. -->
+                </div>
+            </div>
+            <div class='columnR'>
+                <div class='mapContainer'>
+                    <div class='map'>MAP</div>
                 </div>
             </div>
         </div>
     </div>
 
-        <!-- ===== =====  REMINDER-FORM  ===== ===== -->
-
-        <div class="formTitle"><h1>Create a Reminder</h1></div>
+    <!-- <div class="formTitle"><h1>Create a Reminder</h1></div>
         <form class="form" action="/createreminder" method="POST">
             <div class="placeholder">
                 <label>Reminder</label>
@@ -172,6 +175,21 @@
                     <input type="text" name="reminders" />
                 </div>
             </div>
-        </form>
+        </form> -->
+     
+    <div class="divider"></div>    
+
+    <!-- ===== =====  MAPS  ===== ===== -->
+    <div class='mapMain'>
+        <div class='mapContainer2'>
+            <div class='mapTitle'>
+                <p>Another visual for a map. Or let me know what 
+                    other ideas you guys may have when I get there. 
+                </p>
+            </div>
+        </div>
+    </div>
+    
+
     </body>
 </html>
