@@ -25,7 +25,7 @@ function addReminder() {
             </div>
         </form>
         <div id="map"></div>
-        <a href ="/list"> List of GeoMindrs</a><br>
+        <a href ="/mylist"> List of GeoMindrs</a><br>
         <a href ="/home"> Go to GeoMindr Menu</a>
         <!--
         <script>
