@@ -36,7 +36,7 @@ create table init_reminders
     phone text,
     lat decimal,
     lon decimal,
-    time_stamp text
+    time_stamp decimal
 );
 
 
