@@ -1,135 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
-    <link rel="stylesheet" href="/stylesheets/index.css">
-    <title>Document</title>
-</head>
-<body>
-    <!-- ===== HOME PAGE ===== -->
-    <div class='main'>
-        <div class='mainContainer'>
-            <div class='mainTitle'>
-                <div class='title'>
-                    <h1>Geo Mindr</h1>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+            integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"
+        />
+        <link rel="stylesheet" href="/stylesheets/index.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- ===== HOME PAGE ===== -->
+        <div class="main">
+            <div class="mainContainer">
+                <div class="mainTitle">
+                    <div class="title"><h1>Geo Mindr</h1></div>
                 </div>
-            </div>
-            <div class="mainBody">
-                <section class='body'>
-                    <div class=body-row>
-                        <a href="#"><h2><i class="fas fa-plus"></i> Add Reminder</h2></a>
-                    </div>
-                    <div class=body-row>
-                        <a href="#"><h2><i class="fas fa-folder-open"></i> Open Reminders</h2></a>
-                    </div>
-                    <div class=body-row>
-                        <a href="#"><h2><i class="fas fa-map-marked-alt"></i> Map</h2></a>
-                    </div>
-                </section>
+                <div class="mainBody">
+                    <section class="body">
+                        <div class="body-row">
+                            <a href="#"
+                                ><h2>
+                                    <i class="fas fa-plus"></i> Add Reminder
+                                </h2></a
+                            >
+                        </div>
+                        <div class="body-row">
+                            <a href="#"
+                                ><h2>
+                                    <i class="fas fa-folder-open"></i> Open
+                                    Reminders
+                                </h2></a
+                            >
+                        </div>
+                        <div class="body-row">
+                            <a href="#"
+                                ><h2>
+                                    <i class="fas fa-map-marked-alt"></i> Map
+                                </h2></a
+                            >
+                        </div>
+                    </section>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class='divider'></div>
+        <div class="divider"></div>
 
-    <!-- ===== =====  REGISTRATION-FORM  ===== ===== -->
-    <div class='registerMain'>
-        <div class='registerContainer'>
-            <div class='regTitle'>
-                <h2>Geo Mindr</h2>
-            </div>
-            <div class='regForm'>
-                <div class=formTitle>
-                    <h1>Create account</h1>
-                </div>
-                <form class='form' action="/login" method="POST">
-                    <div class=placeholder>
-                        <label>Name</label> 
-                        <div class='form-row'>
-                            <input  type="text" name="name">
-                        </div>
-                    </div>
-                    <div class=placeholder>
-                        <label>Email</label>
-                        <div class='form-row'>
-                            <input  type="text" name="email">
-                        </div>
-                    </div>
-                    <div class=placeholder>
-                        <label>Password</label>
-                        <div class='form-row'>
-                            <input  type="password" name="password">
-                        </div>
-                    </div>
-                    <div class=placeholder>
-                            <label>Re-enter Password</label>
-                            <div class='form-row'>
-                                <input  type="password" name="password">
+        <!-- ===== =====  REGISTRATION-FORM  ===== ===== -->
+        <div class="registerMain">
+            <div class="registerContainer">
+                <div class="regTitle"><h2>Geo Mindr</h2></div>
+                <div class="regForm">
+                    <div class="formTitle"><h1>Create account</h1></div>
+                    <form class="form" action="/login" method="POST">
+                        <div class="placeholder">
+                            <label>Name</label>
+                            <div class="form-row">
+                                <input type="text" name="name" />
                             </div>
                         </div>
-                    <div class='login'>
-                        <input type="submit" value="Create your GeoMindr account">
-                    </div>
-                    <div class='member'>
-                        <a class='accnt' href="#"><p>Already have an account? SignIn</p></a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class='divider'></div>
-
-
-    <!--  ===== =====  SIGN-IN  ===== ===== -->
-    <div class='loginMain'>
-            <div class='loginContainer'>
-                <div class='logTitle'>
-                    <h2>Geo Mindr</h2>
-                </div>
-                <div class='logForm'>
-                    <div class=formTitle>
-                        <h1>Sign in</h1>
-                    </div>
-                    <form class='form' action="/login" method="POST">
-                        <!-- <div class=placeholder>
-                            <label>Name</label> 
-                            <div class='form-row'>
-                                <input  type="text" name="name">
-                            </div>
-                        </div> -->
-                        <div class=placeholder>
+                        <div class="placeholder">
                             <label>Email</label>
-                            <div class='form-row'>
-                                <input  type="text" name="email">
+                            <div class="form-row">
+                                <input type="text" name="email" />
                             </div>
                         </div>
-                        <div class=placeholder>
+                        <div class="placeholder">
                             <label>Password</label>
-                            <div class='form-row'>
-                                <input  type="password" name="password">
+                            <div class="form-row">
+                                <input type="password" name="password" />
                             </div>
                         </div>
-                        <!-- <div class=placeholder>
-                                <label>Re-enter Password</label>
-                                <div class='form-row'>
-                                    <input  type="password" name="password">
-                                </div>
-                            </div> -->
-                        <div class='login'>
-                            <input type="submit" value="Sign in">
+                        <div class="placeholder">
+                            <label>Re-enter Password</label>
+                            <div class="form-row">
+                                <input type="password" name="password" />
+                            </div>
                         </div>
-                        <div class='member'>
-                        <a class='accnt' href="#"><p>Create an account</p></a>
+                        <div class="login">
+                            <input
+                                type="submit"
+                                value="Create your GeoMindr account"
+                            />
+                        </div>
+                        <div class="member">
+                            <a class="accnt" href="#"
+                                ><p>Already have an account? SignIn</p></a
+                            >
                         </div>
                     </form>
                 </div>
             </div>
         </div>
 
-</body>
+        <div class="divider"></div>
+
+        <!-- ===== =====  SIGN-IN  ===== ===== -->
+        <div class="loginMain">
+            <div class="loginContainer">
+                <div class="logTitle"><h2>Geo Mindr</h2></div>
+                <div class="logForm">
+                    <div class="formTitle"><h1>Sign in</h1></div>
+                    <form class="form" action="/login" method="POST">
+                        <!--
+                            <div class=placeholder>
+                                <label>Name</label>
+                                <div class='form-row'>
+                                    <input  type="text" name="name">
+                                </div>
+                            </div>
+                        -->
+                        <div class="placeholder">
+                            <label>Email</label>
+                            <div class="form-row">
+                                <input type="text" name="email" />
+                            </div>
+                        </div>
+                        <div class="placeholder">
+                            <label>Password</label>
+                            <div class="form-row">
+                                <input type="password" name="password" />
+                            </div>
+                        </div>
+                        <!--
+                            <div class=placeholder>
+                                <label>Re-enter Password</label>
+                                <div class='form-row'>
+                                    <input  type="password" name="password">
+                                </div>
+                            </div>
+                        -->
+                        <div class="login">
+                            <input type="submit" value="Sign in" />
+                        </div>
+                        <div class="member">
+                            <a class="accnt" href="#">
+                                <p>Create an account</p>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== =====  REMINDER-FORM  ===== ===== -->
+
+        <div class="formTitle"><h1>Create a Reminder</h1></div>
+        <form class="form" action="/createreminder" method="POST">
+            <div class="placeholder">
+                <label>Reminder</label>
+                <div class="form-row">
+                    <input type="text" name="reminders" />
+                </div>
+            </div>
+        </form>
+    </body>
 </html>

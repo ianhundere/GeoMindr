@@ -1,4 +1,4 @@
-const { header } = require('./helper');
+const { header, footer } = require('./helper');
 
 function page(content) {
     return `
@@ -19,8 +19,9 @@ function page(content) {
         <div class='mainContainer'>
             <div class='headerTitle'>
                 ${header()}
-                ${content}
             </div>
+                ${content}
+                ${footer()}
         </div>
     </div>
 </body>
