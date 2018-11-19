@@ -33,6 +33,7 @@ const registerForm = require('./views/registerForm');
 const homePage = require('./views/home');
 const addReminder = require('./views/addReminder');
 const reminderList = require('./views/reminderList');
+const mapList = require('./views/mapList');
 
 // Model Variables
 const User = require('./models/User');
@@ -159,17 +160,32 @@ app.post('/createreminder', (req, res) => {
             ).then(reminder => {
                 // console.log(reminder);
                 // res.send(reminder);
-                res.redirect(`/list`);
+                res.redirect(`/mylist`);
             });
         });
 });
 
-app.get('/list', protectRoute, (req, res) => {
+// ========================================================
+// List Session User's Reminders (working)
+// ========================================================
+app.get('/mylist', protectRoute, (req, res) => {
     const theUser = User.from(req.session.user);
     theUser.getReminders().then(allReminders => {
-        res.send(page(reminderList(allReminders)));
+        res.send(page(mapList(allReminders)));
     });
 });
+// ========================================================
+
+// ========================================================
+// List Public Reminders (not working)
+// ========================================================
+app.get('/publiclist', protectRoute, (req, res) => {
+    const publicList = Reminder.getRemindersPublic();
+    publicList.then(PublicReminders => {
+        res.send(page(mapList(PublicReminders)));
+    });
+});
+// ========================================================
 
 app.get('/create', (req, res) => {
     res.send(page(addReminder()));
