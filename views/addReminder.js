@@ -22,7 +22,8 @@ function addReminder() {
                 <button>Submit</button>
             </div>
         </form>
-        `;
+        <a href ="/list"> List of GeoMindrs</a><br>
+        <a href ="/home"> Go to GeoMindr Menu</a>`;
 }
 
 module.exports = addReminder;
