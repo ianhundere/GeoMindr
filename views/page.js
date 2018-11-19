@@ -1,6 +1,6 @@
-const {header}  = require('./helper');
+const { header, footer } = require('./helper');
 
-function page() {
+function page(content) {
     return `
     <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +20,8 @@ function page() {
             <div class='headerTitle'>
                 ${header()}
             </div>
+                ${content}
+                ${footer()}
         </div>
     </div>
 </body>

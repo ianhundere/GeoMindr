@@ -4,16 +4,34 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// const session = require('express-session');
+// const pgSession = require('connect-pg-simple')(session);
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
+const db = require('./models/db');
+
+// app.use(
+//     session({
+//         store: new pgSession({
+//             pgPromise: db
+//         }),
+//         secret: 'bingbong0987654321234567890',
+//         saveUninitialized: false,
+//         cookie: {
+//             maxAge: 30 * 24 * 60 * 60 * 1000
+//         }
+//     })
+// );
 
 // Views and CSS
 app.use(express.static('public'));
 const page = require('./views/page');
-//const helper = require('./views/helper');
+const helper = require('./views/helper');
 const loginForm = require('./views/loginForm');
 const registerForm = require('./views/registerForm');
-const db = require('./models/db');
+const homePage = require('./views/home');
+const addReminder = require('./views/addReminder');
 
 // Model Variables
 const User = require('./models/User');
@@ -21,25 +39,79 @@ const Location = require('./models/Location');
 const Init_Reminder = require('./models/Init_Reminder');
 const Reminder = require('./models/Reminder');
 
-// Route Variables
-// const createReminders = require('./createReminders');
-// const myReminders = require('./myReminders');
-// const allReminders = require('./allReminders');
+// function protectRoute(req, res, next) {
+//     let isLoggedIn = req.session.user ? true : false;
+//     if (isLoggedIn) {
+//         next();
+//     } else {
+//         res.redirect('/login');
+//     }
+// }
 
+// app.use((req, res, next) => {
+//     let isLoggedIn = req.session.user ? true : false;
+//     console.log(req.session.user);
+//     console.log(`On ${req.path}, is a user logged in? ${isLoggedIn}`);
+
+//     next();
+// });
 
 app.get('/', (req, res) => {
-    const thePage = page();
+    const thePage = page(`<h1>Welcome to GeoMindr</h1>
+    <div class="member">
+                            <a class="accnt" href="/register">
+                                <input
+                                    type="submit"
+                                    value="Create your GeoMindr account"
+                                />
+                            </a>
+                        </div>`);
     res.send(thePage);
 });
 
 // ========================================================
-// Register 
+// Register
 // ========================================================
 app.get('/register', (req, res) => {
     const theForm = registerForm();
     const thePage = page(theForm);
     res.send(thePage);
 });
+
+app.post('/register', (req, res) => {
+    console.log(req.body);
+    const newName = req.body.name;
+    const newUsername = req.body.username;
+    /*const newPassword = req.body.password;*/
+    const newPhone = req.body.phone_number;
+    User.createUser(newName, newUsername, /*newPassword,*/ newPhone)
+        .catch(err => {
+            console.log(err);
+            res.redirect('/register');
+        })
+        .then(newUser => {
+            res.redirect('/home');
+        });
+});
+});
+
+app.get('/home', (req, res) => {
+    const theHome = homePage();
+    const thePage = page(theHome);
+    res.send(thePage);
+});
+// ========================================================
+// Create Reminders (working)
+// ========================================================
+
+app.get('/login', (req, res) => {
+    // Send them the login form
+    const theLogin = loginForm();
+    const thePage = page(theLogin);
+    res.send(thePage);
+});
+// ========================================================
+
 // ========================================================
 // Create Reminders (working)
 // ========================================================
@@ -73,6 +145,10 @@ app.post('/createreminder', (req, res) => {
                     });
                 });
         });
+});
+
+app.get('/create', (req, res) => {
+    res.send(page(addReminder()));
 });
 // ========================================================
 
@@ -123,34 +199,97 @@ app.put('/reminders/:id(\\d+)', (req, res) => {
 });
 
 app.post('/sms', (req, res) => {
-
     const twiml = new MessagingResponse();
-    console.log(req.body.Body);
-  
+
+    console.log('===body.BODY=== :', req.body.Body);
+
     // check if this is the initial message or a reply message
     if (req.body.Body.startsWith('{"task":"')) {
         // initial message from IFTTT
-        // Body will be a JSON obj in a string
-        let bod = JSON.parse(req.body.Body);      // bod is an object of key/val pairs
+        // Body will be a JSON obj in a string, so need to parse it
+        let bod = JSON.parse(req.body.Body); // bod is an object of key/val pairs
         console.log(bod);
-        twiml.message({to: `${bod.phone}`}, `${bod.task} GeoMindr for phone # ${bod.phone} at lat/lon ${bod.lat}/${bod.lon}.\nWhat is your GeoMindr?`);
+        twiml.message(
+            { to: `${bod.phone}` },
+            `${bod.task} GeoMindr for phone # ${bod.phone} at lat/lon ${
+                bod.lat
+            }/${bod.lon}.\nWhat is your GeoMindr?`
+        );
+        // TODO: CHECK IF THE PHONE NUMBER ALREADY EXISTS IN init_reminders. IF IT DOES
+        // THEN DELETE IT BEFORE PROCEEDING (MAY NEED TO RESET ITS TIMEOUT ALSO) SINCE NO
+        // PHONE SHOULD HAVE MULTIPLE INITIATED REMINDERS
 
-        // TODO: NEED TO INSERT RECORD IN remind_init FOR THIS NEW REQEST
+        // insert the new request in init_reminders while awaiting the reminder text
+        Init_Reminder.createInit(
+            bod.phone,
+            bod.lat,
+            bod.lon,
+            bod.time_stamp
+        ).then(init_rem => {
+            //console.log('INSERTED: ', init_rem);
+            console.log('=======TWIML=========');
+            console.log(twiml.toString());
+            res.writeHead(200, { 'Content-Type': 'text/xml' });
+            res.end(twiml.toString());
 
+            // TODO: CALL deleteAfterNoResponse() TO SET AN EXPIRATION TIMER
+        });
     } else {
-        // reply message received with Geomindr body
-        twiml.message(`New GeoMindr recorded: ${req.body.Body}`);
-
-        // TODO: SEARCH FOR PHONE NUMBER IN remind_init
-        // If it exists, then append the geomindr text to that info and insert in reminders table
-        // Then remove the record from remind_init. If it doesn't exist in remind_init, then
-        // reply telling user to click the IFTTT button to trigger new request.
+        // This is a reply message.
+        // Search for the phone number in init_reminders.
+        // If it exists, then append the geomindr text to that info and insert in reminders table.
+        // If it doesn't exist, then reply telling user to click the IFTTT button to trigger new request.
+        const phone = req.body.From.replace('+1', ''); //need to correct this to handle intl phones
+        Init_Reminder.getByPhone(phone).then(result => {
+            // check if phone number was not found
+            if (result.id === 'not initiated') {
+                // IFTTT button wasn't pressed or it timed out
+                twiml.message(
+                    `Request expired or does not exist - Please tap the IFTTT Button to restart`
+                );
+                res.writeHead(200, { 'Content-Type': 'text/xml' });
+                res.end(twiml.toString());
+            } else {
+                //phone exists in init_reminders, so insert the new Geomindr into the reminders table
+                Location.createLocation(result.lat, result.lon)
+                    .then(a => {
+                        return { locationID: a };
+                    })
+                    .then(b => {
+                        User.getByPhone(phone)
+                            .then(c => {
+                                b.userID = Number(c);
+                                return b;
+                            })
+                            .then(d => {
+                                //console.log(d);
+                                const newReminder = req.body.Body;
+                                Reminder.createReminder(
+                                    newReminder,
+                                    true,
+                                    d.locationID,
+                                    d.userID
+                                ).then(geomindr => {
+                                    console.log(
+                                        '+++GEOMINDR+++: ',
+                                        geomindr.reminder
+                                    );
+                                    // reply message received with Geomindr body
+                                    twiml.message(
+                                        `New GeoMindr recorded: ${
+                                            geomindr.reminder
+                                        }`
+                                    );
+                                    res.writeHead(200, {
+                                        'Content-Type': 'text/xml'
+                                    });
+                                    res.end(twiml.toString());
+                                });
+                            });
+                    });
+            }
+        });
     }
-
-  console.log("================");
-  console.log(twiml.toString());
-  res.writeHead(200, {'Content-Type': 'text/xml'});
-  res.end(twiml.toString());
 });
 
 // ========================================================
@@ -193,21 +332,21 @@ app.delete('/locations/:id(\\d+)', (req, res) => {
 // Create User (working)
 // ========================================================
 
-app.post('/register', (req, res) => {
-    console.log(req.body);
-    const newName = req.body.name;
-    const newUsername = req.body.username;
-    /*const newPassword = req.body.password;*/
-    const newPhone = req.body.phone_number;
-    User.createUser(newName, newUsername, /*newPassword,*/ newPhone)
-        .catch(err => {
-            console.log(err);
-            res.redirect('/register');
-        })
-        .then(newUser => {
-            res.send(newUser);
-        });
-});
+// app.post('/register', (req, res) => {
+//     console.log(req.body);
+//     const newName = req.body.name;
+//     const newUsername = req.body.username;
+//     /*const newPassword = req.body.password;*/
+//     const newPhone = req.body.phone_number;
+//     User.createUser(newName, newUsername, /*newPassword,*/ newPhone)
+//         .catch(err => {
+//             console.log(err);
+//             res.redirect('/register');
+//         })
+//         .then(newUser => {
+//             res.send(newUser);
+//         });
+// });
 
 // ========================================================
 

@@ -8,32 +8,26 @@ function registerForm() {
                 </div>
             </div>
             <div class=placeholder>
-                <label>Email</label>
+                <label>Username</label>
                 <div class='form-row'>
-                    <input  type="text" name="email">
+                    <input  type="text" name="username">
                 </div>
             </div>
             <div class=placeholder>
-                <label>Password</label>
+                <label>Phone Number</label>
                 <div class='form-row'>
-                    <input  type="password" name="password">
-                </div>
-            </div>
-            <div class=placeholder>
-                <label>Re-enter Password</label>
-                <div class='form-row'>
-                    <input  type="password" name="password">
+                    <input  type="text" name="phone_number">
                 </div>
             </div>
             <div class='login'>
-                <input type="submit" value="Create your GeoMindr account">
+                <button>Create your GeoMindr account</button>
             </div>
             <div class='member'>
-                <a class='accnt' href="#"><p>Already have an account? SignIn</p></a>
+            <p class='accnt'>Already have an account?</p>
+                <a class='accnt' href="/login"><p>Sign In</p></a>
             </div>
         </form>
     `;
 }
-
 
 module.exports = registerForm;

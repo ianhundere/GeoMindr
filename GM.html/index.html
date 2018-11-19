@@ -39,57 +39,55 @@
                 </section>
             </div>
         </div>
-    </div>
 
-    <div class='divider'></div>
+        <div class="divider"></div>
 
-    <!-- ===== =====  REGISTRATION-FORM  ===== ===== -->
-    <div class='registerMain'>
-        <div class='registerContainer'>
-            <div class='regTitle'>
-                <h2>Geo Mindr</h2>
-            </div>
-            <div class='regForm'>
-                <div class=formTitle>
-                    <h1>Create account</h1>
-                </div>
-                <form class='form' action="/login" method="POST">
-                    <div class=placeholder>
-                        <label>Name</label> 
-                        <div class='form-row'>
-                            <input  type="text" name="name">
-                        </div>
-                    </div>
-                    <div class=placeholder>
-                        <label>Email</label>
-                        <div class='form-row'>
-                            <input  type="text" name="email">
-                        </div>
-                    </div>
-                    <div class=placeholder>
-                        <label>Password</label>
-                        <div class='form-row'>
-                            <input  type="password" name="password">
-                        </div>
-                    </div>
-                    <div class=placeholder>
-                            <label>Re-enter Password</label>
-                            <div class='form-row'>
-                                <input  type="password" name="password">
+        <!-- ===== =====  REGISTRATION-FORM  ===== ===== -->
+        <div class="registerMain">
+            <div class="registerContainer">
+                <div class="regTitle"><h2>Geo Mindr</h2></div>
+                <div class="regForm">
+                    <div class="formTitle"><h1>Create account</h1></div>
+                    <form class="form" action="/login" method="POST">
+                        <div class="placeholder">
+                            <label>Name</label>
+                            <div class="form-row">
+                                <input type="text" name="name" />
                             </div>
                         </div>
-                    <div class='login'>
-                        <input type="submit" value="Create your GeoMindr account">
-                    </div>
-                    <div class='member'>
-                        <a class='accnt' href="#"><p>Already have an account? SignIn</p></a>
-                    </div>
-                </form>
+                        <div class="placeholder">
+                            <label>Email</label>
+                            <div class="form-row">
+                                <input type="text" name="email" />
+                            </div>
+                        </div>
+                        <div class="placeholder">
+                            <label>Password</label>
+                            <div class="form-row">
+                                <input type="password" name="password" />
+                            </div>
+                        </div>
+                        <div class="placeholder">
+                            <label>Re-enter Password</label>
+                            <div class="form-row">
+                                <input type="password" name="password" />
+                            </div>
+                        </div>
+                        <div class="login">
+                            <input
+                                type="submit"
+                                value="Create your GeoMindr account"
+                            />
+                        </div>
+                        <div class="member">
+                            <a class="accnt" href="#"
+                                ><p>Already have an account? SignIn</p></a
+                            >
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class='divider'></div>
 
     <!--  ===== =====  SIGN-IN  ===== ===== -->
     <div class='loginMain'>
@@ -164,5 +162,16 @@
         </div>
     </div>
 
-</body>
+        <!-- ===== =====  REMINDER-FORM  ===== ===== -->
+
+        <div class="formTitle"><h1>Create a Reminder</h1></div>
+        <form class="form" action="/createreminder" method="POST">
+            <div class="placeholder">
+                <label>Reminder</label>
+                <div class="form-row">
+                    <input type="text" name="reminders" />
+                </div>
+            </div>
+        </form>
+    </body>
 </html>
