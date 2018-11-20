@@ -240,12 +240,58 @@ label {
     justify-content: center;
 }
 
-#map {
-    height: 50vh;
+/* ===== =====  ADD-REMIND  ===== ===== */
+.addRemind {
+    height: 100%;
     width: 100%;
-    outline: 2px darkgray solid;
-    margin: 10px;
+    display: flex;
+    flex-direction: column;
 }
+.columnContainer {
+    outline: solid 1px black;
+    /* background-color: lightgoldenrodyellow; */
+    height: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.columnL {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    outline: solid 1px black;
+    background-color: white;
+    height: 300px;
+    width: 300px;
+}
+.addTitle{
+    display: flex;
+    font-size: 10px;
+    /* margin-bottom: 5px; */
+}
+.submitBtn {
+    margin-left: 10px;
+}
+.columnR {
+    outline: solid 1px black;
+    background-color: white;
+    height: 400px;
+    width: 600px;
+}
+#map {
+    height: 75vh;
+    /* height: 100%; */
+    width: 100%;
+    /* outline: 2px darkgray solid; */
+    /* margin: 10px; */
+}
+
+
+
+
 
 .remList {
     padding-bottom: 5px;

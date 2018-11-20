@@ -217,7 +217,7 @@ label {
     border-radius: 5px;
     background-color: lightgoldenrodyellow;
 }
-.login input{
+.submit input{
     font-size: 12px;
     margin-left: 10px;
     width: 280px;
@@ -230,6 +230,54 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* ===== =====  ADD-REMIND  ===== ===== */
+.addRemind {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.columnContainer {
+    outline: solid 1px black;
+    background-color: lightgoldenrodyellow;
+    height: 100%;;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.columnL {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    outline: solid 1px black;
+    background-color: white;
+    height: 300px;
+    width: 300px;
+}
+.addTitle{
+    display: flex;
+    font-size: 10px;
+    /* margin-bottom: 5px; */
+}
+.submitBtn {
+    margin-left: 10px;
+}
+.columnR {
+    outline: solid 1px black;
+    background-color: white;
+    height: 400px;
+    width: 600px;
+}
+#map {
+    height: 75vh;
+    /* height: 100%; */
+    width: 100%;
+    /* outline: 2px darkgray solid; */
+    /* margin: 10px; */
 }
 
 /* ===== =====  MY-REMINDERDS  ===== ===== */
@@ -262,29 +310,29 @@ label {
     /* width: 100px; */
     flex: 1;
 }
-.columnContainer {
-    /* outline: solid 1px black; */
+/* .columnContainer {
+    outline: solid 1px black;
     background-color: lightgoldenrodyellow;
-    height: 500px;
+    height: 400px;
     width: 100%;
     margin-top: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-}
-.columnL {
+} */
+/* .columnL {
     outline: solid 1px black;
     background-color: white;
     height: 450px;
     width: 400px;
-}
-.columnR {
+} */
+/* .columnR {
     outline: solid 1px black;
     background-color: white;
     height: 300px;
     width: 400px;
-}
+} */
 
 /* ===== =====  MAPS  ===== ===== */
 .mapMain {
@@ -309,8 +357,8 @@ label {
 }
 .mapContainer2 {
     background-color: white;
-    height: 400px;
-    width: 600px;
+    /* height: 400px;
+    width: 600px; */
 }
 
 

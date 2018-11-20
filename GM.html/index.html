@@ -98,7 +98,7 @@
                             <input type="password" name="phone_number">
                         </div>
                     </div>
-                    <div class="login">
+                    <div class="submit">
                         <input
                             type="submit"
                             value="Create your GeoMindr account"
@@ -160,7 +160,7 @@
                             <input  type="password" name="password">
                         </div>
                     </div>
-                    <div class='login'>
+                    <div class='submit'>
                         <input type="submit" value="Sign in">
                     </div>
                     <div class='member'>
@@ -173,6 +173,53 @@
         <div class='mainFooter'>
             <div class='footer'>
                 <p>&copy; 2018 GeoMindr</p>
+            </div>
+        </div>
+    </div>
+
+    <div class='divider'></div>
+
+    <!-- ===== =====  ADD-REMIND  ===== ===== -->
+    <div class='addRemind'>
+        <div class='columnContainer'>
+            <div class='columnL'>
+                <!-- <div class='tabContainer'> -->
+                    <div class="addTitle"><h1>Add new GeoMindr</h1></div>
+                    <form class="form" action="/createreminder" method="POST">
+                        <!-- <div class="placeholder">
+                            <label>Public:</label>
+                            <input type="checkbox" name="is_public" checked="true"/>
+                        </div>     -->
+                        <div class="placeholder">
+                            <label>Latitude:</label> 
+                            <div class="form-row">
+                                <input type="text" name="latitude" data-lat/>
+                            </div>
+                        </div>  
+                        <div class="placeholder">
+                            <label>Longitude: </label>
+                            <div class="form-row">
+                                <input type="text" name="longitude" data-lon/>
+                            </div>
+                        </div>  
+                        <div class="placeholder"> 
+                            <label>Reminder:</label> 
+                            <div class="form-row">
+                                <input type="text" name="reminder"/>
+                            </div>
+                        </div> 
+                        <div class='submitBtn'>   
+                            <button>Submit</button>
+                            <label>Public:</label>
+                            <input type="checkbox" name="is_public" checked="true"/>
+                        </div>
+                    </form>
+                <!-- </div> -->
+            </div>
+            <div class='columnR'>
+                <div class='mapContainer'>
+                    <div id="map"></div><br>
+                </div>
             </div>
         </div>
     </div>
