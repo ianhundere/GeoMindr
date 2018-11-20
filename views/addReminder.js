@@ -25,8 +25,8 @@ function addReminder() {
             </div>
         </form>
         <div id="map"></div><br>
-        <a href ="/mylist"> List of GeoMindrs</a><br>
-        <a href ="/home"> Go to GeoMindr Menu</a>
+        <button><a href ="/mylist"> List of GeoMindrs</a><br></button>
+        <button><a href ="/home"> Go to GeoMindr Menu</a></button>
         
         <script src="scripts.js"></script>
         <script async defer 
