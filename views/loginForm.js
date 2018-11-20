@@ -6,9 +6,9 @@ function loginForm() {
                     <div class=formTitle><h1>Sign in</h1></div>
                     <form class='loginContainer' action="/login" method="POST">
                         <div class=placeholder>
-                            <label>Email</label>
+                            <label>Username</label>
                             <div class='form-row'>
-                                <input  type="text" name="email">
+                                <input  type="text" name="username">
                             </div>
                         </div>
                         <div class=placeholder>
