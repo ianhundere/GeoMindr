@@ -76,8 +76,8 @@ app.get('/', (req, res) => {
 // ========================================================
 app.get('/register', (req, res) => {
     const theForm = registerForm();
-    const thePage = page(theForm);
-    res.send(thePage);
+    // const thePage = page(theForm);
+    res.send(theForm);
 });
 
 app.post('/register', (req, res) => {
@@ -110,8 +110,8 @@ app.get('/login', (req, res) => {
     console.log(req.session.user);
     // Send login form
     const theLogin = loginForm();
-    const thePage = page(theLogin);
-    res.send(thePage);
+    // const thePage = page(theLogin);
+    res.send(theLogin);
 });
 
 app.post('/login/', (req, res) => {
