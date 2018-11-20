@@ -6,7 +6,7 @@ function reminderToItem(reminderObject) {
             data-lat="${reminderObject.latitude}"
             data-lon="${reminderObject.longitude}"
         >
-            ${reminderObject.reminder} <button><a href='/mylist/${reminderObject.id}/edit'>Edit</a></button> | <button onclick="youSure()"><a href='/delete/${reminderObject.id}'>Delete</a></button>
+            ${reminderObject.reminder} <button><a href='/mylist/${reminderObject.id}/edit'>Edit</a></button> | <button onclick="youSure(${reminderObject.id})">Delete</button>
         </li>                                               
     `;
 }
@@ -24,9 +24,11 @@ function reminderList(arrayOfReminders) {
         <script src="scripts.js"></script>
         <script async defer 
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATg8I-7sRcc4jlqUhTAxWDOv8gHanaLXA&callback=initPubMap"></script>
-        <script>function youSure() {
-    confirm("Are you sure you want to delete this GeoMindr?");
-}</script>
+        <script>function youSure(arg) {
+        if (confirm("Are you sure you want to delete this GeoMindr?")) {
+            window.location = "/delete/"+arg
+        }
+    }</script>
     `;
 }
 module.exports = reminderList;

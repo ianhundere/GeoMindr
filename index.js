@@ -250,7 +250,7 @@ app.get('/myreminders/', (req, res) => {
 
 app.get('/delete/:id(\\d+)', (req, res) => {
     Reminder.getById(req.params.id).then(theReminder => {
-        theReminder.deleteById(req.params.id).then(delReminderByID => {
+        Location.deleteById(theReminder.location_id).then(delReminderByID => {
             res.redirect(`/mylist`);
         });
     });
@@ -267,6 +267,19 @@ app.post('/reminders/:id(\\d+)', (req, res) => {
             res.send(reminderUpdated);
         });
     });
+});
+// ========================================================
+
+// ========================================================
+// Signout / Kill User Session
+// ========================================================
+app.post('/logout', (req, res) => {
+    // 1. destroy the session
+    req.session.destroy(() => {
+        req.session = null;
+        res.redirect('/login');
+    });
+    // 2. redirect them to the home page
 });
 // ========================================================
 
