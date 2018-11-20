@@ -18,9 +18,9 @@ function page(content) {
                 ${header()}
                     
                 ${content}
-            </div>    
+
                 ${footer()}
-            
+            </div>    
         </body>
         </html>
     `;

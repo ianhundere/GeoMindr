@@ -19,9 +19,11 @@ function header() {
 
 function footer() {
     return `
-    <footer>
-        <p>&copy; 2018 GeoMindr</p>
-    </footer>
+        <footer class='mainFooter'>
+            <div class='footer'>
+                <p>&copy; 2018 GeoMindr</p>
+            </div>
+        </footer>
     `;
 }
 

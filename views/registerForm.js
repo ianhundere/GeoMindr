@@ -5,28 +5,28 @@ function registerForm() {
                 <div class="regForm">
                     <div class="formTitle"><h1>Create account</h1></div>
                     <form class='registerContainer' action="/register" method="POST">
-                        <div>
+                        <div class='placeholder'>
                             <label>Name
                             <div class='form-row'>
                                 <input  type="text" name="name">
                             </div>
                             </label> 
                         </div>
-                        <div>
+                        <div class='placeholder'>
                             <label>Username
                             <div class='form-row'>
                                 <input  type="text" name="username">
                             </div>
                             </label>
                         </div>
-                        <div>
+                        <div class='placeholder'>
                             <label>Password
                             <div class='form-row'>
                                 <input  type="text" name="password">
                             </div>
                             </label>
                         </div>
-                        <div>
+                        <div class='placeholder'>
                             <label>Phone Number
                             <div class='form-row'>
                                 <input  type="text" name="phone_number">
@@ -37,7 +37,7 @@ function registerForm() {
                             <button>Create your GeoMindr account</button>
                         </div>
                         <div class='member'>
-                        <p class='accnt'>Already have an account?</p>
+                            <p class='accnt'>Already have an account?</p>
                             <a class='accnt' href="/login"><p>Sign In</p></a>
                         </div>
                     </form>
