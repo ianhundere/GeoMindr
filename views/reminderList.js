@@ -5,8 +5,11 @@ function reminderToItem(reminderObject) {
             data-reminder="${reminderObject.reminder}"
             data-lat="${reminderObject.latitude}"
             data-lon="${reminderObject.longitude}"
-        >
-            ${reminderObject.reminder} <button><a href='/mylist/${reminderObject.id}/edit'>Edit</a></button> | <button onclick="youSure(${reminderObject.id})">Delete</button>
+            >
+            
+            ${reminderObject.reminder} 
+        <button><a href='/mylist/${reminderObject.id}/edit'><i class="far fa-edit" title="Edit"></i></a></button><button onclick="youSure(${reminderObject.id})"><i class="far far fa-trash-alt" title="Delete"></i></button>
+
         </li>                                               
     `;
 }
