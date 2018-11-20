@@ -4,7 +4,7 @@ function header() {
             <div class='nav'>
                 <div class='navTitle'>
                     <div class='title'>
-                        <h1>Geo Mindr</h1>
+                        <h1>GeoMindr</h1>
                     </div>
                 </div>
                 <div class='navRight'>
@@ -12,6 +12,9 @@ function header() {
                         <a class="active" href="/mylist">List of GeoMindrs</a>
                         <a href="/home">GeoMindr Menu</a>
                         <a class='signout' href="#">Sign out</a>
+                        <form action="/logout" method="POST">
+                            <input class='signout' type="submit" value="Log Out">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -22,7 +25,7 @@ function header() {
 function footer() {
     return `
         <footer class='mainFooter'>
-            <div class='footer'>
+            <div>
                 <p>&copy; 2018 GeoMindr</p>
             </div>
         </footer>

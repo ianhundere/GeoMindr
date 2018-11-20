@@ -42,7 +42,7 @@ class Location {
     }
 
     // DELETE (working)
-    deleteById(id) {
+    static deleteById(id) {
         return db.result(
             `delete from locations
             where id = $1`,
