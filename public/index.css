@@ -207,6 +207,40 @@ label {
 
 #map {
     height: 50vh;
-    width: 90%;
-    outline: 1px red solid;
+    width: 100%;
+    outline: 2px darkgray solid;
+    margin: 10px;
+}
+
+.remList {
+    padding-bottom: 5px;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between; */
+}
+
+.remList:hover {
+    font-weight: bold;
+}
+
+/* table {
+    outline: 2px darkgray solid;
+    border-collapse: collapse;
+} */
+
+th {
+    padding: 5px;
+    text-align: left;
+    background-color: darkgray;
+    color: white;
+    font-size: 1.5em;
+    font-family: Tahoma, Geneva, Verdana, sans-serif
+}
+
+td {
+    padding: 5px 2px;
+}
+
+tr:hover{
+    background-color: lightgrey;
 }
