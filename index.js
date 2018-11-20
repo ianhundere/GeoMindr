@@ -200,6 +200,8 @@ app.get('/mylist/:id(\\d+)/edit', (req, res) => {
 // List Session User's Reminders (working)
 // ========================================================
 app.get('/mylist', protectRoute, (req, res) => {
+    const theUser = User.from(req.session.user);
+
     // theUser.getReminders().then(allReminders => {
     //     res.send(page(reminderList(allReminders)));
     // });
@@ -288,7 +290,7 @@ app.post('/sms', (req, res) => {
         twiml.message(
             { to: `${bod.phone}` },
             `${bod.task} GeoMindr for phone # ${bod.phone} at lat/lon ${
-                bod.lat
+            bod.lat
             }/${bod.lon}.\nWhat is your GeoMindr?`
         );
 
@@ -353,7 +355,7 @@ app.post('/sms', (req, res) => {
                                     // reply message received with Geomindr body
                                     twiml.message(
                                         `New GeoMindr recorded: ${
-                                            geomindr.reminder
+                                        geomindr.reminder
                                         }`
                                     );
                                     res.writeHead(200, {
