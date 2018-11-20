@@ -1,6 +1,11 @@
 function addReminder() {
     return `
-    <div class="formTitle"><h1>Create a GeoMindr</h1></div>
+
+
+
+
+    
+    <div class="formTitle"><h1>Add new GeoMindr</h1></div>
         <form class="form" action="/createreminder" method="POST">
             <div class="placeholder">
                 <label>Public:
