@@ -22,7 +22,7 @@ function loginForm() {
                 </div>
                 <div class='member'>
                     <p class='accnt'>Don't have an account?</p>
-                    <a href="/register"><p>Sign up</p></a>
+                    <button><a href="/register"><p>Sign up</p></a></button>
                 </div>
     `;
 }

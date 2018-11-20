@@ -34,7 +34,7 @@ function registerForm() {
             </div>
             <div class='member'>
             <p class='accnt'>Already have an account?</p>
-                <a class='accnt' href="/login"><p>Sign In</p></a>
+                <button><a class='accnt' href="/login"><p>Sign In</p></a></button>
             </div>
         </form>
     `;

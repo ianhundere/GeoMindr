@@ -248,14 +248,13 @@ app.get('/myreminders/', (req, res) => {
 // Delete Reminder by ID (working)
 // ========================================================
 
-app.delete('/reminders/:id(\\d+)', (req, res) => {
+app.get('/delete/:id(\\d+)', (req, res) => {
     Reminder.getById(req.params.id).then(theReminder => {
         theReminder.deleteById(req.params.id).then(delReminderByID => {
-            res.send(delReminderByID);
+            res.redirect(`/mylist`);
         });
     });
 });
-
 // ========================================================
 
 // ========================================================
@@ -269,7 +268,6 @@ app.post('/reminders/:id(\\d+)', (req, res) => {
         });
     });
 });
-
 // ========================================================
 
 // ========================================================
@@ -449,19 +447,6 @@ app.get('/users/:id(\\d+)', (req, res) => {
 app.get('/users/:username', (req, res) => {
     User.getByUserName(req.params.username).then(username => {
         res.send(username);
-    });
-});
-
-// ========================================================
-
-// ========================================================
-// Get User's Reminders (working)
-// ========================================================
-app.get('/users/reminders/:id(\\d+)', (req, res) => {
-    User.getById(req.params.id).then(userReminders => {
-        userReminders.getReminders(req.params.reminder).then(reminders => {
-            res.send(reminders);
-        });
     });
 });
 // ========================================================
