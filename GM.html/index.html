@@ -12,18 +12,21 @@
 <body>
     <!-- ===== HOME PAGE ===== -->
     <div class='main' id='home'>
-        <div class='nav'>
-            <div class='logoTitle'>
-                <div class='title'>
-                    <h1>Geo Mindr</h1>
+        <!-- =====  NAVBAR  ===== -->
+        <header class='mainNav'>
+            <div class='nav'>
+                <div class='navTitle'>
+                    <div class='title'>
+                        <h1>Geo Mindr</h1>
+                    </div>
+                </div>
+                <div class='navRight'>
+                    <!-- <div class='signout'> -->
+                        <a class='signout' href="#">Sign out</a>
+                        <!-- </div> -->
                 </div>
             </div>
-            <div class='navRight'>
-                <!-- <div class='signout'> -->
-                    <a class='signout' href="#">Sign out</a>
-                <!-- </div> -->
-            </div>
-        </div>
+        </header>
         <div class='mainContainer'>
             <div class="mainBody">
                 <section class='body'>
@@ -39,14 +42,35 @@
                 </section>
             </div>
         </div>
+        <!-- =====  FOOTER  ===== -->
+        <div class='mainFooter'>
+            <div class='footer'>
+                <p>&copy; 2018 GeoMindr</p>
+            </div>
+        </div>
     </div>
     
     <div class="divider"></div>
 
     <!-- ===== =====  REGISTRATION-FORM  ===== ===== -->
     <div class="registerMain">
+        <!-- =====  NAVBAR  ===== -->
+            <header class='mainNav'>
+                <div class='nav'>
+                    <div class='navTitle'>
+                        <div class='title'>
+                            <h1>Geo Mindr</h1>
+                        </div>
+                    </div>
+                    <div class='navRight'>
+                        <!-- <div class='signout'> -->
+                            <a class='signout' href="#">Sign out</a>
+                            <!-- </div> -->
+                    </div>
+                </div>
+            </header>
         <div class="registerContainer">
-            <div class="regTitle"><h2>Geo Mindr</h2></div>
+            <!-- <div class="regTitle"><h2>Geo Mindr</h2></div> -->
             <div class="regForm">
                 <div class="formTitle"><h1>Create account</h1></div>
                 <form class="form" action="/register" method="POST">
@@ -57,9 +81,9 @@
                         </div>
                     </div>
                     <div class="placeholder">
-                        <label>Email</label>
+                        <label>Username</label>
                         <div class="form-row">
-                            <input type="text" name="email">
+                            <input type="text" name="username">
                         </div>
                     </div>
                     <div class="placeholder">
@@ -69,9 +93,9 @@
                         </div>
                     </div>
                     <div class="placeholder">
-                        <label>Re-enter Password</label>
+                        <label>Phone Number</label>
                         <div class="form-row">
-                            <input type="password" name="password">
+                            <input type="password" name="phone_number">
                         </div>
                     </div>
                     <div class="login">
@@ -92,18 +116,37 @@
                 </form>
             </div>
         </div>
+        <!-- =====  FOOTER  ===== -->
+        <div class='mainFooter'>
+            <div class='footer'>
+                <p>&copy; 2018 GeoMindr</p>
+            </div>
+        </div>
     </div>
+
+    <div class="divider"></div>
 
     <!--  ===== =====  SIGN-IN  ===== ===== -->
     <div class='loginMain'>
-        <div class='loginContainer'>
-            <div class='logTitle'>
-                <h2>Geo Mindr</h2>
-            </div>
-            <div class='logForm'>
-                <div class=formTitle>
-                    <h1>Sign in</h1>
+        <!-- =====  NAVBAR  ===== -->
+        <header class='mainNav'>
+            <div class='nav'>
+                <div class='navTitle'>
+                    <div class='title'>
+                        <h1>Geo Mindr</h1>
+                    </div>
                 </div>
+                <div class='navRight'>
+                    <!-- <div class='signout'> -->
+                        <a class='signout' href="#">Sign out</a>
+                        <!-- </div> -->
+                </div>
+            </div>
+        </header>
+        <div class='loginContainer'>
+            <!-- <div class='logTitle'><h2>Geo Mindr</h2></div> -->
+            <div class='logForm'>
+                <div class=formTitle><h1>Sign in</h1></div>
                 <form class='form' action="/login" method="POST">
                     <div class=placeholder>
                         <label>Email</label>
@@ -124,6 +167,12 @@
                     <a class='accnt' href="#"><p>Create an account</p></a>
                     </div>
                 </form>
+            </div>
+        </div>
+        <!-- =====  FOOTER  ===== -->
+        <div class='mainFooter'>
+            <div class='footer'>
+                <p>&copy; 2018 GeoMindr</p>
             </div>
         </div>
     </div>

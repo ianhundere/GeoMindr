@@ -21,6 +21,58 @@ body {
     width: 100%;
 }
 
+/* ===== =====  NAVBAR  ===== ===== */
+.mainNav {
+    width: 100%;
+}
+.nav {
+    display: flex;
+    background-color: white;
+    height: 30px;
+    /* justify-content: space-evenly; */
+}
+.navTitle {
+    /* background-color: rgba(235, 235, 235, 0.952); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 30px;
+    flex: 1
+}
+.title {
+    letter-spacing: 3px;
+    font-size: 12px;
+    color: lightskyblue;
+}
+h1 { 
+    margin: 0px;
+}
+.navRight {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+
+}
+.signout {
+    padding-right: 30px; 
+    text-decoration: none;  
+    font-size: 14px; 
+}
+
+/*  ===== =====  FOOTER  ===== ===== */
+.mainFooter {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+}
+.footer {
+    font-size: 12px;
+}
+
 /* ===== =====  HOME-PAGE  ===== ===== */
 .main {
     background-color: rgba(235, 235, 235, 0.952);
@@ -40,21 +92,16 @@ body {
 }
 
 /* =====  TITLE  ==== */
-.mainTitle {
+/* .mainTitle { */
     /* background-color: lightsteelblue; */
-    background-color: rgba(235, 235, 235, 0.952);
-    display: flex;
-    height: 100px;
-    width: 550px;
-    margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
-}
-.title {
-    letter-spacing: 3px;
-    font-size: 14px;
-    color: lightskyblue;
-}
+    /* background-color: rgba(235, 235, 235, 0.952); */
+    /* display: flex; */
+    /* height: 100px; */
+    /* width: 550px; */
+    /* margin-bottom: 20px; */
+    /* justify-content: center; */
+    /* align-items: center; */
+/* } */
 
 /* =====  BODY  ===== */
 .mainBody {
@@ -92,7 +139,7 @@ a {
 /* ===== =====  REGISTER  ===== ===== */
 .registerMain {
     /* background-color: rgba(235, 235, 235, 0.952); */
-    background-color: white;
+    /* background-color: white; */
     height: 100%;
     display: flex;
     align-items: center;
@@ -118,6 +165,7 @@ a {
     flex-direction: column;
     align-items: flex-start;
     outline: solid 1px black;
+    background-color: white;
     height: 400px;
     width: 300px;
 }
