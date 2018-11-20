@@ -34,6 +34,7 @@ const homePage = require('./views/home');
 const addReminder = require('./views/addReminder');
 const reminderList = require('./views/reminderList');
 const mapList = require('./views/mapList');
+const updateReminder = require('./views/updateReminder');
 
 // Model Variables
 const User = require('./models/User');
@@ -165,12 +166,40 @@ app.post('/createreminder', (req, res) => {
         });
 });
 
+app.get('/create', (req, res) => {
+    res.send(page(addReminder()));
+});
+
+// ========================================================
+// Update Reminders (not working)
+// ========================================================
+app.put('/mylist/:id(\\d+)', (req, res) => {
+    Reminder.getById(req.params.id).then(theReminder => {
+        theReminder
+            .updateReminder(
+                req.body.reminder,
+                req.body.is_public,
+                req.body.latitude,
+                req.body.longitude
+            )
+            .then(reminderUpdated => {
+                res.send(reminderUpdated);
+            });
+    });
+});
+
+app.get('/mylist/:id(\\d+)/edit', (req, res) => {
+    res.send(page(updateReminder()));
+});
+// ========================================================
+
 // ========================================================
 // List Session User's Reminders (working)
 // ========================================================
 app.get('/mylist', protectRoute, (req, res) => {
     const theUser = User.from(req.session.user);
     theUser.getReminders().then(allReminders => {
+        console.log(allReminders);
         res.send(page(reminderList(allReminders)));
     });
 });
@@ -185,11 +214,6 @@ app.get('/publiclist', protectRoute, (req, res) => {
     publicList.then(PublicReminders => {
         res.send(page(mapList(PublicReminders)));
     });
-});
-// ========================================================
-
-app.get('/create', (req, res) => {
-    res.send(page(addReminder()));
 });
 // ========================================================
 
@@ -373,28 +397,6 @@ app.delete('/locations/:id(\\d+)', (req, res) => {
         });
     });
 });
-// ========================================================
-
-// ========================================================
-// Create User (working)
-// ========================================================
-
-// app.post('/register', (req, res) => {
-//     console.log(req.body);
-//     const newName = req.body.name;
-//     const newUsername = req.body.username;
-//     /*const newPassword = req.body.password;*/
-//     const newPhone = req.body.phone_number;
-//     User.createUser(newName, newUsername, /*newPassword,*/ newPhone)
-//         .catch(err => {
-//             console.log(err);
-//             res.redirect('/register');
-//         })
-//         .then(newUser => {
-//             res.send(newUser);
-//         });
-// });
-
 // ========================================================
 
 // ========================================================

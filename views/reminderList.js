@@ -1,7 +1,7 @@
 function reminderToItem(reminderObject) {
     return `
-        <li>
-            ${reminderObject.reminder}
+        <li>${reminderObject.reminder}<a href="/mylist/2/edit">(update)</a>
+
         </li>
     `;
 }
