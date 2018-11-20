@@ -200,10 +200,11 @@ app.get('/mylist/:id(\\d+)/edit', (req, res) => {
 // List Session User's Reminders (working)
 // ========================================================
 app.get('/mylist', protectRoute, (req, res) => {
-    const theUser = User.from(req.session.user);
-    theUser.getReminders().then(allReminders => {
-        console.log(allReminders);
-        res.send(page(reminderList(allReminders)));
+    // theUser.getReminders().then(allReminders => {
+    //     res.send(page(reminderList(allReminders)));
+    // });
+    Reminder.getRemindersUser(theUser.id).then(UserReminders => {
+        res.send(page(reminderList(UserReminders)));
     });
 });
 // ========================================================
@@ -212,9 +213,10 @@ app.get('/mylist', protectRoute, (req, res) => {
 // List Public Reminders (working)
 // ========================================================
 app.get('/publiclist', protectRoute, (req, res) => {
-    const publicList = Reminder.getRemindersPublic();
+    //const publicList = Reminder.getRemindersPublic();
     // console.log('look at me!', publicList);
-    publicList.then(PublicReminders => {
+    //publicList.then(PublicReminders => {
+    Reminder.getRemindersPublic().then(PublicReminders => {
         res.send(page(mapList(PublicReminders)));
     });
 });

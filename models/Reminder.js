@@ -106,8 +106,7 @@ class Reminder {
             Inner Join locations on reminders.location_id=locations.id
             Inner Join users on reminders.user_id=users.id
             where reminders.user_id = $1
-            `,
-            [userID]
+            `, [userID]
         );
     }
 
