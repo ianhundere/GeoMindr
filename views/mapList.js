@@ -3,12 +3,13 @@ function reminderToItem(reminderObject) {
         <tr>
             <td>${reminderObject.username}</td>
             <td>${reminderObject.reminder}</td>
+            <td>${Number(reminderObject.latitude).toFixed(6)}</td>
             <td
                 data-username="${reminderObject.username}"
                 data-reminder="${reminderObject.reminder}"
                 data-lat="${reminderObject.latitude}"
                 data-lon="${reminderObject.longitude}"
-            >${reminderObject.latitude} / ${reminderObject.longitude}</td>
+            >${Number(reminderObject.longitude).toFixed(6)}</td>
         </tr>
     `;
 }
@@ -18,7 +19,7 @@ function mapList(arrayOfReminders) {
     return `
         <table>
         <tr>
-            <td>User Name</td><td>GeoMindr</td><td>Lat / Lon</td>
+            <th>User Name</th><th>GeoMindr</th><th>Lat</th><th>Lon</th>
         </tr>
             ${reminderItems}
         </table>
