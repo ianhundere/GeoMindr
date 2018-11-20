@@ -1,29 +1,35 @@
 function loginForm() {
     return `
-                <div class="logForm">
-                    <div class="formTitle"><h2>Sign in</h2></div>
-                    <form class="form, loginContainer" action="/login" method="POST">
-                            <div class=placeholder>
-                                <div class='form-row'>
-                                    <label>Username:
-                                        <input type="text" name="username"> <br>
-                                    </label>
-                                </div>
-                            </div>
-                        <div class="placeholder">
-                            <div class="form-row">
-                                <label>Password
-                                    <input type="password" name="password"/><br>
-                                </label>
+        <div class='loginMain'>
+            <div class='loginContainer'>
+                <div class='logForm'>
+                    <div class=formTitle><h1>Sign in</h1></div>
+                    <form class='loginContainer' action="/login" method="POST">
+                        <div class=placeholder>
+                            <label>Username</label>
+                            <div class='form-row'>
+                                <input  type="text" name="username">
                             </div>
                         </div>
-                            <button>Sign in<button/>
+                        <div class=placeholder>
+                            <label>Password</label>
+                            <div class='form-row'>
+                                <input  type="password" name="password">
+                            </div>
+                        </div>
+                        <div class='login'>
+                            <input type="submit" value="Sign in">
+                        </div>
+                        <div class='member'>
+                            <p class='accnt'>Don't have an account?</p>
+                            <a class='accnt' href="/register"><p>Sign up</p></a>
+                        </div>
                     </form>
                 </div>
-                <div class='member'>
-                    <p class='accnt'>Don't have an account?</p>
-                    <button><a href="/register"><p>Sign up</p></a></button>
-                </div>
+            </div>
+        </div>
     `;
 }
 module.exports = loginForm;
+
+
