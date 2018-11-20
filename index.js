@@ -34,7 +34,7 @@ const homePage = require('./views/home');
 const addReminder = require('./views/addReminder');
 const reminderList = require('./views/reminderList');
 const mapList = require('./views/mapList');
-const editReminder = require('./views/updateReminder');
+const editReminder = require('./views/editReminder');
 
 // Model Variables
 const User = require('./models/User');
@@ -177,10 +177,10 @@ app.post('/mylist/:id(\\d+)', (req, res) => {
     Reminder.getById(req.params.id).then(theReminder => {
         theReminder
             .updateReminder(
+                req.body.reminder,
                 req.body.is_public,
                 req.body.latitude,
-                req.body.longitude,
-                req.body.reminder
+                req.body.longitude
             )
             .then(reminderUpdated => {
                 res.redirect(`/mylist`);
@@ -189,7 +189,8 @@ app.post('/mylist/:id(\\d+)', (req, res) => {
 });
 
 app.get('/mylist/:id(\\d+)/edit', (req, res) => {
-    Reminder.getById(req.params.id).then(theReminder => {
+    Reminder.getReminderForUpdate(req.params.id).then(theReminder => {
+        console.log(theReminder);
         res.send(page(editReminder(theReminder)));
     });
 });
@@ -257,7 +258,7 @@ app.delete('/reminders/:id(\\d+)', (req, res) => {
 // Update Reminder by ID (working)
 // ========================================================
 
-app.put('/reminders/:id(\\d+)', (req, res) => {
+app.post('/reminders/:id(\\d+)', (req, res) => {
     Reminder.getById(req.params.id).then(theReminder => {
         theReminder.updateReminder(req.body.reminder).then(reminderUpdated => {
             res.send(reminderUpdated);
@@ -465,7 +466,7 @@ app.get('/users/reminders/:id(\\d+)', (req, res) => {
 // Update User's Name (working)
 // ========================================================
 
-app.put('/users/:id(\\d+)', (req, res) => {
+app.post('/users/:id(\\d+)', (req, res) => {
     User.getById(req.params.id).then(theUser => {
         theUser.updateName(req.body.name).then(nameUpdated => {
             res.send(nameUpdated);

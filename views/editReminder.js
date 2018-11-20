@@ -5,20 +5,20 @@ function editReminder(theReminder) {
             <div class="placeholder">
                 <label>Public:
                 <input type="checkbox" name="is_public"
-                ${theReminder.isPublic ? 'checked' : ''}
+                ${theReminder.is_public ? 'checked' : ''}
                 
                 />
                 </label>
                 <label>Latitude: 
                 <div class="form-row">
-                    <input type="text" name="latitude" value="${
+                    <input type="integer" name="latitude" value="${
                         theReminder.latitude
                     }" data-lat/>
                 </div>
                 </label>
                 <label>Longitude:
                 <div class="form-row">
-                    <input type="text" name="longitude" value="${
+                    <input type="integer" name="longitude" value="${
                         theReminder.longitude
                     }" data-lon/>
                 </div>

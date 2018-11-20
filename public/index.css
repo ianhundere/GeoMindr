@@ -81,13 +81,13 @@ body {
     margin: 10px;
     border-radius: 15px;
 }
-a {
+/* a {
     text-decoration: none;
     width: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 /* ===== =====  REGISTER  ===== ===== */
 .registerMain {
