@@ -34,7 +34,7 @@ const homePage = require('./views/home');
 const addReminder = require('./views/addReminder');
 const reminderList = require('./views/reminderList');
 const mapList = require('./views/mapList');
-const updateReminder = require('./views/updateReminder');
+const editReminder = require('./views/updateReminder');
 
 // Model Variables
 const User = require('./models/User');
@@ -173,23 +173,25 @@ app.get('/create', (req, res) => {
 // ========================================================
 // Update Reminders (not working)
 // ========================================================
-app.put('/mylist/:id(\\d+)', (req, res) => {
+app.post('/mylist/:id(\\d+)', (req, res) => {
     Reminder.getById(req.params.id).then(theReminder => {
         theReminder
             .updateReminder(
-                req.body.reminder,
                 req.body.is_public,
                 req.body.latitude,
-                req.body.longitude
+                req.body.longitude,
+                req.body.reminder
             )
             .then(reminderUpdated => {
-                res.send(reminderUpdated);
+                res.redirect(`/mylist`);
             });
     });
 });
 
 app.get('/mylist/:id(\\d+)/edit', (req, res) => {
-    res.send(page(updateReminder()));
+    Reminder.getById(req.params.id).then(theReminder => {
+        res.send(page(editReminder(theReminder)));
+    });
 });
 // ========================================================
 

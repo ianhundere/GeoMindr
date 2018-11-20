@@ -1,24 +1,33 @@
-function updateReminder() {
+function editReminder(theReminder) {
     return `
     <div class="formTitle"><h1>Update your GeoMindr</h1></div>
-        <form class="form" action="/updatereminder" method="POST">
+    <form class="form" action="/mylist/${theReminder.id}" method="POST">
             <div class="placeholder">
                 <label>Public:
-                <input type="checkbox" name="is_public" checked="true"/>
+                <input type="checkbox" name="is_public"
+                ${theReminder.isPublic ? 'checked' : ''}
+                
+                />
                 </label>
                 <label>Latitude: 
                 <div class="form-row">
-                    <input type="text" name="latitude" data-lat/>
+                    <input type="text" name="latitude" value="${
+                        theReminder.latitude
+                    }" data-lat/>
                 </div>
                 </label>
                 <label>Longitude:
                 <div class="form-row">
-                    <input type="text" name="longitude" data-lon/>
+                    <input type="text" name="longitude" value="${
+                        theReminder.longitude
+                    }" data-lon/>
                 </div>
                 </label>
                 <label>Reminder: 
                 <div class="form-row">
-                    <input type="text" name="reminder"/>
+                    <input type="text" name="reminder" value="${
+                        theReminder.reminder
+                    }"/>
                 </div>
                 </label>
                 <button>Update</button>
@@ -48,4 +57,4 @@ function updateReminder() {
         `;
 }
 
-module.exports = updateReminder;
+module.exports = editReminder;
