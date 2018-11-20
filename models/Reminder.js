@@ -86,6 +86,18 @@ class Reminder {
             `
         );
     }
+
+    static getRemindersUser(userID) {
+        return db.any(
+            `
+            select users.username, reminders.reminder, locations.latitude, locations.longitude from reminders 
+            Inner Join locations on reminders.location_id=locations.id
+            Inner Join users on reminders.user_id=users.id
+            where reminders.user_id = $1
+            `, [userID]
+        );
+    }
+
     // === ===  UPDATE  === === (working)
     updateReminder(reminder) {
         return db
