@@ -8,9 +8,11 @@ function header() {
                     </div>
                 </div>
                 <div class='navRight'>
-                    <!-- <div class='signout'> -->
-                        <a class='signout' href="#">Sign out</a>
-                        <!-- </div> -->
+                    <div class='signout'>
+                        <form action="/logout" method="POST">
+                            <input class='signout' type="submit" value="Log Out">
+                        </form>
+                    </div>
                 </div>
             </div>
         </header>
