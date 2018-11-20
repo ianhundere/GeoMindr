@@ -4,7 +4,7 @@ function header() {
             <div class='nav'>
                 <div class='navTitle'>
                     <div class='title'>
-                        <h1>Geo Mindr</h1>
+                        <h1>GeoMindr</h1>
                     </div>
                 </div>
                 <div class='navRight'>
