@@ -2,8 +2,7 @@ function reminderToItem(reminderObject) {
     return `
         <li>
             ${reminderObject.username}<br>
-            ${reminderObject.reminder}
-            <a href="/reminders/${reminderObject.id}/edit">(update)</a><br>
+            ${reminderObject.reminder}<br>
             ${reminderObject.latitude}
             ${reminderObject.longitude}<br>
         </li><br>
