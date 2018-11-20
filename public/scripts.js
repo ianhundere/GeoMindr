@@ -21,8 +21,6 @@ function getLocation(cb) {              // gets user location using geolocation 
     } 
 }
 
-
-var marker = false;
 function initMap() {                    // initial paint of the Google map centered on user
     getLocation(function(myLatLon) {
         let myGPS = {lat: parseFloat(myLatLon.myLat), lng: parseFloat(myLatLon.myLon)};
@@ -93,6 +91,49 @@ function getMarkers() {
 }
 
 
+function initUpdateMap() {
+    // paint the Google map centered on the reminder being updated
+    let lats = Number(document.querySelector('[data-lat]').value);
+    let longs = Number(document.querySelector('[data-lon]').value);
+    let lats_longs = new google.maps.LatLng(lats, longs);
+    let myGPS = {lat: lats_longs.lat(), lng: lats_longs.lng()};
+
+    let map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: myGPS
+    });
+      
+    // Create a marker and set its position.
+    marker = new google.maps.Marker({
+        position: myGPS,
+        map: map,
+        title: document.querySelector('[data-reminder]').value,
+        draggable: true
+      });
+      
+    google.maps.event.addListener(marker, 'dragend', function(event){
+        markerLocation();
+    });
+
+    google.maps.event.addListener(map, 'click', function(event) {                
+        //Get the location that the user clicked.
+        marker.setPosition(event.latLng);
+    
+    //Get the marker's location.
+    markerLocation();
+    }); 
+  
+}
+
+function getMarkers() {
+    let td = document.querySelectorAll('[data-username]');
+    td = [...td];
+    td = td.map(x => x.dataset)
+    return td;
+}
+
+
+var marker = false;
 getLocation(function(myLatLon) {
     const inpLat = document.querySelector('[data-lat]');
     const inpLon = document.querySelector('[data-lon]');

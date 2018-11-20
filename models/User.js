@@ -89,7 +89,7 @@ class User {
 
     getReminders() {
         return db.any(
-            `select reminder from reminders
+            `select reminder, id from reminders
         where user_id = $1`,
             [this.id]
         );
