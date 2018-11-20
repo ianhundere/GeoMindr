@@ -7,6 +7,9 @@ html {
 }
 html,
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -67,8 +70,11 @@ h1 {
     align-content: center;
     /* height: 30px; */
 }
-.footer {
+
+footer {
     font-size: 12px;
+    margin: auto auto 0 auto;
+
 }
 
 /* ===== =====  HOME-PAGE  ===== ===== */

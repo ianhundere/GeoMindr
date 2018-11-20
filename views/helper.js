@@ -22,7 +22,7 @@ function header() {
 function footer() {
     return `
         <footer class='mainFooter'>
-            <div class='footer'>
+            <div>
                 <p>&copy; 2018 GeoMindr</p>
             </div>
         </footer>
