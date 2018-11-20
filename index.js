@@ -170,8 +170,11 @@ app.post('/createreminder', (req, res) => {
 // ========================================================
 app.get('/mylist', protectRoute, (req, res) => {
     const theUser = User.from(req.session.user);
-    theUser.getReminders().then(allReminders => {
-        res.send(page(reminderList(allReminders)));
+    // theUser.getReminders().then(allReminders => {
+    //     res.send(page(reminderList(allReminders)));
+    // });
+    Reminder.getRemindersUser(theUser.id).then(UserReminders => {
+        res.send(page(reminderList(UserReminders)));
     });
 });
 // ========================================================
