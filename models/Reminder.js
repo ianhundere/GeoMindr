@@ -66,6 +66,18 @@ class Reminder {
         });
     }
 
+    static getReminderForUpdate(id) {
+        return db.one(
+            `
+            select reminders.id, reminders.reminder, reminders.is_public, locations.latitude, 
+            locations.longitude from reminders 
+            Inner Join locations on reminders.location_id=locations.id
+            where reminders.id = $1
+            `,
+            [id]
+        );
+    }
+
     getReminders() {
         return db.any(
             `
@@ -99,16 +111,25 @@ class Reminder {
     }
 
     // === ===  UPDATE  === === (working)
-    updateReminder(reminder) {
+    updateReminder(reminder, is_public, latitude, longitude) {
         return db
-            .result(
+            .one(
                 `update reminders
-            set reminder = $2
-        where id = $1`,
-                [this.id, reminder]
+            set reminder = $2,
+            is_public = $3
+        where id = $1
+        returning location_id`,
+                [this.id, reminder, is_public]
             )
             .then(result => {
-                return result.rowCount === 1;
+                console.log(result, '!!!!');
+                db.one(
+                    `update locations
+            set latitude = $2,
+            longitude = $3
+        where id = $1`,
+                    [result.location_id, latitude, longitude]
+                );
             });
     }
 
