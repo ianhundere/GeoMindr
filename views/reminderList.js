@@ -6,7 +6,7 @@ function reminderToItem(reminderObject) {
             data-lat="${reminderObject.latitude}"
             data-lon="${reminderObject.longitude}"
         >
-            ${reminderObject.reminder}
+            ${reminderObject.reminder} <span><a href='/mylist/${reminderObject.id}/edit'>Edit</a></span> | <span><a href='#'>Delete</a></span>
         </li>
     `;
 }
