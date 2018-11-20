@@ -23,7 +23,7 @@ function mapList(arrayOfReminders) {
             ${reminderItems}
         </table>
         <div id="map"></div>
-        <a href ="/home"> Go to GeoMindr Menu</a>
+        <button><a href ="/home"> Go to GeoMindr Menu</a></button>
         
         <script src="scripts.js"></script>
         <script async defer 
