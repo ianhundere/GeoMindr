@@ -8,7 +8,10 @@ function header() {
                     </div>
                 </div>
                 <div class='navRight'>
-                    <div class='signout'>
+                    <div class="topNav">
+                        <a class="active" href="/mylist">List of GeoMindrs</a>
+                        <a href="/home">GeoMindr Menu</a>
+                        <a class='signout' href="#">Sign out</a>
                         <form action="/logout" method="POST">
                             <input class='signout' type="submit" value="Log Out">
                         </form>
