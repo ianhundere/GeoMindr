@@ -1,4 +1,4 @@
-function coverPage () {
+function coverPage() {
     return `
 
     <!DOCTYPE html>
@@ -20,6 +20,11 @@ function coverPage () {
                        <input
                        type="submit"
                        value="Create your GeoMindr account"/>
+                   </a>
+                    <a class="link" href="/login">
+                       <input
+                       type="submit"
+                       value="Sign In"/>
                    </a>
                 </div>
             </div>    

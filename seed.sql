@@ -13,9 +13,9 @@ values
     ('john travolta', 'jtravolta', 'G2LziGNPj043WGSPOizsPOZZeNDyA8h5aeKYcAqCq04OeanhC1TbG', '9995555555'
 ),
     ('cindy crawford', 'ccrawford', 'G2LziGNPj043WGSPOizsPOZZeNDyA8h5aeKYcAqCq04OeanhC1TbG', '3335555555'
-),
-    ('greg foreman', 'gfore', 'G2LziGNPj043WGSPOizsPOZZeNDyA8h5aeKYcAqCq04OeanhC1TbG', '6787085191'
 );
+--     ('greg foreman', 'gfore', 'G2LziGNPj043WGSPOizsPOZZeNDyA8h5aeKYcAqCq04OeanhC1TbG', '6787085191'
+-- )
 
 insert into locations
 

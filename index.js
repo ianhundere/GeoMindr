@@ -294,7 +294,7 @@ app.post('/sms', (req, res) => {
         console.log(bod);
         twiml.message(
             { to: `${bod.phone}` },
-            `${bod.task} GeoMindr for phone # ${bod.phone} at lat/lon ${
+            `${bod.task} GeoMindr for lat/lon ${
             bod.lat
             }/${bod.lon}.\nWhat is your GeoMindr?`
         );
