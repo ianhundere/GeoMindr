@@ -20,7 +20,7 @@ function mapList(arrayOfReminders) {
         <div class='mapList'>
             <div class='mapListContainer'>
                 <div class='columnTable'>
-                    <div class="tableTitle"><h1>Add new GeoMindr</h1></div>
+                    <div class="tableTitle"><h1>Surrounding GeoMindrs</h1></div>
                     <table>
                     <tr>
                         <th>User Name</th><th>GeoMindr</th><th>Lat</th><th>Lon</th>

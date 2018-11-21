@@ -317,16 +317,42 @@ label {
     /* margin-bottom: 5px; */
 }
 /* ===== =====  REMINDER-LIST  ===== ===== */
+.reminderList {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.reminderListContainer {
+    outline: solid 1px black;
+    /* background-color: lightgoldenrodyellow; */
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.columnList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* outline: solid 1px black; */
+    border: solid black 2px;
+    background-color: white;
+    height: 350px;
+    width: 500px;
+}
 .remList {
     padding-bottom: 5px;
     /* display: flex;
     flex-direction: row;
     justify-content: space-between; */
 }
-
 .remList:hover {
     font-weight: bold;
 }
+
 /* ===== =====  MAP-LIST  ===== ===== */
 .mapList {
     height: 100%;
@@ -358,6 +384,9 @@ label {
     font-size: 14px;
     margin: 12px 0;
 }
+/* .style {
+
+} */
 .columnMap {
     border: solid black 2px;
     /* outline: solid 1px black; */

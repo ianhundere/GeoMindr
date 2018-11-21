@@ -8,7 +8,8 @@ function reminderToItem(reminderObject) {
             >
             
             ${reminderObject.reminder} 
-        <button><a href='/mylist/${reminderObject.id}/edit'><i class="far fa-edit" title="Edit"></i></a></button><button onclick="youSure(${reminderObject.id})"><i class="far far fa-trash-alt" title="Delete"></i></button>
+            <button><a href='/mylist/${reminderObject.id}/edit'><i class="far fa-edit" title="Edit"></i></a></button>
+            <button onclick="youSure(${reminderObject.id})"><i class="far far fa-trash-alt" title="Delete"></i></button>
 
         </li>                                               
     `;
@@ -17,10 +18,22 @@ function reminderToItem(reminderObject) {
 function reminderList(arrayOfReminders) {
     const reminderItems = arrayOfReminders.map(reminderToItem).join('');
     return `
-        <ul>
-            ${reminderItems}
-        </ul>
-        <div id="map"></div>
+        <div class='reminderList'>
+            <div class='reminderListContainer'>
+                <div class='columnList'>
+                    <div class="tableTitle"><h1>My Reminders</h1></div>
+                    
+                    <ul>
+                        ${reminderItems}
+                    </ul>
+                </div> 
+                <div class='columnMap'>
+                    <div class='mapContainer'>
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         
         <script src="scripts.js"></script>
