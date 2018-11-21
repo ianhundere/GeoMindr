@@ -12,7 +12,7 @@ function registerForm() {
             <title>GeoMindr</title>
         </head>
         <body>
-            <div class='main' id='home'>  
+            <div class='main'>  
                 <div class="registerMain">
                     <div class="registerContainer">                
                         <div class="regForm">
