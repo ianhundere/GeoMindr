@@ -25,7 +25,7 @@ A backend web app created with Node, PostgreSQL, Express, Javascript, CSS, and H
 - [express](https://www.npmjs.com/package/express)
 - [express-session](https://www.npmjs.com/package/express-session)
 - [pg-promise](https://www.npmjs.com/package/pg-promise)
-- [twilio](https://www.npmjs.com/package/twilio / https://www.twilio.com/)
+- [twilio](https://www.npmjs.com/package/twilio)
 - [IFTTT](https://ifttt.com/)
 
 ## Future Features
