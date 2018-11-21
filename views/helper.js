@@ -4,16 +4,15 @@ function header() {
             <div class='nav'>
                 <div class='navTitle'>
                     <div class='title'>
-                        <h1>GeoMindr</h1>
+                        <a class='topNav' href="/home"><h1>GeoMindr</h1></a>
                     </div>
                 </div>
                 <div class='navRight'>
-                    <div class="topNav">
-                        <a class="active" href="/mylist">List of GeoMindrs</a>
-                        <a href="/home">GeoMindr Menu</a>
-                        <a href="/logout">Log Out</a>
-                       
-                    </div>
+                    <a class="active topNav" href="/home"><i class="fas fa-home"></i></a>
+                    <a class="active topNav" href="/create"><i class="fas fa-plus"></i></a>
+                    <a class='topNav' href="/mylist"><i class="fas fa-folder-open"></i></a>
+                    <a class='topNav' href="/publicList"><i class="fas fa-map-marked-alt"></i></a>
+                    <a class='topNav' href="/logout">Log Out</a>
                 </div>
             </div>
         </header>
@@ -37,6 +36,3 @@ module.exports = {
 
 
 
-{/* <form action="/logout" method="POST">
-<input class='topNav' type="submit" value="Log Out">
-</form> */}

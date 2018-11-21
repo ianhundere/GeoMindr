@@ -17,14 +17,27 @@ function reminderToItem(reminderObject) {
 function mapList(arrayOfReminders) {
     const reminderItems = arrayOfReminders.map(reminderToItem).join('');
     return `
-        <table>
-        <tr>
-            <th>User</th><th>GeoMindr</th><th>Lat</th><th>Lon</th>
-        </tr>
-            ${reminderItems}
-        </table>
-        <div id="map"></div>
-        <button><a href ="/home"> Go to GeoMindr Menu</a></button>
+
+        <div class='mapList'>
+            <div class='mapListContainer'>
+                <div class='columnTable'>
+                    <div class="tableTitle"><h1>Surrounding GeoMindrs</h1></div>
+                    <table>
+                    <tr>
+                        <th>User</th><th>GeoMindr</th><th>Lat</th><th>Lon</th>
+                    </tr>
+                        ${reminderItems}
+                    </table>
+                </div>
+                <div class='columnMap'>
+                    <div class='mapContainer'>
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+
         
         <script src="scripts.js"></script>
         <script async defer 

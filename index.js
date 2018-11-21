@@ -26,15 +26,16 @@ app.use(
 
 // Views and CSS
 app.use(express.static('public'));
+const coverPage = require('./views/coverPage');
 const page = require('./views/page');
 const helper = require('./views/helper');
-const loginForm = require('./views/loginForm');
 const registerForm = require('./views/registerForm');
+const loginForm = require('./views/loginForm');
 const homePage = require('./views/home');
 const addReminder = require('./views/addReminder');
+const editReminder = require('./views/editReminder');
 const reminderList = require('./views/reminderList');
 const mapList = require('./views/mapList');
-const editReminder = require('./views/editReminder');
 
 // Model Variables
 const User = require('./models/User');
@@ -60,15 +61,8 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    const thePage = page(`<h1>Welcome to GeoMindr</h1>
-    <div class="member">
-        <a class="accnt" href="/register">
-            <input
-            type="submit"
-            value="Create your GeoMindr account"/>
-        </a>
-    </div>`);
-    res.send(thePage);
+    const coverPg = coverPage();
+    res.send(coverPg);
 });
 
 // ========================================================

@@ -32,16 +32,11 @@ function addReminder() {
                 </div>
                 <div class='columnR'>
                     <div class='mapContainer'>
-                        <div id="map"></div><br>
+                        <div id="map"></div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-        
-        
         
         <script src="scripts.js"></script>
         <script async defer 

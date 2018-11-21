@@ -12,7 +12,7 @@ function loginForm() {
             <title>GeoMindr</title>
         </head>
         <body>
-            <div class='main' id='home'>
+            <div class='main'>
                 <div class='loginMain'>
                     <div class='loginContainer'>
                         <div class='logForm'>
