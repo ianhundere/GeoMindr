@@ -279,6 +279,7 @@ label {
     background-color: white;
     height: 350px;
     width: 500px;
+    margin: 10px;
 }
 .addTitle{
     display: flex;
@@ -292,7 +293,7 @@ label {
     border: solid black 2px;
     /* outline: solid 1px black; */
     background-color: white;
-    height: 500px;
+    height: 66vh;
     width: 750px;
 }
 #map {
@@ -322,7 +323,7 @@ label {
     flex-direction: column;
 }
 .reminderListContainer {
-    outline: solid 1px black;
+    /* outline: solid 1px black; */
     /* background-color: lightgoldenrodyellow; */
     height: 100%;
     display: flex;
@@ -340,6 +341,7 @@ label {
     background-color: white;
     height: 350px;
     width: 500px;
+    margin: 10px;
 }
 .remList {
     padding-bottom: 5px;
@@ -374,13 +376,18 @@ label {
     /* outline: solid 1px black; */
     border: solid black 2px;
     background-color: white;
-    height: 350px;
+    height: 390px;
     width: 600px;
+    overflow: auto;
+    padding-top: 40px;
+    margin: 10px;
 }
 .tableTitle{
     display: flex;
     font-size: 14px;
     margin: 12px 0;
+    height: 40px;
+    transform: translateY(-40px);
 }
 /* .style {
 
@@ -389,12 +396,18 @@ label {
     border: solid black 2px;
     /* outline: solid 1px black; */
     background-color: white;
-    height: 500px;
+    /* height: 500px; */
+    height: 66vh;
     width: 650px;
+}
+
+.mapListContainer {
+    height: 100%;
 }
 table {
     /* border-collapse: collapse; */
-    width: 600px
+    width: 100%;
+    overflow: auto;
 }
 
 th {
@@ -419,8 +432,18 @@ li button {
     color: lightgray;
     padding: 2px;
     /* margin: 0; */
-    background-color: rgba(235, 235, 235, 0.952);
+    /* background-color: rgba(235, 235, 235, 0.952); */
+    background-color: inherit;
 }
+
+a:link, a:visited, a:hover, a:active {
+    color: inherit;
+}
+
+.body-row {
+    color: rgb(95, 12, 95);
+}
+
 li a:link, li a:visited, li a:hover, li a:active {
     color: lightgray;
 }
@@ -429,12 +452,13 @@ li a:hover, li button:hover {
     color: inherit;
 }
 
+
 /* 
 Styles below will make the Map and Satellite buttons smaller
 in the Google Map  */
 
 /* MAP|Satellite buttons design*/ 
-/* #map .gm-style-mtc > div:nth-child(1) {
+#map .gm-style-mtc > div:nth-child(1) {
     padding: 0px 9px !important;
     height: 30px !important;		
     font-size: 15px !important;
@@ -445,4 +469,17 @@ in the Google Map  */
 #map .gm-style-mtc > div:nth-child(2) > div {
     padding: 2px 4px 2px 2px !important;
     font-size: 14px !important;
-  } */
+  }
+
+/* Smartphones (portrait and landscape) ----------- */
+/* @media only screen and (min-device-width : 320px) and (max-device-width : 480px) { */
+@media screen and (max-width : 920px) {
+    /* Styles */
+    .mapListContainer, .columnContainer, .reminderListContainer {
+      flex-direction: column;
+  }
+
+    .columnTable {
+        margin: 10px;
+    }
+    }
