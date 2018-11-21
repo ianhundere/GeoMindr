@@ -1,7 +1,7 @@
 # GeoMindr
 
 ## Synopsis
-A backend web app created with Node, PostgreSQL, Express, Javascript, CSS, and HTML that allows users to text a Twilio number to record a reminder and their coordinates. This reminder gets saved in a database to be accessible at a later time either via our web interface or by messaging the same number to get a list of reminders.
+A backend web app created with Node, PostgreSQL, Express, Javascript, CSS, and HTML that allows users to text a Twilio number using IFTTT to record a reminder and their coordinates. This reminder gets saved in a database to be accessible at a later time either via our web interface or by messaging the same number to get a list of reminders.
 
 ## Features
 - Full SMS support through Twilio
@@ -25,7 +25,8 @@ A backend web app created with Node, PostgreSQL, Express, Javascript, CSS, and H
 - [express](https://www.npmjs.com/package/express)
 - [express-session](https://www.npmjs.com/package/express-session)
 - [pg-promise](https://www.npmjs.com/package/pg-promise)
-- [twilio](https://www.npmjs.com/package/twilio)
+- [twilio](https://www.npmjs.com/package/twilio / https://www.twilio.com/)
+- [IFTTT](https://ifttt.com/)
 
 ## Future Features
 - Proximity messaging where the user gets sent a text notifying them of the reminder when they’re close to that reminder’s GPS coordinates
