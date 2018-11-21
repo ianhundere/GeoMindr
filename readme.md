@@ -5,9 +5,9 @@ A backend web app created with Node, PostgreSQL, Express, Javascript, CSS, and H
 
 ## Features
 - Full SMS support through Twilio
-- Ability to add, update, and delete reminders via the web interface or Twilio
-- User login system
+- Ability to create, retrieve, update, and delete reminders via the web interface or Twilio
 - View public reminders via the web interface
+- User login system
 
 ## Successes
 - MVP came together quickly and all the initial ideas were executed well
