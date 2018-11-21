@@ -29,10 +29,11 @@ values
 ),
     (33.85, -84.43 
 ),
-    (33.80, -84.41 
-),
-    (33.81, -84.42
-);
+    (33.80, -84.41
+-- ),
+--     (33.81, -84.42
+-- )
+;
 
 insert into init_reminders
 
@@ -47,9 +48,9 @@ values
     (8374928749, 60.8485718, -60.3732238, 1542602298665
 ),
     (2839473629, 39.8485718, -30.3732238, 1542602950132
-),
-    (2839473629, 39.8485718, -30.3732238, 1542602960132)
-;
+);
+--     (2839473629, 39.8485718, -30.3732238, 1542602960132)
+-- ;
 
 insert into reminders
 
@@ -63,7 +64,8 @@ values
 ),
     ('remind captain kirk of his awesomeness', true, 3, 3
 ),
-    ('buy skin moisturizer', false, 4, 4
-),
-    ('check for a sale on earrings', true, 5, 5
-);
+    ('buy skin moisturizer', false, 4, 4)
+-- ,
+--     ('check for a sale on earrings', true, 5, 5
+-- )
+;
