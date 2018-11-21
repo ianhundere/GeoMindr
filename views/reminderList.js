@@ -21,8 +21,7 @@ function reminderList(arrayOfReminders) {
             ${reminderItems}
         </ul>
         <div id="map"></div>
-        <button><a href ="/create"> Add GeoMindr</a></button><br>
-        <button><a href ="/home"> Go to GeoMindr Menu</a></button>
+
         
         <script src="scripts.js"></script>
         <script async defer 

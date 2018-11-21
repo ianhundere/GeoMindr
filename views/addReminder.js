@@ -32,33 +32,15 @@ function addReminder() {
                 </div>
                 <div class='columnR'>
                     <div class='mapContainer'>
-                        <div id="map"></div><br>
+                        <div id="map"></div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-        
-        
-        
-        `;
-}
-
-module.exports = addReminder;
-
-
-
-
-
-
-
-
-
-{/* <button><a href ="/mylist"> List of GeoMindrs</a><br></button>
-        <button><a href ="/home"> Go to GeoMindr Menu</a></button>
         
         <script src="scripts.js"></script>
         <script async defer 
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATg8I-7sRcc4jlqUhTAxWDOv8gHanaLXA&callback=initMap"></script> */}
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATg8I-7sRcc4jlqUhTAxWDOv8gHanaLXA&callback=initMap"></script>`;
+}
+
+module.exports = addReminder;
