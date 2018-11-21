@@ -409,10 +409,10 @@ th {
 }
 
 td {
-    padding: 5px 2px;
+    padding: 5px;
 }
 
-tr:hover{
+tr:hover, tr:focus {
     background-color: lightgrey;
 }
 
@@ -430,3 +430,21 @@ li a:link, li a:visited, li a:hover, li a:active {
 li a:hover, li button:hover {
     color: inherit;
 }
+
+/* 
+Styles below will make the Map and Satellite buttons smaller
+in the Google Map  */
+
+/* MAP|Satellite buttons design*/ 
+/* #map .gm-style-mtc > div:nth-child(1) {
+    padding: 0px 9px !important;
+    height: 30px !important;		
+    font-size: 15px !important;
+  }
+  #map .gm-style-mtc > div:nth-child(2) {
+    top: 30px !important;
+  }
+  #map .gm-style-mtc > div:nth-child(2) > div {
+    padding: 2px 4px 2px 2px !important;
+    font-size: 14px !important;
+  } */
