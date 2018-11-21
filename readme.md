@@ -7,13 +7,14 @@ A backend web app created with Node, PostgreSQL, Express, Javascript, CSS, and H
 - Full SMS support through Twilio
 - Ability to add, update, and delete reminders via the web interface or Twilio
 - User login system
-- View public reminders via the web interface.
+- View public reminders via the web interface
 
 ## Successes
-- MVP came together quickly and all the initial ideas were executed well.
+- MVP came together quickly and all the initial ideas were executed well
 
 ## Challenges
-- Much of the focus went into the backend as opposed to the front-end which provides a barebones display of the database information
+- Dealing with so many promise chains often caused issues that required time and patience to solve
+- With so many moving parts, it was often hard to keep track of everything and how they fit together properly
 - Some of our stretch goals were not met
 
 ## Dependancies
@@ -27,6 +28,6 @@ A backend web app created with Node, PostgreSQL, Express, Javascript, CSS, and H
 - [twilio](https://www.npmjs.com/package/twilio)
 
 ## Future Features
-- Proximity messaging where the user gets sent a text notifying them of the reminder when they’re close to that reminder’s GPS coordinates.
+- Proximity messaging where the user gets sent a text notifying them of the reminder when they’re close to that reminder’s GPS coordinates
 
 ![GeoMindr Screenshots](/screenshot.png)
