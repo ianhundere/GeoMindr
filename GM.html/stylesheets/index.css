@@ -44,14 +44,13 @@ html, body {
 h1 { 
     margin: 0px;
 }
-.navRight {
+.navRight topNav{
     display: flex;
     justify-content: flex-end;
     align-items: center;
     flex: 1;
 
-}
-.signout {
+
     padding-right: 30px; 
     text-decoration: none;  
     font-size: 14px; 
