@@ -12,7 +12,9 @@ function header() {
                     <a class="active topNav" href="/create"><i class="fas fa-plus"></i></a>
                     <a class='topNav' href="/mylist"><i class="fas fa-folder-open"></i></a>
                     <a class='topNav' href="/publicList"><i class="fas fa-map-marked-alt"></i></a>
-                    <a class='topNav' href="/logout">Log Out</a>
+                    <form class='topNav' action="/logout" method="POST">
+                        <input class='signout' type="submit" value="Log Out">
+                    </form>
                 </div>
             </div>
         </header>

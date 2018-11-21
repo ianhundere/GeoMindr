@@ -381,45 +381,45 @@ app.post('/sms', (req, res) => {
 // Delete Init_Reminder after 5min (working)
 // ========================================================
 
-app.delete('/init_reminders/:id(\\d+)', (req, res) => {
-    Init_Reminder.deleteAfterNoResponse(req.params.id, () => {
-        res.send('there was no response.');
-    });
-});
+// app.delete('/init_reminders/:id(\\d+)', (req, res) => {
+//     Init_Reminder.deleteAfterNoResponse(req.params.id, () => {
+//         res.send('there was no response.');
+//     });
+// });
 
 // ========================================================
 
 // ========================================================
 // View Location by ID (working)
 // ========================================================
-app.get('/locations/:id([0-9]+)', (req, res) => {
-    Location.getById(req.params.id).then(location => {
-        res.send(location);
-    });
-});
+// app.get('/locations/:id([0-9]+)', (req, res) => {
+//     Location.getById(req.params.id).then(location => {
+//         res.send(location);
+//     });
+// });
 // ========================================================
 
 // ========================================================
 // Delete Location by ID (working)
 // ========================================================
-app.delete('/locations/:id(\\d+)', (req, res) => {
-    Location.getById(req.params.id).then(theLocation => {
-        theLocation.deleteById(req.params.id).then(delLocationByID => {
-            res.send(delLocationByID);
-        });
-    });
-});
+// app.delete('/locations/:id(\\d+)', (req, res) => {
+//     Location.getById(req.params.id).then(theLocation => {
+//         theLocation.deleteById(req.params.id).then(delLocationByID => {
+//             res.send(delLocationByID);
+//         });
+//     });
+// });
 // ========================================================
 
 // ========================================================
 // Get All Users (working)
 // ========================================================
 
-app.get('/users', (req, res) => {
-    User.getAll().then(allUsers => {
-        res.send(allUsers);
-    });
-});
+// app.get('/users', (req, res) => {
+//     User.getAll().then(allUsers => {
+//         res.send(allUsers);
+//     });
+// });
 
 // ========================================================
 
@@ -427,11 +427,11 @@ app.get('/users', (req, res) => {
 // Get User by Phone (working)
 // ========================================================
 
-app.get('/phone/:phone_number', (req, res) => {
-    User.getByPhone(req.params.phone_number).then(name => {
-        res.send(name);
-    });
-});
+// app.get('/phone/:phone_number', (req, res) => {
+//     User.getByPhone(req.params.phone_number).then(name => {
+//         res.send(name);
+//     });
+// });
 
 // ========================================================
 
@@ -439,11 +439,11 @@ app.get('/phone/:phone_number', (req, res) => {
 // Get User by ID (working)
 // ========================================================
 
-app.get('/users/:id(\\d+)', (req, res) => {
-    User.getById(req.params.id).then(user => {
-        res.send(user);
-    });
-});
+// app.get('/users/:id(\\d+)', (req, res) => {
+//     User.getById(req.params.id).then(user => {
+//         res.send(user);
+//     });
+// });
 
 // ========================================================
 
@@ -451,24 +451,24 @@ app.get('/users/:id(\\d+)', (req, res) => {
 // Get User by Username (working)
 // ========================================================
 
-app.get('/users/:username', (req, res) => {
-    User.getByUserName(req.params.username).then(username => {
-        res.send(username);
-    });
-});
+// app.get('/users/:username', (req, res) => {
+//     User.getByUserName(req.params.username).then(username => {
+//         res.send(username);
+//     });
+// });
 // ========================================================
 
 // ========================================================
 // Update User's Name (working)
 // ========================================================
 
-app.post('/users/:id(\\d+)', (req, res) => {
-    User.getById(req.params.id).then(theUser => {
-        theUser.updateName(req.body.name).then(nameUpdated => {
-            res.send(nameUpdated);
-        });
-    });
-});
+// app.post('/users/:id(\\d+)', (req, res) => {
+//     User.getById(req.params.id).then(theUser => {
+//         theUser.updateName(req.body.name).then(nameUpdated => {
+//             res.send(nameUpdated);
+//         });
+//     });
+// });
 
 // ========================================================
 
@@ -476,13 +476,13 @@ app.post('/users/:id(\\d+)', (req, res) => {
 // Delete User (working)
 // ========================================================
 
-app.delete('/users/:id(\\d+)', (req, res) => {
-    User.getById(req.params.id).then(theUser => {
-        theUser.delete().then(delUser => {
-            res.send(delUser);
-        });
-    });
-});
+// app.delete('/users/:id(\\d+)', (req, res) => {
+//     User.getById(req.params.id).then(theUser => {
+//         theUser.delete().then(delUser => {
+//             res.send(delUser);
+//         });
+//     });
+// });
 
 // ========================================================
 

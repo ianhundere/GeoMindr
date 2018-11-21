@@ -3,7 +3,7 @@ function addReminder() {
         <div class='addRemind'>
             <div class='columnContainer'>
                 <div class='columnL'>
-                    <div class="addTitle"><h1>Add new GeoMindr</h1></div>
+                    <div class="addTitle"><h1>Add GeoMindr</h1></div>
                     <form class="form" action="/createreminder" method="POST">
                         <div class="placeholder">
                             <label>Latitude:</label> 

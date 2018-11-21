@@ -21,11 +21,10 @@ function reminderList(arrayOfReminders) {
         <div class='reminderList'>
             <div class='reminderListContainer'>
                 <div class='columnList'>
-                    <div class="tableTitle"><h1>My Reminders</h1></div>
-                    
-                    <ul>
-                        ${reminderItems}
-                    </ul>
+                    <div class="tableTitle"><h1>My GeoMindrs</h1></div>
+                        <ul>
+                            ${reminderItems}
+                        </ul>
                 </div> 
                 <div class='columnMap'>
                     <div class='mapContainer'>
