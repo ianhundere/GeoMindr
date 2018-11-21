@@ -29,4 +29,4 @@ A backend web app created with Node, PostgreSQL, Express, Javascript, CSS, and H
 ## Future Features
 - Proximity messaging where the user gets sent a text notifying them of the reminder when they’re close to that reminder’s GPS coordinates.
 
-![GeoMindr Screenshots](/screenshot.pdf)
+![GeoMindr Screenshots](/screenshot.png)
