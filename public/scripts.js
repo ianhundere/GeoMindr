@@ -1,6 +1,6 @@
 
 
-
+let map;
 
 function getLocation(cb) {              // gets user location using geolocation api
     let lats;
@@ -24,7 +24,8 @@ function getLocation(cb) {              // gets user location using geolocation 
 function initMap() {                    // initial paint of the Google map centered on user
     getLocation(function (myLatLon) {
         let myGPS = { lat: parseFloat(myLatLon.myLat), lng: parseFloat(myLatLon.myLon) };
-        let map = new google.maps.Map(document.getElementById('map'), {
+        // let map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
             zoom: 18,
             center: myGPS
         });
@@ -65,7 +66,8 @@ function markerLocation() {
 function initPubMap() {                    // initial paint of the Google map centered on user
     getLocation(function (myLatLon) {
         let myGPS = { lat: parseFloat(myLatLon.myLat), lng: parseFloat(myLatLon.myLon) };
-        let map = new google.maps.Map(document.getElementById('map'), {
+        // let map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
             zoom: 11,
             center: myGPS
         });
@@ -98,7 +100,8 @@ function initUpdateMap() {
     let lats_longs = new google.maps.LatLng(lats, longs);
     let myGPS = { lat: lats_longs.lat(), lng: lats_longs.lng() };
 
-    let map = new google.maps.Map(document.getElementById('map'), {
+    // let map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
         center: myGPS
     });
@@ -134,6 +137,7 @@ function getMarkers() {
 
 
 var marker = false;
+var geoMarker;
 getLocation(function (myLatLon) {
     const inpLat = document.querySelector('[data-lat]');
     const inpLon = document.querySelector('[data-lon]');
@@ -146,4 +150,22 @@ getLocation(function (myLatLon) {
 function youSure(id) {
     var accept = confirm("Are you sure you want to delete this GeoMindr?");
     if (accept) { document.open(`/delete/${id}`) }
+}
+
+function focusReminder(remLat, remLon) {
+    let myGPS = { lat: remLat, lng: remLon };
+
+    geoMarker = new google.maps.Marker({
+        position: myGPS,
+        map: map,
+        icon: {url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}
+    });
+}
+
+function blurReminder(remLat, remLon) {
+    let myGPS = { lat: remLat, lng: remLon };
+    geoMarker = new google.maps.Marker({
+        position: myGPS,
+        map: map
+    });
 }

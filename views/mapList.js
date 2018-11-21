@@ -1,6 +1,6 @@
 function reminderToItem(reminderObject) {
     return `
-        <tr>
+        <tr tabindex="0" onfocus="focusReminder(${reminderObject.latitude}, ${reminderObject.longitude})" onblur="blurReminder(${reminderObject.latitude}, ${reminderObject.longitude})">
             <td>${reminderObject.username}</td>
             <td>${reminderObject.reminder}</td>
             <td>${Number(reminderObject.latitude).toFixed(6)}</td>
@@ -19,7 +19,7 @@ function mapList(arrayOfReminders) {
     return `
         <table>
         <tr>
-            <th>User Name</th><th>GeoMindr</th><th>Lat</th><th>Lon</th>
+            <th>User</th><th>GeoMindr</th><th>Lat</th><th>Lon</th>
         </tr>
             ${reminderItems}
         </table>
