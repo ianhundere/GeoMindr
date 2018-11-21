@@ -18,6 +18,10 @@ A backend web app created with Node, PostgreSQL, Express, Javascript, CSS, and H
 - Some of our stretch goals were not met
 
 ## Dependancies
+- [twilio](https://www.twilio.com/)
+- [IFTTT](https://ifttt.com/)
+## Node Dependancies
+- [twilio helper library](https://www.npmjs.com/package/twilio)
 - [bcrypt](https://www.npmjs.com/package/body-parser)
 - [body-parser](https://www.npmjs.com/package/bcrypt) 
 - [connect-pg-simple](https://www.npmjs.com/package/connect-pg-simple)
@@ -25,8 +29,6 @@ A backend web app created with Node, PostgreSQL, Express, Javascript, CSS, and H
 - [express](https://www.npmjs.com/package/express)
 - [express-session](https://www.npmjs.com/package/express-session)
 - [pg-promise](https://www.npmjs.com/package/pg-promise)
-- [twilio](https://www.npmjs.com/package/twilio)
-- [IFTTT](https://ifttt.com/)
 
 ## Future Features
 - Proximity messaging where the user gets sent a text notifying them of the reminder when they’re close to that reminder’s GPS coordinates
