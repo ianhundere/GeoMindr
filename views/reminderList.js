@@ -8,7 +8,7 @@ function reminderToItem(reminderObject) {
             >
             
             ${reminderObject.reminder} 
-            <button><a href='/mylist/${reminderObject.id}/edit'><i class="far fa-edit" title="Edit"></i></a></button>
+            <a href='/mylist/${reminderObject.id}/edit'><i class="far fa-edit" title="Edit"></i></a>
             <button onclick="youSure(${reminderObject.id})"><i class="far far fa-trash-alt" title="Delete"></i></button>
 
         </li>                                               
