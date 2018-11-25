@@ -43,6 +43,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     margin-left: 30px;
+    padding-top: 20px;
     flex: 1
 }
 .title {
@@ -377,7 +378,7 @@ label {
     border: solid black 2px;
     background-color: white;
     height: 390px;
-    width: 600px;
+    width: 650px;
     overflow: auto;
     padding-top: 40px;
     margin: 10px;
@@ -478,6 +479,10 @@ in the Google Map  */
     .mapListContainer, .columnContainer, .reminderListContainer {
       flex-direction: column;
   }
+  html{
+    height: auto;
+}
+
 
     .columnTable {
         margin: 10px;
