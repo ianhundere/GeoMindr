@@ -37,3 +37,8 @@ A backend web app created with Node, PostgreSQL, Express, Javascript, CSS, and H
 ![GeoMindr Screenshots](/screenshot2.png)
 ![GeoMindr Screenshots](/screenshot3.png)
 ![GeoMindr Screenshots](/screenshot4.png)
+
+## Team Members
+- Ian Hundere - [GitHub](https://github.com/ianhundere)
+- Stanley Chen - [GitHub](https://github.com/DannyShien)
+- Greg Foreman - [GitHub](https://github.com/GFore)
