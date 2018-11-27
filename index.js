@@ -3,6 +3,8 @@ require('dotenv').config();
 // Required Modules
 const express = require('express');
 const app = express();
+const helmet = require('helmet');
+app.use(helmet());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 const session = require('express-session');
