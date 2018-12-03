@@ -17,6 +17,11 @@ A backend web app created with Node, PostgreSQL, Express, Javascript, CSS, and H
 - With so many moving parts, it was often hard to keep track of everything and how they fit together properly
 - Some of our stretch goals were not met
 
+## Setting GeoMindr Up
+- Download [IFTTT](https://ifttt.com/) on your phone (iOS/Android)
+- [Create an applet using IFTTT](https://help.ifttt.com/hc/en-us/articles/115010361388-How-do-I-create-an-Applet-) and choose SMS as the service. There's an image below that shows what needs to be inputted for the applet to work correctly. You can use the Twilio number in the screenshot below.
+- Finally, [create a widget](https://www.youtube.com/watch?v=nWNmoWcCtzU) to have easy access to activating your new IFTTT applet!
+
 ## Dependancies
 - [twilio](https://www.twilio.com/)
 - [IFTTT](https://ifttt.com/)
